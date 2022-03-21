@@ -1,0 +1,39 @@
+$font-family-default: "Noto Sans JP", "sans-serif";
+
+$font-color-default: #333;
+$font-color-white: #fff;
+$font-color-accent: #387c79;
+$font-color-error: #f44336;
+
+$font-size-s: 14px;
+$font-size-m: 16px;
+$font-size-l: 18px;
+$font-size-xl: 20px;
+$font-size-2l: 24px;
+$font-size-3l: 36px;
+$font-size-4l: 48px;
+$font-size-5l: 64px;
+$font-size-6l: 80px;
+
+$bg-color-primary: #fff;
+$bg-color-secondary: #c2dddb;
+$bg-color-teritary: #a8cecc;
+$bg-color-footer: #586d6c;
+
+$btn-color-primary: #52d6d3;
+$btn-color-secondary: #a8cecc;
+$btn-color-error: #f44336;
+
+$border-color: #cdd6dd;
+
+$twitter-color: #1da1f2;
+
+// マップ型変数
+$breakpoints: (
+    "sm": "screen and (max-width: 414px)",
+    "md": "screen and (max-width: 768px)",
+    "lg": "screen and (max-width: 1110px)",
+    "xl": "screen and (max-width: 1200px)",
+    "dw": "screen and (min-width: 1365px)",
+    "smtomd": "screen and (min-width: 415px) and (max-width: 1200px)",
+) !default;

@@ -1,0 +1,13 @@
+// パスワードリセットのページなどのアラート用スタイル
+
+.c-alert {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    text-align: center;
+    &__success {
+        display: block;
+        padding: 10px;
+        background: $bg-color-secondary;
+    }
+}

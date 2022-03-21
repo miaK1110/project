@@ -1,0 +1,244 @@
+.p-product-list {
+    padding-top: 100px;
+    width: 100%;
+    margin: 0 auto;
+    @include mq(dw) {
+        width: 70%;
+    }
+    &__wrapper {
+        width: 90%;
+        margin: 0 auto;
+        padding-top: 80px;
+        display: flex;
+        justify-content: center;
+        @include mq() {
+            padding-top: 20px;
+            justify-content: center;
+            flex-flow: column;
+        }
+    }
+    &__main {
+        width: 100%;
+        @include mq() {
+            width: 100%;
+        }
+    }
+    // 絞り込み検索エリア
+    &__filter {
+        background-color: $bg-color-secondary;
+        border-radius: 4px;
+        width: 100%;
+        padding: 20px 0px;
+        margin-bottom: 2rem;
+        text-align: center;
+        @include mq() {
+            display: inline-block;
+        }
+    }
+    &__select {
+        margin-top: 1rem;
+        padding: 8px;
+        cursor: pointer;
+        background-color: $bg-color-primary;
+        // 絞り込むボタン
+        &-button {
+            appearance: none;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin: 20px;
+            background-color: $bg-color-footer;
+            border-radius: 4px;
+            text-decoration: none;
+            color: $font-color-white;
+            font-weight: bold;
+            @include mq() {
+                margin: 20px;
+            }
+        }
+    }
+    &__list-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: baseline;
+        box-sizing: border-box;
+        &:after {
+            content: "";
+            width: 31%;
+            padding-bottom: 30px;
+            margin-bottom: 1.5rem;
+            box-sizing: border-box;
+        }
+    }
+    &__list-item {
+        width: 31%;
+        padding-bottom: 30px;
+        margin-bottom: 1.5rem;
+        box-sizing: border-box;
+    }
+    &__img-box {
+        width: 100%;
+        height: 220px;
+        position: relative;
+        overflow: hidden;
+        @include mq() {
+            width: 100%;
+            height: 120px;
+        }
+        @include mq(dw) {
+            width: 100%;
+            height: 300px;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            &:hover {
+                opacity: 0.8;
+                transition: 1s;
+            }
+        }
+    }
+    &__img-box--is-sold {
+        width: 100%;
+        height: 220px;
+        position: relative;
+        overflow: hidden;
+        @include mq() {
+            width: 100%;
+            height: 120px;
+        }
+        @include mq(dw) {
+            width: 100%;
+            height: 300px;
+        }
+        &::before {
+            content: "";
+            top: 0;
+            right: 0;
+            border-bottom: 4em solid transparent;
+            border-right: 4em solid #c12748;
+            position: absolute;
+            z-index: 100;
+        }
+        &::after {
+            content: "売り切れ";
+            display: block;
+            top: 16px;
+            transform: rotate(45deg);
+            color: #fff;
+            right: -10px;
+            position: absolute;
+            z-index: 101;
+            font-size: small;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            &:hover {
+                opacity: 0.8;
+                transition: 1s;
+            }
+        }
+    }
+    &__product-link {
+        width: 100%;
+        padding: 10px 0px;
+        line-height: normal;
+        p {
+            padding-top: 10px;
+        }
+        &:hover {
+            img {
+                opacity: 0.9;
+                transition: 1s;
+            }
+        }
+    }
+    &__original-price {
+        color: red;
+        font-size: smaller;
+    }
+    &__price {
+        padding-top: 0.5rem;
+        font-size: smaller;
+        font-weight: bold;
+        padding-left: 1rem;
+    }
+    &__button-box {
+        margin-top: 0.5rem;
+        font-size: small;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: small;
+        &--detail {
+            border-radius: 4px;
+            background-color: $btn-color-primary;
+            padding: 0.1rem 0.5rem;
+            margin-top: 0.5rem;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+        &--edit {
+            border-radius: 4px;
+            background-color: $btn-color-secondary;
+            padding: 0.1rem 0.5rem;
+            margin-top: 0.5rem;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+        &--cancel {
+            border-radius: 4px;
+            background-color: $btn-color-error;
+            padding: 0.1rem 0.5rem;
+            margin-top: 0.5rem;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+            color: $font-color-white;
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+    &__button {
+        cursor: pointer;
+        display: block;
+        padding: 16px 0px;
+        border: 1px solid $btn-color-secondary;
+        border-radius: 15px;
+        text-align: center;
+        margin-bottom: 60px;
+        &:hover {
+            background-color: $btn-color-secondary;
+        }
+    }
+    &__title {
+        padding: 20px 0;
+        cursor: pointer;
+        // vertical-align: 1px;
+    }
+    &__icon {
+        font-size: 1.5rem;
+        color: grey;
+        vertical-align: -5%;
+    }
+    &__name {
+        padding-bottom: 6px;
+    }
+    &__menu {
+        display: flex;
+        margin-bottom: 1.5rem;
+        &-title {
+            display: inline-block;
+            margin-right: 1rem;
+        }
+    }
+}

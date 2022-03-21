@@ -1,0 +1,19 @@
+.c-card {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    @include mq(md) {
+        display: flex;
+        flex-direction: column;
+    }
+    &__item {
+        width: 25%;
+        border: 1px solid $border-color;
+        padding: 1.5rem 1rem;
+        margin-bottom: 1rem;
+        @include mq(md) {
+            width: 90%;
+        }
+    }
+}

@@ -1,0 +1,73 @@
+html,
+body {
+    width: 100vw;
+    color: $font-color-default;
+    font-family: $font-family-default;
+    box-sizing: border-box;
+}
+
+p,
+a {
+    -webkit-font-smoothing: antialiased;
+    font-size: $font-size-m;
+    letter-spacing: 0.2rem;
+    line-height: 1.5;
+    @include mq(sm) {
+        font-size: $font-size-s;
+        letter-spacing: 0.1rem;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: $font-color_default;
+}
+
+h1 {
+    font-size: $font-size-3l;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 0.2rem;
+    @include mq(sm) {
+        font-size: $font-size-l;
+    }
+    @include mq(smtomd) {
+        font-size: $font-size-2l;
+    }
+    @include mq(dw) {
+        font-size: $font-size-6l;
+    }
+}
+
+h2 {
+    font-size: $font-size-2l;
+    font-weight: bold;
+    text-align: center;
+    @include mq(sm) {
+        font-size: $font-size-l;
+    }
+}
+
+h3 {
+    font-size: $font-size-l;
+    font-weight: bold;
+    text-align: center;
+    @include mq(sm) {
+        font-size: $font-size-m;
+    }
+}
+
+input,
+textarea,
+select,
+a,
+button {
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: bottom;
+}

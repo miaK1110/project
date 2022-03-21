@@ -1,0 +1,32 @@
+.c-home {
+    width: 100vw;
+    padding-top: 100px;
+    width: 90%;
+    margin: 0 auto;
+    @include mq(dw) {
+        width: 70%;
+    }
+    &__title {
+        padding-top: 30px;
+        margin-bottom: 60px;
+        @include mq(sm) {
+            padding-top: 1rem;
+        }
+    }
+    &__menu {
+        margin-bottom: 20px;
+        font-weight: bold;
+        display: flex;
+        flex-wrap: wrap;
+        &-item {
+            margin: 0 0.5rem 0.5rem 0;
+            padding: 5px 8px;
+            border: 1px solid $border-color;
+            border-radius: 4px;
+            &:hover {
+                background-color: $border-color;
+                color: $font-color-white;
+            }
+        }
+    }
+}

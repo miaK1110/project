@@ -1,0 +1,18 @@
+.c-tag {
+    &__require {
+        color: #fff;
+        font-size: smaller;
+        background: #fd5050;
+        padding: 1px 5px;
+        margin: 0 0.5rem 0 0;
+        border-radius: 5px;
+    }
+
+    &__optional {
+        color: #fff;
+        font-size: smaller;
+        background: grey;
+        padding: 1px 5px;
+        border-radius: 5px;
+    }
+}

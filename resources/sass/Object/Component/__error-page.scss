@@ -1,0 +1,15 @@
+.c-error-page {
+    width: 90%;
+    height: 100vh;
+    padding-top: 100px;
+    margin: 0 auto;
+    text-align: center;
+    &__title {
+        margin: 30vh auto 0;
+        transform: translateY(-50%);
+        padding-bottom: 0.5rem;
+    }
+    &__message {
+        padding-bottom: 1rem;
+    }
+}

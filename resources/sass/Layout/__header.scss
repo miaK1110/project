@@ -1,0 +1,68 @@
+.l-header {
+    width: 100vw;
+    height: 100px;
+    background-color: $font-color-white;
+    position: fixed;
+    z-index: 110;
+    @include mq(md) {
+        height: 60px;
+    }
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        line-height: 100px;
+        @include mq() {
+            line-height: 60px;
+        }
+    }
+    &__img-container {
+        width: 200px;
+        height: 100px;
+        cursor: pointer;
+        @include mq() {
+            width: 180px;
+            height: 60px;
+            padding: 0 0.5rem;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__menu {
+        margin-right: 1.5rem;
+        @include mq() {
+            display: none;
+        }
+        span {
+            font-weight: bold;
+            @include mq() {
+                display: none;
+            }
+        }
+        li {
+            padding: 0 1rem;
+            display: inline-block;
+
+            a {
+                position: relative;
+                font-weight: bold;
+                &::after {
+                    position: absolute;
+                    bottom: -4px;
+                    left: 0;
+                    content: "";
+                    width: 100%;
+                    height: 1px;
+                    background: #333;
+                    transform: scale(0, 1);
+                    transform-origin: left top;
+                    transition: transform 0.3s;
+                }
+                &:hover::after {
+                    transform: scale(1, 1);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,58 @@
+.l-main {
+    width: 100vw;
+    margin: 0 auto;
+    text-align: center;
+    // ヘッダーの高さ
+    padding-top: 100px;
+    @include mq(md) {
+        // ヘッダーの高さ
+        padding-top: 60px;
+    }
+    &__main-visual {
+        position: relative;
+        img {
+            width: 100vw;
+            height: auto;
+            min-height: 300px;
+            opacity: 0.8;
+        }
+    }
+    &__slogan {
+        width: 100%;
+        position: absolute;
+        top: 38%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        h1 {
+            opacity: 0.8;
+            padding-bottom: 1.5rem;
+            @include mq(sm) {
+                padding-bottom: 1rem;
+            }
+            @include mq(dw) {
+                padding-bottom: 2.5rem;
+            }
+        }
+    }
+    &__lower {
+        width: 100%;
+        display: inline-block;
+        padding: 50px 0;
+        text-align: center;
+        h3 {
+            position: relative;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        h3:before {
+            position: absolute;
+            bottom: -10px;
+            left: calc(50% - 30px);
+            width: 60px;
+            height: 5px;
+            content: "";
+            border-radius: 3px;
+            background: $bg-color-secondary;
+        }
+    }
+}

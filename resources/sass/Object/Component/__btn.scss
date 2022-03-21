@@ -1,0 +1,54 @@
+.c-btn {
+    &__primary {
+        background-color: $btn-color-primary;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-align: center;
+        display: inline-block;
+        font-weight: bold;
+        @include mq(sm) {
+            font-size: small;
+        }
+
+        &--big {
+            text-align: center;
+            padding: 10px 20px;
+        }
+        &:hover {
+            opacity: 0.8;
+            transition: 1s;
+        }
+    }
+    &__danger {
+        text-align: center;
+        background-color: $btn-color-error;
+        padding: 5px 10px;
+        border-radius: 5px;
+        display: inline-block;
+        font-weight: bold;
+        line-height: middle;
+        &:hover {
+            opacity: 0.8;
+            transition: 1s;
+        }
+    }
+    &__share {
+        display: inline-block;
+        font-weight: bold;
+        padding: 6px 10px;
+        color: $font-color-white;
+        border-radius: 5px;
+        line-height: middle;
+        i {
+            font-size: $font-size-m;
+        }
+        &--twitter {
+            background-color: $twitter-color;
+        }
+        &:hover {
+            opacity: 0.6;
+            transition: 1s;
+            color: $font-color-white;
+        }
+    }
+}
