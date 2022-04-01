@@ -6,7 +6,8 @@
 
     <section class="l-main">
         <div class="l-main__main-visual">
-            <img src={{ asset('/img/main-visual.jpg') }} alt="main-visual-img">
+            <img src="https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/common-img/main-visual.jpg"
+                alt="main-visual-img">
             <div class="l-main__slogan">
                 <h1>あのお弁当を、</h1>
                 <h1>低価格で。</h1>
@@ -25,7 +26,6 @@
     </section>
 
     <section class="p-about2">
-        {{-- <img src={{ asset('img/wave.svg') }} /> --}}
         <div class="p-about2__wrapper">
             <h2>知っていますか？</h2>
             <div class="p-about2__text">
@@ -51,7 +51,7 @@
         </div>
         <div class="p-about3__wrapper">
             <div class="p-about3__img-container">
-                <img src="{{ asset('img/female-staff.png') }}" />
+                <img src="https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/common-img/female-staff.png" />
             </div>
             <div class="p-about3__text-container">
                 <h3>消費期限の前にある「販売期限」</h3>

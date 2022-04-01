@@ -8,12 +8,16 @@
         <div class="p-register-login__container">
             <div class="p-register-login__item">
                 <h4 class="p-register-login__title">店舗登録</h4>
-                <img class="p-register-login__img" src="{{ asset('img/female-left.png') }}" alt="img-male60s" />
+                <img class="p-register-login__img"
+                    src="https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/common-img/female-left.png"
+                    alt="img-female-left" />
                 <a class="c-btn__primary p-register-login__btn" href="/seller/register">登録する</a>
             </div>
             <div class="p-register-login__item">
                 <h4 class="p-register-login__title">一般登録</h4>
-                <img class="p-register-login__img" src="{{ asset('img/male-right.png') }}" alt="img-male60s" />
+                <img class="p-register-login__img"
+                    src="https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/common-img/male-right.png"
+                    alt="img-male-right" />
                 <a class="c-btn__primary p-register-login__btn" href="/user/register">登録する</a>
             </div>
         </div>

@@ -2,12 +2,13 @@
     <div class="l-header__wrapper">
         <div class="l-header__img-container">
             <a href="/">
-                <img src={{ asset('img/logo-small.png') }} alt="ロゴ画像" />
+                <img src="https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/common-img/logo-small.png"
+                    alt="logo" />
             </a>
         </div>
         <nav class="l-header__menu">
             <ul>
-                <li><a href="http://localhost:8000/">トップ</a></li>
+                <li><a href="https://haikishare.com">トップ</a></li>
                 <span>|</span>
                 <li><a href="/products-list">商品一覧</a></li>
                 @guest
@@ -19,14 +20,14 @@
                 @auth
                     @if (Auth::guard('user')->user())
                         <span>|</span>
-                        <li><a href="http://localhost:8000/user/home">マイページ</a></li>
+                        <li><a href="https://haikishare.com/user/home">マイページ</a></li>
                         <span>|</span>
-                        <li><a href="http://localhost:8000/user/logout">ログアウト</a></li>
+                        <li><a href="https://haikishare.com/user/logout">ログアウト</a></li>
                     @elseif(Auth::guard('seller')->user())
                         <span>|</span>
-                        <li><a href="http://localhost:8000/seller/home">マイページ</a></li>
+                        <li><a href="https://haikishare.com/seller/home">マイページ</a></li>
                         <span>|</span>
-                        <li><a href="http://localhost:8000/seller/logout">ログアウト</a></li>
+                        <li><a href="https://haikishare.com/seller/logout">ログアウト</a></li>
                     @endif
                 @endauth
             </ul>

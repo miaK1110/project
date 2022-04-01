@@ -15,7 +15,9 @@
             ></span>
         </div>
         <div class="menu" v-bind:class="{ 'is-active': ActiveBtn }">
-            <div class="menu__item"><a href="/">トップページ</a></div>
+            <div class="menu__item">
+                <a href="https://haikishare.com">トップページ</a>
+            </div>
             <div class="menu__item"><a href="/products-list">商品一覧</a></div>
             <div class="menu__item"><a href="/login">ログイン</a></div>
             <div class="menu__item"><a href="/register">会員登録</a></div>

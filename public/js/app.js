@@ -1933,6 +1933,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HamburgerMenu",
   data: function data() {
@@ -1970,6 +1972,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -62301,7 +62305,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "menu__item" }, [
-      _c("a", { attrs: { href: "/" } }, [_vm._v("トップページ")]),
+      _c("a", { attrs: { href: "https://haikishare.com" } }, [
+        _vm._v("トップページ"),
+      ]),
     ])
   },
   function () {
@@ -62392,7 +62398,7 @@ var render = function () {
               ? _c("div", { staticClass: "menu__item" }, [
                   _c(
                     "a",
-                    { attrs: { href: "http://localhost:8000/user/home" } },
+                    { attrs: { href: "https://haikishare.com/user/home" } },
                     [_vm._v("マイページ")]
                   ),
                 ])
@@ -62402,7 +62408,7 @@ var render = function () {
               ? _c("div", { staticClass: "menu__item" }, [
                   _c(
                     "a",
-                    { attrs: { href: "http://localhost:8000/seller/home" } },
+                    { attrs: { href: "https://haikishare.com/seller/home" } },
                     [_vm._v("マイページ")]
                   ),
                 ])
@@ -62412,7 +62418,7 @@ var render = function () {
               ? _c("div", { staticClass: "menu__item" }, [
                   _c(
                     "a",
-                    { attrs: { href: "http://localhost:8000/user/logout" } },
+                    { attrs: { href: "https://haikishare.com/user/logout" } },
                     [_vm._v("ログアウト")]
                   ),
                 ])
@@ -62422,7 +62428,7 @@ var render = function () {
               ? _c("div", { staticClass: "menu__item" }, [
                   _c(
                     "a",
-                    { attrs: { href: "http://localhost:8000/seller/logout" } },
+                    { attrs: { href: "https://haikishare.com/seller/logout" } },
                     [_vm._v("ログアウト")]
                   ),
                 ])
@@ -62438,7 +62444,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "menu__item" }, [
-      _c("a", { attrs: { href: "/" } }, [_vm._v("トップページ")]),
+      _c("a", { attrs: { href: "https://haikishare.com" } }, [
+        _vm._v("トップページ"),
+      ]),
     ])
   },
   function () {

@@ -15,19 +15,21 @@
             ></span>
         </div>
         <div class="menu" v-bind:class="{ 'is-active': ActiveBtn }">
-            <div class="menu__item"><a href="/">トップページ</a></div>
+            <div class="menu__item">
+                <a href="https://haikishare.com">トップページ</a>
+            </div>
             <div class="menu__item"><a href="/products-list">商品一覧</a></div>
             <div v-if="this.role === 'user'" class="menu__item">
-                <a href="http://localhost:8000/user/home">マイページ</a>
+                <a href="https://haikishare.com/user/home">マイページ</a>
             </div>
             <div v-if="this.role === 'seller'" class="menu__item">
-                <a href="http://localhost:8000/seller/home">マイページ</a>
+                <a href="https://haikishare.com/seller/home">マイページ</a>
             </div>
             <div v-if="this.role === 'user'" class="menu__item">
-                <a href="http://localhost:8000/user/logout">ログアウト</a>
+                <a href="https://haikishare.com/user/logout">ログアウト</a>
             </div>
             <div v-if="this.role === 'seller'" class="menu__item">
-                <a href="http://localhost:8000/seller/logout">ログアウト</a>
+                <a href="https://haikishare.com/seller/logout">ログアウト</a>
             </div>
         </div>
     </div>

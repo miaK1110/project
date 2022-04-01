@@ -34,6 +34,9 @@
         @include mq() {
             display: none;
         }
+        @include mq(dw) {
+            font-size: 28px;
+        }
         span {
             font-weight: bold;
             @include mq() {

@@ -305,6 +305,12 @@ img {
   }
 }
 
+@media screen and (min-width: 1365px) {
+  .l-header__menu {
+    font-size: 28px;
+  }
+}
+
 .l-header__menu span {
   font-weight: bold;
 }
@@ -878,6 +884,7 @@ img {
 @media screen and (max-width: 414px) {
   .p-about2__text {
     width: 85%;
+    padding-bottom: 2rem;
   }
 }
 
@@ -1064,6 +1071,12 @@ img {
   width: 90%;
   margin: 0 auto;
   margin-top: 40px;
+}
+
+@media screen and (min-width: 1365px) {
+  .p-review {
+    width: 60%;
+  }
 }
 
 .p-review p {
