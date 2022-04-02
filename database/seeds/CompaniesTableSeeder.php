@@ -13,9 +13,9 @@ class CompaniesTableSeeder extends Seeder
     public function run()
     {
         $companies = [
-            ['company_name' => '株式会社セブン-イレブン・ジャパン', 'alias' => 'セブンイレブン'],
-            ['company_name' => '株式会社ファミリーマート', 'alias' => 'ファミリーマート'],
-            ['company_name' => '株式会社ローソン', 'alias' => 'ローソン'],
+            ['company_name' => '株式会社seven-イレブン・ジャパン', 'alias' => 'sevenイレブン'],
+            ['company_name' => '株式会社family-マート', 'alias' => 'family-マート'],
+            ['company_name' => '株式会社lawsoン', 'alias' => 'lawsoン'],
         ];
         DB::table('companies')->insert($companies);
     }
