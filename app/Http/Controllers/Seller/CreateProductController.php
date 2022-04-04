@@ -31,15 +31,12 @@ class CreateProductController extends Controller
 
 
         if (Auth::check()) {
-            // if ($request->hasFile('file')) {
-            //     // getClientOriginalNameでファイル名を取得しタイムスタンプをファイル名として付与
-            //     $file_name = time() . '.' . request()->file->getClientOriginalName();
-            //     // request()->file->storeAs('public', $file_name);
-            // }
+
             $product = new Product();
             $product->seller_id = Auth::guard('seller')->user()->id;
             $product->company_id = Auth::guard('seller')->user()->company;
             $product->product_name = $request->name;
+
             // 空で送信された時にnullが入ることを回避
             if (is_null($request->description)) {
                 $product->description = '';
@@ -51,15 +48,16 @@ class CreateProductController extends Controller
             $product->original_price = $request->originalPrice;
             $product->price = $request->price;
             $product->best_defore_date = $best_before_date;
+
             // 賞味期限がきれているかチェック
             if ($now < $best_before_date) {
                 $product->is_expired = 0;
             } else {
                 $product->is_expired = 1;
             }
+
             $product->is_sold = 0;
             $product->prefecture = Auth::guard('seller')->user()->prefecture;
-            // $product->product_img_file_path = 'storage/' . $file_name;
 
             // バケットの`product-images`フォルダへアップロード
             $path = Storage::disk('s3')->putFile('product-images', request()->file, 'public');
@@ -67,9 +65,15 @@ class CreateProductController extends Controller
             $product->product_img_file_path = Storage::disk('s3')->url($path);
             $product->save();
 
-            session()->flash('msg_success', '商品を登録しました');
-            return  $product;
+            session()->flash('msg_success', '商品を登録しました。');
+            return response()->json(
+                [
+                    "message" => '商品を登録しました'
+                ],
+                200,
+            );;
         } else {
+            session()->flash('msg_error', '何らかの理由により商品が登録できませんでした。');
             return response()->json(
                 [
                     "message" => '何らかの理由により商品が登録できませんでした'

@@ -118,7 +118,7 @@ export default {
         // 出品した商品の最新5件を取得
         getSellingProducts() {
             axios
-                .get("http://localhost:8000/seller/api/getsellingproducts")
+                .get("/seller/api/getsellingproducts")
                 .then((response) => {
                     console.log(response);
                     this.sellingProducts = response.data.data;
@@ -129,13 +129,14 @@ export default {
                     }
                 })
                 .catch((err) => {
-                    const error = err.response.data.errors;
+                    // エラーならフラッシュメッセージ表示
+                    window.location.href = "/seller/home";
                 });
         },
         // 購入された商品の最新5件を取得
         getSoldProducts() {
             axios
-                .get("http://localhost:8000/seller/api/getsoldproducts")
+                .get("/seller/api/getsoldproducts")
                 .then((response) => {
                     console.log(response);
                     this.soldProducts = response.data.data;
@@ -145,7 +146,7 @@ export default {
                     }
                 })
                 .catch((err) => {
-                    // エラーならマイページへ戻る
+                    // エラーならフラッシュメッセージ表示
                     window.location.href = "/seller/home";
                 });
         },

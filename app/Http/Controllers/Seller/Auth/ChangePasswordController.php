@@ -16,6 +16,7 @@ class ChangePasswordController extends Controller
         $this->middleware('auth:seller');
     }
 
+    // パスワードを更新
     public function changePassword(PasswordRequest $request)
     {
         if (Auth::check()) {
@@ -31,7 +32,7 @@ class ChangePasswordController extends Controller
                 200
             );
         } else {
-            session()->flash('msg_danger', '何らかの理由により変更が完了できませんでした。');
+            session()->flash('msg_erorr', '何らかの理由によりパスワードが変更できませんでした。しばらく待ってからもう一度お試しください。');
             return response()->json(
                 [
                     "message" => '何らかの理由によりパスワードが変更できませんでした'

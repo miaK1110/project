@@ -20,6 +20,7 @@ class EditSellerInfoController extends Controller
         }
     }
 
+    // 店舗の情報と都道府県データを取得
     public function getSellerAndPrefData()
     {
         // 店舗情報を取得
@@ -38,15 +39,16 @@ class EditSellerInfoController extends Controller
             );
         } else {
             // 情報取得できてないなら
+            session()->flash('msg_erorr', '何らかの理由により店舗情報を取得できませんでした');
             return response()->json(
                 [
-                    "message" => "何らかの理由で情報を取得出来ませんでした。",
+                    "message" => "何らかの理由で店舗情報を取得出来ませんでした。",
                 ],
                 500
             );
         }
     }
-
+    // 店舗の情報を更新
     public function updateSellerInfo(SellerRequest $request)
     {
         $id = $request->id;
@@ -61,17 +63,18 @@ class EditSellerInfoController extends Controller
             $seller->phone = $request->phone;
             $seller->save();
 
-            session()->flash('msg_success', '登録情報を編集しました');
+            session()->flash('msg_success', '店舗情報を編集しました。');
             return response()->json(
                 [
-                    "message" => '登録情報を編集しました'
+                    "message" => '店舗情報を編集しました'
                 ],
                 200,
             );
         } else {
+            session()->flash('msg_erorr', '何らかの理由により店舗情報を編集できませんでした。');
             return response()->json(
                 [
-                    "message" => '何らかの理由により商品が登録できませんでした'
+                    "message" => '何らかの理由により店舗情報を編集できませんでした'
                 ],
                 500,
             );

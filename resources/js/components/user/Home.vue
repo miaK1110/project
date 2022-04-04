@@ -78,7 +78,7 @@ export default {
         },
         getAllPurchasedProducts() {
             axios
-                .get("http://localhost:8000/user/api/getallpurchasedproducts")
+                .get("/user/api/getallpurchasedproducts")
                 .then((response) => {
                     console.log(response);
                     this.purchasedProducts = response.data.data;
@@ -89,7 +89,8 @@ export default {
                     }
                 })
                 .catch((err) => {
-                    const error = err.response.data.errors;
+                    // なんらかの問題があった場合
+                    window.location.href = "/user/home";
                 });
         },
         cancelPurchase(id) {
@@ -99,7 +100,7 @@ export default {
             data.append("id", id);
 
             axios
-                .post("http://localhost:8000/user/api/cancelpurchase", data)
+                .post("/user/api/cancelpurchase", data)
                 .then((response) => {
                     this.isLoading = false;
                     if (response.status === 200) {
@@ -109,7 +110,7 @@ export default {
                 })
                 .catch((err) => {
                     this.isLoading = false;
-                    const error = err.response.data.errors;
+                    window.location.href = "/user/home";
                 });
         },
     },

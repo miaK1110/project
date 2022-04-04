@@ -20,9 +20,6 @@
                         autofocus
                         v-model="name"
                     />
-                    <p class="c-form__err-msg" v-if="errMessages.nameErr">
-                        {{ errMessages.nameErr }}
-                    </p>
                 </div>
                 <div class="c-form__item">
                     <label for="category_id" class="c-form__label">
@@ -47,9 +44,6 @@
                             {{ category.category_name }}
                         </option>
                     </select>
-                    <p class="c-form__err-msg" v-if="errMessages.categoryErr">
-                        {{ errMessages.categoryErr }}
-                    </p>
                 </div>
                 <div class="c-form__item">
                     <label for="description" class="c-form__label">
@@ -65,12 +59,6 @@
                         autofocus
                         v-model="description"
                     />
-                    <p
-                        class="c-form__err-msg"
-                        v-if="errMessages.descriptionErr"
-                    >
-                        {{ errMessages.descriptionErr }}
-                    </p>
                 </div>
                 <div class="c-form__item">
                     <label for="original-price" class="c-form__label">
@@ -90,12 +78,6 @@
                         v-model="originalPrice"
                         @keydown.69.prevent
                     />
-                    <p
-                        class="c-form__err-msg"
-                        v-if="errMessages.originalPriceErr"
-                    >
-                        {{ errMessages.originalPriceErr }}
-                    </p>
                 </div>
                 <div class="c-form__item">
                     <label for="price" class="c-form__label">
@@ -115,9 +97,6 @@
                         v-model="price"
                         @keydown.69.prevent
                     />
-                    <p class="c-form__err-msg" v-if="errMessages.priceErr">
-                        {{ errMessages.priceErr }}
-                    </p>
                 </div>
                 <div class="c-form__item">
                     <label for="best-before-date" class="c-form__label">
@@ -134,12 +113,6 @@
                         autofocus
                         v-model="bestBeforeDate"
                     />
-                    <p
-                        class="c-form__err-msg"
-                        v-if="errMessages.bestBeforeDateErr"
-                    >
-                        {{ errMessages.bestBeforeDateErr }}
-                    </p>
                 </div>
                 <div class="c-form__item">
                     <label for="product_img_file_path" class="c-form__label">
@@ -159,18 +132,53 @@
                                 ref="preview"
                             />
                         </div>
-                        <p class="c-form__err-msg" v-if="errMessages.fileErr">
-                            {{ errMessages.fileErr }}
-                        </p>
                     </label>
                 </div>
                 <div class="c-form__preview" v-if="url">
                     <img :src="url" @error="noImage" />
                 </div>
-                <a class="c-btn__primary u-mb__s" @click="editProduct">
+                <!-- エラーメッセージ -->
+                <div class="u-pb__m">
+                    <p class="c-form__err-msg" v-if="errMessages.nameErr">
+                        {{ errMessages.nameErr }}
+                    </p>
+                    <p class="c-form__err-msg" v-if="errMessages.categoryErr">
+                        {{ errMessages.categoryErr }}
+                    </p>
+                    <p
+                        class="c-form__err-msg"
+                        v-if="errMessages.descriptionErr"
+                    >
+                        {{ errMessages.descriptionErr }}
+                    </p>
+                    <p class="c-form__err-msg" v-if="errMessages.priceErr">
+                        {{ errMessages.priceErr }}
+                    </p>
+                    <p
+                        class="c-form__err-msg"
+                        v-if="errMessages.bestBeforeDateErr"
+                    >
+                        {{ errMessages.bestBeforeDateErr }}
+                    </p>
+                    <p class="c-form__err-msg" v-if="errMessages.fileErr">
+                        {{ errMessages.fileErr }}
+                    </p>
+                </div>
+                <!-- エラーメッセージここまで -->
+                <button
+                    class="c-btn__primary u-mb__s"
+                    @click="editProduct"
+                    :disabled="isLoading"
+                >
                     編集する
-                </a>
-                <a class="c-btn__danger" @click="deleteProduct()"> 削除する </a>
+                </button>
+                <button
+                    class="c-btn__danger"
+                    @click="deleteProduct"
+                    :disabled="isLoading"
+                >
+                    削除する
+                </button>
             </div>
         </div>
     </div>
@@ -223,7 +231,7 @@ export default {
         },
         getCategoryData() {
             axios
-                .get("http://localhost:8000/api/getcategorylist")
+                .get("/api/getcategorylist")
                 .then((response) => {
                     console.log(response);
                     if (response.status === 200) {
@@ -237,7 +245,7 @@ export default {
         getProductData() {
             const id = this.getId();
             axios
-                .get("http://localhost:8000/seller/api/getproduct/" + id)
+                .get("/seller/api/getproduct/" + id)
                 .then((response) => {
                     const resData = response.data.data;
                     this.id = resData.id;
@@ -329,7 +337,7 @@ export default {
             }
 
             axios
-                .post("http://localhost:8000/seller/api/updateproduct", data)
+                .post("/seller/api/updateproduct", data)
                 .then((response) => {
                     this.isLoading = false;
                     if (response.status === 200) {
@@ -356,6 +364,8 @@ export default {
                             error.bestBeforeDate[0];
                     } else if (error.file) {
                         this.errMessages.fileErr = error.file[0];
+                    } else {
+                        window.location.href = "/seller/home";
                     }
                 });
         },
@@ -381,10 +391,7 @@ export default {
             if (confirm) {
                 this.isLoading = true;
                 axios
-                    .post(
-                        "http://localhost:8000/seller/api/deleteproduct",
-                        data
-                    )
+                    .post("/seller/api/deleteproduct", data)
                     .then((response) => {
                         this.isLoading = false;
                         console.log(response);

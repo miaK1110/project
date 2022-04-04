@@ -23,7 +23,7 @@ class ChangePasswordController extends Controller
             $user = User::where('id', Auth::guard('user')->user()->id)->first();
             $user->password = bcrypt($request->get('new_password'));
             $user->save();
-            session()->flash('msg_success', 'パスワードを変更しました');
+            session()->flash('msg_success', 'パスワードを変更しました。');
 
             return response()->json(
                 [
@@ -32,7 +32,7 @@ class ChangePasswordController extends Controller
                 200
             );
         } else {
-            session()->flash('msg_danger', '何らかの理由により変更が完了できませんでした。');
+            session()->flash('msg_erorr', '何らかの理由によりパスワードを変更できませんでした。しばらく待ってからもう一度お試しください。');
             return response()->json(
                 [
                     "message" => '何らかの理由によりパスワードが変更できませんでした'

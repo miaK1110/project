@@ -17,6 +17,7 @@ class EditUserInfoController extends Controller
         return view('user.edit_user_info');
     }
 
+    // ユーザー情報と都道府県を取得
     public function getUserAndPrefData()
     {
         if (Auth::check()) {
@@ -45,6 +46,8 @@ class EditUserInfoController extends Controller
             }
         }
     }
+
+    // ユーザー情報を編集
     public function updateUserInfo(UserRequest $request)
     {
         $id = $request->id;
@@ -61,13 +64,14 @@ class EditUserInfoController extends Controller
             $user->address = $request->address;
             $user->phone = $request->phone;
             $user->save();
-            session()->flash('msg_success', '登録情報を編集しました');
+
+            session()->flash('msg_success', '登録情報を編集しました。');
             return response()->json(
-                [],
+                ["message" => "登録情報を編集しました。",],
                 200
             );
         } else {
-            session()->flash('msg_danger', '何らかの理由により編集が完了できませんでした。');
+            session()->flash('msg_error', '何らかの理由により登録情報を編集できませんでした。しばらく待ってからもう一度お試しください。');
             return response()->json(
                 [
                     "message" => "何らかの理由で情報を取得出来ませんでした。",

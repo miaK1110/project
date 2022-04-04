@@ -11,8 +11,6 @@ import VueMoment from "vue-moment";
 
 window.Vue = require("vue");
 Vue.use(require("vue-moment"));
-// Vue.use(VueRouter);
-// import router from 'router';
 
 /**
  * The following block of code may be used to automatically register your
@@ -117,5 +115,4 @@ Vue.component("loading-component", require("./components/Loading.vue").default);
 
 const app = new Vue({
     el: "#app",
-    // router
 });

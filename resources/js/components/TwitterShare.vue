@@ -26,7 +26,7 @@ export default {
                 this.name +
                 "%20%23haikishare" +
                 "&url=" +
-                "https://localhost:8000/product-detail/" +
+                "https://haikishare.com/product-detail/" +
                 this.id;
             //シェア用の画面へ移行
             location.href = shareURL;

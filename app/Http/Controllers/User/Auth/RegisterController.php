@@ -51,13 +51,13 @@ class RegisterController extends Controller
             'email'    => ['required', 'string', 'email', 'max:191', 'unique:users'],
             // 半角英数字6文字〜191文字まで
             'password' => ['required', 'string', 'regex:/\A[a-z\d]+\z/i', 'min:6', 'max:191', 'confirmed'],
-            'family_name' => ['required', 'string', 'regex:/^[^#<>^;_]*$/', 'max:191'],
-            'first_name' => ['required', 'string', 'regex:/^[^#<>^;_]*$/', 'max:191'],
-            'postcode' => ['required', 'string', 'regex:/^[0-9]+$/i', 'max:191'],
-            'prefecture' => ['required', 'string'],
-            'city' => ['required', 'string', 'max:191', 'regex:/^[^#<>^;_]*$/'],
-            'address' => ['required', 'string', 'max:191', 'regex:/^[^#<>^;_]*$/'],
-            'phone' => ['required', 'string', 'regex:/^[0-9]+$/i', 'max:191'],
+            'family_name' => ['required', 'string', 'regex:/^[^#<>^;_]*$/', 'max:30'],
+            'first_name' => ['required', 'string', 'regex:/^[^#<>^;_]*$/', 'max:30'],
+            'postcode' => ['required', 'string', 'regex:/^[0-9]+$/i', 'max:10'],
+            'prefecture' => ['required', 'string', 'max:10'],
+            'city' => ['required', 'string', 'max:30', 'regex:/^[^#<>^;_]*$/'],
+            'address' => ['required', 'string', 'max:161', 'regex:/^[^#<>^;_]*$/'],
+            'phone' => ['required', 'string', 'regex:/^[0-9]+$/i', 'max:21'],
         ]);
     }
 
@@ -68,7 +68,7 @@ class RegisterController extends Controller
         if (Auth::guard('seller')) {
             Auth::guard('seller')->logout();
         }
-        session()->flash('msg_success', '登録が完了しました');
+        session()->flash('msg_success', '登録が完了しました。');
         return User::create([
             'email'    => $data['email'],
             'password' => Hash::make($data['password']),

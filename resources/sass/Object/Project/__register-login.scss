@@ -1,4 +1,4 @@
-// registertologinnobunnkigamenn
+// 共通登録・ログイン画面のスタイル
 
 .p-register-login {
     width: 100%;
@@ -21,14 +21,10 @@
         border-radius: 4px;
         @include mq() {
             width: 80%;
-            }
-    }
-    &__divider{
-        display: block;
-        margin-left: 100px;
-        width: 5px;
-        height: 150px;
-        background-color: brown;
+        }
+        @include mq(dw) {
+            width: 30%;
+        }
     }
     &__item {
         cursor: pointer;
@@ -41,14 +37,14 @@
         margin: 0 auto;
         margin-bottom: 30px;
     }
-    &__btn{
+    &__btn {
         text-align: center;
     }
     &__url-box {
-        a{
-        display: block;
-        margin-bottom: 1rem;
-        text-align: center;
+        a {
+            display: block;
+            margin-bottom: 1rem;
+            text-align: center;
         }
     }
 }

@@ -20,9 +20,10 @@ class LoginController extends Controller
      */
     protected function redirectTo()
     {
-        session()->flash('msg_success', 'ログインしました');
+        session()->flash('msg_success', 'ログインしました。');
         return 'user/home';
     }
+
     // protected $redirectTo = 'user/home';
 
     public function __construct()
@@ -41,6 +42,7 @@ class LoginController extends Controller
     {
         return view('user.auth.login');
     }
+
     // ログイン処理
     public function login(Request $request)
     {

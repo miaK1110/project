@@ -21,6 +21,8 @@ class DeleteController extends Controller
         $user = User::all();
         return view('user.auth.delete', compact('user'));
     }
+
+    // 退会処理
     public function softdelete(User $user)
     {
         // 認証チェック
@@ -34,9 +36,10 @@ class DeleteController extends Controller
                 200
             );
         } else {
+            session()->flash('msg_erorr', '何らかの理由により退会処理ができませんでした。しばらく待ってからもう一度お試しください。');
             return response()->json(
                 [
-                    "message" =>  [Auth::check(), "何らかの理由で退会処理が出来ませんでした。"],
+                    "message" =>  [Auth::check(), "何らかの理由により退会処理が出来ませんでした。"],
                 ],
                 500
             );

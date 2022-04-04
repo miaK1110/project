@@ -9,9 +9,9 @@
     @endif
 
     // {{-- 失敗時 --}}
-    @if (session('msg_danger'))
+    @if (session('msg_error'))
         $(function () {
-        toastr.danger('{{ session('msg_danger') }}');
+        toastr.error('{{ session('msg_error') }}');
         });
     @endif
 </script>

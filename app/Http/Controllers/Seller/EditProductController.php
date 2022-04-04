@@ -57,6 +57,7 @@ class EditProductController extends Controller
                 );
             } else {
                 // 情報取得できてないなら
+                session()->flash('msg_error', '何らかの理由により商品の情報が取得できませんでした。しばらく待ってからもう一度お試しください。');
                 return response()->json(
                     [
                         "message" => "何らかの理由で情報を取得出来ませんでした。",
@@ -65,6 +66,8 @@ class EditProductController extends Controller
                 );
             }
         } else {
+            // 商品IDが不正な値だった場合404ページを表示するが、念の為の処理
+            session()->flash('msg_error', '不正なアクセスです。URLをご確認ください。');
             return response()->json(
                 [
                     "message" => "不正なアクセスです。",
@@ -73,7 +76,7 @@ class EditProductController extends Controller
             );
         }
     }
-
+    // 商品情報を更新する処理
     public function update(EditProductRequest $request)
     {
         if (Auth::check()) {
@@ -86,7 +89,6 @@ class EditProductController extends Controller
                 $now = Carbon::now('Asia/Tokyo');
                 // 商品情報を格納
                 $product = Product::find($request->id);
-                // |after_or_equal:' . $now
 
                 // ファイルがあるなら
                 if ($request->hasFile('file')) {
@@ -110,6 +112,7 @@ class EditProductController extends Controller
                 if (is_null($request->description)) {
                     $product->description = '';
                 }
+
                 $product->description = $request->description;
                 $product->category_id = $request->category;
                 $product->original_price = $request->originalPrice;
@@ -132,7 +135,7 @@ class EditProductController extends Controller
                     200,
                 );
             } else {
-                session()->flash('msg_danger', '何らかの理由により編集が完了できませんでした。');
+                session()->flash('msg_error', '何らかの理由により商品の編集ができませんでした。しばらく待ってからもう一度お試しください。');
                 return response()->json(
                     [
                         "message" => '何らかの理由により商品の編集ができませんでした'
@@ -141,7 +144,7 @@ class EditProductController extends Controller
                 );
             }
         } else {
-            session()->flash('msg_danger', 'ログインしていません。');
+            session()->flash('msg_error', '認証に失敗しました。ログインしてください。');
             return response()->json(
                 [
                     "message" => 'ログインしていません'
@@ -174,7 +177,7 @@ class EditProductController extends Controller
                 $delete = Product::where('id', $id);
                 $delete->delete();
 
-                session()->flash('msg_success', '商品を削除しました');
+                session()->flash('msg_success', '商品を削除しました。');
                 return response()->json(
                     [
                         "message" => '商品が削除されました'
@@ -182,6 +185,7 @@ class EditProductController extends Controller
                     200,
                 );
             } else {
+                session()->flash('msg_error', '何らかの理由により商品が削除できませんでした。しばらく待ってからもう一度お試しください。');
                 return response()->json(
                     [
                         "message" => '何らかの理由により商品が削除できませんでした'
@@ -190,9 +194,10 @@ class EditProductController extends Controller
                 );
             }
         } else {
+            session()->flash('msg_error', '認証に失敗しました。ログインしてください。');
             return response()->json(
                 [
-                    "message" => '何らかの理由により商品が削除できませんでした'
+                    "message" => 'ログインしていません'
                 ],
                 500,
             );

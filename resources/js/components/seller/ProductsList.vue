@@ -113,10 +113,7 @@ export default {
         // 全商品を取得
         getAllSellerProducts(page) {
             axios
-                .get(
-                    "http://localhost:8000/seller/api/getallsellerproducts?page=" +
-                        page
-                )
+                .get("/seller/api/getallsellerproducts?page=" + page)
                 .then(({ data }) => {
                     console.log(data);
                     this.sellerProducts = data.data.data;
@@ -132,7 +129,10 @@ export default {
                     this.from = data.data.from;
                     this.to = data.data.to;
                 })
-                .catch((err) => {});
+                .catch((err) => {
+                    // エラーならマイページへもどる
+                    window.location.href = "/seller/home";
+                });
         },
         change(page) {
             if (page >= 1 && page <= this.last_page)

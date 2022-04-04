@@ -65,7 +65,8 @@ export default {
                 this.role = response.data.role;
             })
             .catch(function (error) {
-                console.log("取得に失敗しました。", error);
+                // エラーならフラッシュメッセージ表示
+                window.location.reload();
             });
     },
     destroyed() {

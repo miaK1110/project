@@ -224,7 +224,7 @@ export default {
         },
         getPrefData() {
             axios
-                .get("http://localhost:8000/api/getprefdata")
+                .get("/api/getprefdata")
                 .then((response) => {
                     // console.log(response);
                     if (response.status === 200) {
@@ -237,7 +237,7 @@ export default {
         },
         getCategoryData() {
             axios
-                .get("http://localhost:8000/api/getcategorylist")
+                .get("/api/getcategorylist")
                 .then((response) => {
                     // console.log(response);
                     if (response.status === 200) {

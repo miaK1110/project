@@ -43,6 +43,7 @@ class HomeController extends Controller
             );
         } else {
             // 商品情報取得できてないなら
+            session()->flash('msg_erorr', '何らかの理由により商品情報を取得できませんでした。');
             return response()->json(
                 [
                     "message" => "何らかの理由で商品情報を取得出来ませんでした。",
@@ -68,9 +69,10 @@ class HomeController extends Controller
             );
         } else {
             // 商品情報取得できてないなら
+            session()->flash('msg_erorr', '何らかの理由により商品情報を取得できませんでした。');
             return response()->json(
                 [
-                    "message" => "何らかの理由で商品情報を取得出来ませんでした。",
+                    "message" => "何らかの理由により商品情報を取得出来ませんでした。",
                 ],
                 500
             );
@@ -99,9 +101,10 @@ class HomeController extends Controller
             );
         } else {
             // 商品情報取得できてないなら
+            session()->flash('msg_erorr', '何らかの理由により商品情報を取得できませんでした。');
             return response()->json(
                 [
-                    "message" => "何らかの理由で商品情報を取得出来ませんでした。",
+                    "message" => "何らかの理由により商品情報を取得出来ませんでした。",
                 ],
                 500
             );
@@ -128,9 +131,10 @@ class HomeController extends Controller
             );
         } else {
             // 商品情報取得できてないなら
+            session()->flash('msg_erorr', '何らかの理由により商品情報を取得できませんでした。');
             return response()->json(
                 [
-                    "message" => "何らかの理由で商品情報を取得出来ませんでした。",
+                    "message" => "何らかの理由により商品情報を取得出来ませんでした。",
                 ],
                 500
             );

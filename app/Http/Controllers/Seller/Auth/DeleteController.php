@@ -26,6 +26,7 @@ class DeleteController extends Controller
         return view('seller.auth.delete', compact('seller'));
     }
 
+    // 退会処理
     public function softdelete(Seller $seller)
     {
         // 認証チェック
@@ -52,6 +53,7 @@ class DeleteController extends Controller
                 200
             );
         } else {
+            session()->flash('msg_erorr', '何らかの理由により退会処理ができませんでした。しばらく待ってからもう一度お試しください。');
             return response()->json(
                 [
                     "message" => "何らかの理由で退会処理が出来ませんでした。",

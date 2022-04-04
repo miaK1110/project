@@ -29,32 +29,22 @@ export default {
         userDelete: function () {
             this.isLoading = true;
             axios
-                .post("http://localhost:8000/seller/api/delete", 2)
-                .then((Response) => {
+                .post("/seller/api/delete")
+                .then((response) => {
                     this.isLoading = false;
-                    window.location.href = "/";
+                    if (response.status === 200) {
+                        // 200ならトップページへ遷移
+                        window.location.href = "/";
+                    }
                 })
                 .catch((error) => {
                     this.isLoading = false;
-                    if (error.response) {
-                        // The request was made and the server responded with a status code
-                        // that falls out of the range of 2xx
-                        console.log("response error");
-                        console.log(error.response.status);
-                        // console.log(error.response.headers);
-
-                        const responseErr = error.response.data.errors;
-
-                        if (error.response.status === 401) {
-                        }
-                    } else if (error.request) {
-                        console.log("request error");
-                        console.log(error.request);
-                    } else {
-                        // Something happened in setting up the request that triggered an Error
-                        console.log("Error", error.message);
+                    if (error.response.status === 401) {
+                        // 認証エラーならログイン画面へ戻る
+                        window.location.href = "/seller/login";
                     }
-                    console.log(error.config);
+                    // 退会処理エラーならマイページへ戻る
+                    window.location.href = "/seller/home";
                 });
         },
     },

@@ -104,12 +104,9 @@ export default {
     methods: {
         getAllSoldProducts(page) {
             axios
-                .get(
-                    "http://localhost:8000/seller/api/getallsoldproducts?page=" +
-                        page
-                )
+                .get("/seller/api/getallsoldproducts?page=" + page)
                 .then(({ data }) => {
-                    console.log(data);
+                    // console.log(data);
                     this.sellerProducts = data.data.data;
                     if (this.sellerProducts.length == 0) {
                         this.emptyMessages.sellingProducts =
@@ -123,7 +120,10 @@ export default {
                     this.from = data.data.from;
                     this.to = data.data.to;
                 })
-                .catch((err) => {});
+                .catch((err) => {
+                    // エラーならマイページへもどる
+                    window.location.href = "/seller/home";
+                });
         },
         change(page) {
             if (page >= 1 && page <= this.last_page)

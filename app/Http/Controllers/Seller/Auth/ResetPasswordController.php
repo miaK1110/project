@@ -30,7 +30,7 @@ class ResetPasswordController extends Controller
      */
     protected function redirectTo()
     {
-        session()->flash('msg_success', '新しいパスワードを設定しました');
+        session()->flash('msg_success', '新しいパスワードを設定しました。');
         return 'seller/home';
     }
     // protected $redirectTo = RouteServiceProvider::SELLER_HOME;

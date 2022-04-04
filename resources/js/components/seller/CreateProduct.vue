@@ -1,162 +1,178 @@
 <template>
-    <div class="c-form">
-        <div class="c-form__item-wrapper">
-            <h3 class="c-form__title">商品登録ページ</h3>
+    <div>
+        <loading-component :isLoading="this.isLoading"></loading-component>
+        <div class="c-form">
+            <div class="c-form__item-wrapper">
+                <h3 class="c-form__title">商品登録ページ</h3>
 
-            <div class="c-form__item">
-                <label for="product_name" class="c-form__label">
-                    <span class="c-tag__require">必須</span>
-                    商品名
-                </label>
-                <input
-                    id="product_name"
-                    type="text"
-                    class="c-form__control"
-                    name="product_name"
-                    required
-                    autocomplete="product_name"
-                    autofocus
-                    v-model="name"
-                />
-                <p class="c-form__err-msg" v-if="errMessages.nameErr">
-                    {{ errMessages.nameErr }}
-                </p>
-            </div>
-            <div class="c-form__item">
-                <label for="category_id" class="c-form__label">
-                    <span class="c-tag__require">必須</span>
-                    商品カテゴリー
-                </label>
-                <select
-                    id="category_id"
-                    class="c-form__control"
-                    name="category_id"
-                    autocomplete="category_id"
-                    autofocus
-                    v-model="category"
-                >
-                    <option value="" hidden>選択してください</option>
-                    <option
-                        v-for="category in categoryList"
-                        v-bind:value="category.id"
-                        v-bind:key="category.id"
-                    >
-                        {{ category.category_name }}
-                    </option>
-                </select>
-                <p class="c-form__err-msg" v-if="errMessages.categoryErr">
-                    {{ errMessages.categoryErr }}
-                </p>
-            </div>
-            <div class="c-form__item">
-                <label for="description" class="c-form__label">
-                    <span class="c-tag__optional">任意</span>
-                    商品説明
-                </label>
-                <textarea
-                    id="description"
-                    type="text"
-                    class="c-form__control"
-                    name="description"
-                    autocomplete="description"
-                    autofocus
-                    v-model="description"
-                />
-                <p class="c-form__err-msg" v-if="errMessages.descriptionErr">
-                    {{ errMessages.descriptionErr }}
-                </p>
-            </div>
-            <div class="c-form__item">
-                <label for="original-price" class="c-form__label">
-                    <span class="c-tag__require">必須</span>
-                    定価(税込み)
-                </label>
-                <input
-                    id="original-price"
-                    type="number"
-                    class="c-form__control"
-                    name="original-price"
-                    required
-                    autocomplete="original-price"
-                    autofocus
-                    min="0"
-                    inputmode="numeric"
-                    v-model="originalPrice"
-                    @keydown.69.prevent
-                />
-                <p class="c-form__err-msg" v-if="errMessages.originalPriceErr">
-                    {{ errMessages.originalPriceErr }}
-                </p>
-            </div>
-            <div class="c-form__item">
-                <label for="price" class="c-form__label">
-                    <span class="c-tag__require">必須</span>
-                    販売価格(税込み)
-                </label>
-                <input
-                    id="price"
-                    type="number"
-                    class="c-form__control"
-                    name="price"
-                    min="0"
-                    required
-                    autocomplete="price"
-                    autofocus
-                    inputmode="numeric"
-                    v-model="price"
-                    @keydown.69.prevent
-                />
-                <p class="c-form__err-msg" v-if="errMessages.priceErr">
-                    {{ errMessages.priceErr }}
-                </p>
-            </div>
-            <div class="c-form__item">
-                <label for="best-before-date" class="c-form__label">
-                    <span class="c-tag__require">必須</span>
-                    賞味期限
-                </label>
-                <input
-                    id="best_before_date"
-                    type="datetime-local"
-                    class="c-form__control"
-                    name="best-before-date"
-                    required
-                    autocomplete="best-before-date"
-                    autofocus
-                    v-model="bestBeforeDate"
-                />
-                <p class="c-form__err-msg" v-if="errMessages.bestBeforeDateErr">
-                    {{ errMessages.bestBeforeDateErr }}
-                </p>
-            </div>
-            <div class="c-form__item">
-                <label for="product_img_file_path" class="c-form__label">
-                    <div class="c-form__label--file">
+                <div class="c-form__item">
+                    <label for="product_name" class="c-form__label">
                         <span class="c-tag__require">必須</span>
-                    </div>
-                    商品写真
-                    <div class="c-form__control--file">
-                        <p>画像を選ぶ</p>
-                        <input
-                            id="product_img_file_path"
-                            type="file"
-                            name="product_img_file_path"
-                            required
-                            autocomplete="product_img_file_path"
-                            autofocus
-                            @change="onChangeFile"
-                            ref="preview"
-                        />
-                    </div>
-                    <p class="c-form__err-msg" v-if="errMessages.fileErr">
-                        {{ errMessages.fileErr }}
+                        商品名
+                    </label>
+                    <input
+                        id="product_name"
+                        type="text"
+                        class="c-form__control"
+                        name="product_name"
+                        required
+                        autocomplete="product_name"
+                        autofocus
+                        v-model="name"
+                    />
+                    <p class="c-form__err-msg" v-if="errMessages.nameErr">
+                        {{ errMessages.nameErr }}
                     </p>
-                </label>
+                </div>
+                <div class="c-form__item">
+                    <label for="category_id" class="c-form__label">
+                        <span class="c-tag__require">必須</span>
+                        商品カテゴリー
+                    </label>
+                    <select
+                        id="category_id"
+                        class="c-form__control"
+                        name="category_id"
+                        autocomplete="category_id"
+                        autofocus
+                        v-model="category"
+                    >
+                        <option value="" hidden>選択してください</option>
+                        <option
+                            v-for="category in categoryList"
+                            v-bind:value="category.id"
+                            v-bind:key="category.id"
+                        >
+                            {{ category.category_name }}
+                        </option>
+                    </select>
+                    <p class="c-form__err-msg" v-if="errMessages.categoryErr">
+                        {{ errMessages.categoryErr }}
+                    </p>
+                </div>
+                <div class="c-form__item">
+                    <label for="description" class="c-form__label">
+                        <span class="c-tag__optional">任意</span>
+                        商品説明
+                    </label>
+                    <textarea
+                        id="description"
+                        type="text"
+                        class="c-form__control"
+                        name="description"
+                        autocomplete="description"
+                        autofocus
+                        v-model="description"
+                    />
+                    <p
+                        class="c-form__err-msg"
+                        v-if="errMessages.descriptionErr"
+                    >
+                        {{ errMessages.descriptionErr }}
+                    </p>
+                </div>
+                <div class="c-form__item">
+                    <label for="original-price" class="c-form__label">
+                        <span class="c-tag__require">必須</span>
+                        定価(税込み)
+                    </label>
+                    <input
+                        id="original-price"
+                        type="number"
+                        class="c-form__control"
+                        name="original-price"
+                        required
+                        autocomplete="original-price"
+                        autofocus
+                        min="0"
+                        inputmode="numeric"
+                        v-model="originalPrice"
+                        @keydown.69.prevent
+                    />
+                    <p
+                        class="c-form__err-msg"
+                        v-if="errMessages.originalPriceErr"
+                    >
+                        {{ errMessages.originalPriceErr }}
+                    </p>
+                </div>
+                <div class="c-form__item">
+                    <label for="price" class="c-form__label">
+                        <span class="c-tag__require">必須</span>
+                        販売価格(税込み)
+                    </label>
+                    <input
+                        id="price"
+                        type="number"
+                        class="c-form__control"
+                        name="price"
+                        min="0"
+                        required
+                        autocomplete="price"
+                        autofocus
+                        inputmode="numeric"
+                        v-model="price"
+                        @keydown.69.prevent
+                    />
+                    <p class="c-form__err-msg" v-if="errMessages.priceErr">
+                        {{ errMessages.priceErr }}
+                    </p>
+                </div>
+                <div class="c-form__item">
+                    <label for="best-before-date" class="c-form__label">
+                        <span class="c-tag__require">必須</span>
+                        賞味期限
+                    </label>
+                    <input
+                        id="best_before_date"
+                        type="datetime-local"
+                        class="c-form__control"
+                        name="best-before-date"
+                        required
+                        autocomplete="best-before-date"
+                        autofocus
+                        v-model="bestBeforeDate"
+                    />
+                    <p
+                        class="c-form__err-msg"
+                        v-if="errMessages.bestBeforeDateErr"
+                    >
+                        {{ errMessages.bestBeforeDateErr }}
+                    </p>
+                </div>
+                <div class="c-form__item">
+                    <label for="product_img_file_path" class="c-form__label">
+                        <div class="c-form__label--file">
+                            <span class="c-tag__require">必須</span>
+                        </div>
+                        商品写真
+                        <div class="c-form__control--file">
+                            <p>画像を選ぶ</p>
+                            <input
+                                id="product_img_file_path"
+                                type="file"
+                                name="product_img_file_path"
+                                required
+                                autocomplete="product_img_file_path"
+                                autofocus
+                                @change="onChangeFile"
+                                ref="preview"
+                            />
+                        </div>
+                        <p class="c-form__err-msg" v-if="errMessages.fileErr">
+                            {{ errMessages.fileErr }}
+                        </p>
+                    </label>
+                </div>
+                <div class="c-form__preview" v-if="url"><img :src="url" /></div>
+                <button
+                    class="c-btn__primary"
+                    @click="createProduct"
+                    :disabled="isLoading"
+                >
+                    登録する
+                </button>
             </div>
-            <div class="c-form__preview" v-if="url"><img :src="url" /></div>
-            <button class="c-btn__primary" @click="createProduct">
-                登録する
-            </button>
         </div>
     </div>
 </template>
@@ -185,12 +201,13 @@ export default {
                 bestBeforeDateErr: "",
                 fileErr: "",
             },
+            isLoading: false,
         };
     },
     methods: {
         // ファイル選択してる時に実行されるメソッド
         onChangeFile(e) {
-            console.log(e);
+            // console.log(e);
             this.file = e.target.files[0];
             // もしファイルが未選択なら中断する
             if (e.target.files.length === 0) {
@@ -219,7 +236,9 @@ export default {
             (this.file = ""), (this.url = "");
         },
         createProduct(e) {
-            console.log(this.$refs.preview.files[0]);
+            // console.log(this.$refs.preview.files[0]);
+            this.isLoading = true;
+
             // エラーメッセージをクリアに
             this.errMessages = {
                 nameErr: "",
@@ -230,6 +249,7 @@ export default {
                 bestBeforeDateErr: "",
                 fileErr: "",
             };
+
             let data = new FormData();
 
             data.append("name", this.name);
@@ -239,19 +259,22 @@ export default {
             data.append("price", this.price);
             data.append("bestBeforeDate", this.bestBeforeDate);
             data.append("file", this.file);
-            console.log(...data.entries());
+
+            // console.log(...data.entries());
             // console.log("ファイルの中身", this.file);
 
             axios
-                .post("http://localhost:8000/seller/api/addproduct", data)
+                .post("/seller/api/addproduct", data)
                 .then((response) => {
-                    console.log(response);
-                    if (response.status === 201) {
+                    this.isLoading = false;
+                    // console.log(response);
+                    if (response.status === 200) {
                         // status 201ならマイページへ戻る
                         window.location.href = "/seller/home";
                     }
                 })
                 .catch((err) => {
+                    this.isLoading = false;
                     const error = err.response.data.errors;
                     if (error.name) {
                         this.errMessages.nameErr = error.name[0];
@@ -269,21 +292,25 @@ export default {
                             error.bestBeforeDate[0];
                     } else if (error.file) {
                         this.errMessages.fileErr = error.file[0];
+                    } else {
+                        // バリデーションエラーじゃないエラーならマイページへ戻る
+                        window.location.href = "/seller/home";
                     }
                 });
         },
     },
     created() {
         axios
-            .get("http://localhost:8000/api/getcategorylist")
+            .get("/api/getcategorylist")
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 if (response.status === 200) {
                     this.categoryList = response.data.categoryList;
                 }
             })
             .catch((err) => {
-                this.message = err.response.data.errors;
+                // カテゴリー取得できていない場合、マイページへ遷移
+                window.location.href = "/seller/home";
             });
     },
 };

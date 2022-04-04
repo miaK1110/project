@@ -58,7 +58,7 @@
                     <p>商品を購入するにはログインが必要です。</p>
                     <a
                         class="c-link__underline"
-                        href="http://localhost:8000/user/login"
+                        href="https://haikishare.com/user/login"
                         >こちらからログインをしてください。</a
                     >
                 </div>
@@ -142,10 +142,11 @@ export default {
                 .then((response) => {
                     this.role = response.data.role;
                     this.uId = response.data.id;
-                    console.log(response);
+                    // console.log(response);
                 })
-                .catch(function (error) {
-                    console.log("取得に失敗しました。", error);
+                .catch((error) => {
+                    // エラーならフラッシュメッセージ表示
+                    window.location.reload();
                 });
         },
 
@@ -165,7 +166,7 @@ export default {
                         window.location.href = "/user/home";
                     }
                 })
-                .catch(function (error) {
+                .catch((error) => {
                     this.isLoading = false;
                     // エラーが発生した場合
                     window.location.href = "/user/home";
@@ -178,7 +179,7 @@ export default {
             data.append("id", this.pId);
 
             axios
-                .post("http://localhost:8000/user/api/cancelpurchase", data)
+                .post("/user/api/cancelpurchase", data)
                 .then((response) => {
                     this.isLoading = false;
                     if (response.status === 200) {

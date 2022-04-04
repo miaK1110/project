@@ -195,7 +195,7 @@ export default {
     methods: {
         getUserAndPrefData() {
             axios
-                .get("http://localhost:8000/user/api/getuserandprefdata")
+                .get("/user/api/getuserandprefdata")
                 .then((response) => {
                     console.log(response);
                     if (response.status === 200) {
@@ -214,7 +214,8 @@ export default {
                     }
                 })
                 .catch((err) => {
-                    this.message = err.response.data.errors;
+                    // 必要な情報を取得できていない場合マイページへ戻る
+                    window.location.href = "/user/home";
                 });
         },
         editInfo() {
@@ -244,9 +245,9 @@ export default {
             // console.log(...data.entries());
 
             axios
-                .post("http://localhost:8000/user/api/edituserinfo", data)
+                .post("/user/api/edituserinfo", data)
                 .then((response) => {
-                    console.log(response);
+                    // console.log(response);
                     if (response.status === 200) {
                         // status 200ならマイページへ戻る
                         window.location.href = "/user/home";
@@ -270,6 +271,9 @@ export default {
                         this.errMessages.addressErr = error.address[0];
                     } else if (error.phone) {
                         this.errMessages.phoneErr = error.phone[0];
+                    } else {
+                        // バリデーションエラーじゃないエラーならマイページへ戻る
+                        window.location.href = "/user/home";
                     }
                 });
         },

@@ -22,6 +22,7 @@ class ProductController extends Controller
         }
         return view('product_detail');
     }
+
     // 商品一覧画面用。フィルタリングなしで全商品を返す
     public function getProducts()
     {
@@ -63,6 +64,7 @@ class ProductController extends Controller
             );
         }
     }
+
     // 商品詳細画面用
     public function getOneProduct($id)
     {
@@ -140,7 +142,6 @@ class ProductController extends Controller
             session()->flash('msg_success', '商品を購入しました');
             return response(200);
         } else {
-            session()->flash('msg_danger', '何らかの理由により購入ができませんでした。');
             return response()->json(
                 [
                     "message" => '何らかの理由により購入ができませんでした。',

@@ -84,7 +84,7 @@ export default {
     methods: {
         getIdAndRole() {
             axios
-                .get("http://localhost:8000/api/getrole")
+                .get("/api/getrole")
                 .then((response) => {
                     console.log(response);
                     if (response.status === 200) {
@@ -92,7 +92,8 @@ export default {
                     }
                 })
                 .catch((err) => {
-                    this.message = err.response.data.errors;
+                    // データ取得できてないならマイページへ戻る
+                    window.location.href = "/user/home";
                 });
         },
         changePassword() {
@@ -116,9 +117,9 @@ export default {
             data.append("current_password", this.currentPassword);
 
             axios
-                .post("http://localhost:8000/user/api/changepassword", data)
+                .post("/user/api/changepassword", data)
                 .then((response) => {
-                    console.log(response);
+                    // console.log(response);
                     if (response.status === 200) {
                         // status 200ならマイページへ戻る
                         window.location.href = "/user/home";
