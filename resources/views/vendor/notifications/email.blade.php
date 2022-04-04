@@ -4,9 +4,9 @@
         # {{ $greeting }}
     @else
         @if ($level === 'error')
-            # @lang('Whoops!')
+            {{-- # @lang('エラーです') --}}
         @else
-            # @lang('こんにちは。')
+            {{-- # @lang('パスワードリセット') --}}
         @endif
     @endif
 

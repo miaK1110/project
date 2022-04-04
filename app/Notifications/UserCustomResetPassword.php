@@ -62,12 +62,12 @@ class UserCustomResetPassword extends Notification
         }
 
         return (new MailMessage)
-        ->from('sukithewestie@gmail.com', config('app.name'))
-        ->subject('パスワード再設定')
-        ->line('下のボタンをクリックしてパスワードを再設定してください。')
-        ->action('パスワード再設定', url(config('app.url') . route('user.password.reset', $this->token, false)))
-        ->line('もし心当たりがない場合は、本メッセージは破棄してください。');
-}
+            ->from('haikishare.mail@gmail.com', config('app.name'))
+            ->subject('パスワード再設定')
+            ->line('下のボタンをクリックしてパスワードを再設定してください。')
+            ->action('パスワード再設定', url(config('app.url') . route('user.password.reset', $this->token, false)))
+            ->line('もし心当たりがない場合は、本メッセージは破棄してください。');
+    }
 
     /**
      * Set a callback that should be used when building the notification mail message.

@@ -129,6 +129,9 @@ return [
         'address' => '市町村区以降の住所',
         'phone' => '電話番号',
         'Please wait before retrying.' => 'しばらく待ってから再度お試しください',
+        'original_price' => '定価',
+        'price' => '販売価格',
+        'best_before_date' => '賞味期限',
     ],
 
 ];

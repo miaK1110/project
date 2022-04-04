@@ -36,7 +36,7 @@ class CreateProductRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => '商品名を入力してw下さい',
+            'name.required' => '商品名を入力して下さい',
             'name.regex' => '商品名に無効な文字#<>^;_が含まれています',
             'name.max' => '商品名は30文字以内で入力してください',
             'category.required' => 'カテゴリーを入力して下さい',
