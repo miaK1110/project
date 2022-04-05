@@ -2690,9 +2690,7 @@ __webpack_require__.r(__webpack_exports__);
   name: "TwitterShare",
   props: ["id", "name"],
   data: function data() {
-    return {
-      name: ""
-    };
+    return {};
   },
   methods: {
     twitterShare: function twitterShare() {
