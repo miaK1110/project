@@ -9,6 +9,10 @@
         @include mq(sm) {
             font-size: small;
         }
+        @include mq(dw) {
+            font-size: 1.5rem;
+            padding: 12px 30px;
+        }
 
         &--big {
             text-align: center;
@@ -27,6 +31,10 @@
         display: inline-block;
         font-weight: bold;
         line-height: middle;
+        @include mq(dw) {
+            font-size: 1.5rem;
+            padding: 12px 30px;
+        }
         &:hover {
             opacity: 0.8;
             transition: 1s;

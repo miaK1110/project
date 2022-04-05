@@ -1,4 +1,4 @@
-@extends('Layouts.app_without_header_footer')
+@extends('Layouts.app_without_footer')
 
 @section('content')
     <form class="c-form" method="POST" action="{{ route('user.password.update') }}">

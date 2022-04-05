@@ -19,7 +19,7 @@
         width: 200px;
         height: 100px;
         cursor: pointer;
-        @include mq() {
+        @include mq(md) {
             width: 180px;
             height: 60px;
             padding: 0 0.5rem;
@@ -31,15 +31,12 @@
     }
     &__menu {
         margin-right: 1.5rem;
-        @include mq() {
+        @include mq(md) {
             display: none;
-        }
-        @include mq(dw) {
-            font-size: 28px;
         }
         span {
             font-weight: bold;
-            @include mq() {
+            @include mq(md) {
                 display: none;
             }
         }

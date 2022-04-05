@@ -3,6 +3,10 @@
     padding-top: 100px;
     margin: 0 auto;
     margin-bottom: 60px;
+    @include mq(dw) {
+        width: 70%;
+        padding-top: 160px;
+    }
     &__title {
         text-align: left;
         padding-bottom: 6px;
@@ -27,6 +31,10 @@
         @include mq(sm) {
             width: 100%;
             min-height: 0;
+        }
+        @include mq(dw) {
+            width: 50%;
+            min-height: 400px;
         }
         img {
             width: 100%;

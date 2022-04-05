@@ -19,6 +19,9 @@
     margin-top: 40px;
     h2 {
         padding-top: 30px;
+        @include mq(dw) {
+            padding-top: 60px;
+        }
     }
     &__wrapper {
         min-height: 300px;
@@ -37,6 +40,9 @@
             width: 85%;
             padding-bottom: 2rem;
         }
+        @include mq(dw) {
+            width: 50%;
+        }
         p {
             line-height: normal;
         }
@@ -49,6 +55,9 @@
     min-height: 400px;
     &__title {
         padding: 30px 0;
+        @include mq(dw) {
+            padding: 80px 0;
+        }
         p {
             text-align: center;
             font-size: 10px;
@@ -62,6 +71,9 @@
         align-items: center;
         border: 1px solid $border-color;
         margin: 0 auto;
+        @include mq(dw) {
+            width: 60%;
+        }
     }
     &__text-container {
         padding: 2rem 1rem;

@@ -1,6 +1,6 @@
 .c-form {
     // ヘッダーの高さ
-    padding-top: 100px;
+    padding-top: 120px;
     padding-bottom: 60px;
     width: 100%;
     margin: 0 auto;
@@ -11,8 +11,8 @@
         padding-bottom: 0;
     }
     @include mq(dw) {
-        // ヘッダーの高さ
-        padding-top: 120px;
+        // ヘッダーの高さ+空白
+        padding-top: 200px;
         padding-bottom: 0;
     }
     &__item-wrapper {
@@ -25,6 +25,9 @@
         padding: 1.5rem 1rem;
         @include mq(md) {
             width: 70%;
+        }
+        @include mq(dw) {
+            width: 35%;
         }
         input[type="text"],
         input[type="email"],
