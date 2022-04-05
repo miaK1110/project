@@ -1,4 +1,4 @@
-@extends('Layouts.app')
+@extends('Layouts.app_without_footer')
 
 @section('title', '商品詳細ページ')
 

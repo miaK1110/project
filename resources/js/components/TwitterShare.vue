@@ -14,9 +14,7 @@ export default {
     name: "TwitterShare",
     props: ["id", "name"],
     data() {
-        return {
-            name: "",
-        };
+        return {};
     },
     methods: {
         twitterShare() {

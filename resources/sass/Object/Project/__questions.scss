@@ -1,29 +1,33 @@
-.p-questions{
+.p-questions {
     margin-top: 100px;
     cursor: pointer;
     width: 80%;
     margin: 0 auto;
     overflow: hidden;
-    &__title{
+    @include mq(dw) {
+        width: 60%;
+        margin-top: 60px;
+    }
+    &__title {
         margin: 40px 0 50px 0;
     }
-    &__question{
+    &__question {
         background-color: $bg-color-secondary;
         padding: 1rem 1rem;
         margin-bottom: 1px;
-        i{
+        i {
             float: right;
             padding-right: 6px;
         }
     }
-    &__answer{
+    &__answer {
         background-color: $bg-color-teritary;
         padding: 1rem 2rem;
-        span{
+        span {
             color: $font-color-accent;
         }
-        p{
-        letter-spacing: 0;
+        p {
+            letter-spacing: 0;
         }
     }
 }

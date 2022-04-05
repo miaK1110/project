@@ -11,34 +11,35 @@
                 <li><a href="https://haikishare.com">トップ</a></li>
                 <span>|</span>
                 <li><a href="/products-list">商品一覧</a></li>
-                @guest
+                {{-- ログインしているユーザーが店舗ユーザーの時 --}}
+                @if (Auth::guard('seller')->check())
+                    <span>|</span>
+                    <li><a href="https://haikishare.com/seller/home">マイページ</a></li>
+                    <span>|</span>
+                    <li><a href="https://haikishare.com/seller/logout">ログアウト</a></li>
+                    {{-- ログインしているユーザーが一般ユーザーの時 --}}
+                @elseif(Auth::guard('user')->check())
+                    <span>|</span>
+                    <li><a href="https://haikishare.com/user/home">マイページ</a></li>
+                    <span>|</span>
+                    <li><a href="https://haikishare.com/user/logout">ログアウト</a></li>
+                    {{-- ゲストユーザーの時 --}}
+                @else
                     <span>|</span>
                     <li><a href="/login">ログイン</a></li>
                     <span>|</span>
                     <li><a href="/register">会員登録</a></li>
-                @endguest
-                @auth
-                    @if (Auth::guard('user')->user())
-                        <span>|</span>
-                        <li><a href="https://haikishare.com/user/home">マイページ</a></li>
-                        <span>|</span>
-                        <li><a href="https://haikishare.com/user/logout">ログアウト</a></li>
-                    @elseif(Auth::guard('seller')->user())
-                        <span>|</span>
-                        <li><a href="https://haikishare.com/seller/home">マイページ</a></li>
-                        <span>|</span>
-                        <li><a href="https://haikishare.com/seller/logout">ログアウト</a></li>
-                    @endif
-                @endauth
+                @endif
             </ul>
         </nav>
-        {{-- タブレットサイズより小さい画面はハンバーガーメニューを適用 --}}
-        @guest
-            <hamburger-menu-component></hamburger-menu-component>
-        @endguest
+
         {{-- ログイン済みユーザーかつタブレットサイズより小さい画面用 --}}
-        @auth
+        @if (Auth::guard('seller')->check() || Auth::guard('user')->check())
             <hamburger-menu-logged-in-component></hamburger-menu-logged-in-component>
-        @endauth
+        @else
+            {{-- ゲストユーザーかつタブレットサイズより小さい画面はハンバーガーメニューを適用 --}}
+            <hamburger-menu-component></hamburger-menu-component>
+        @endif
+
     </div>
 </header>
