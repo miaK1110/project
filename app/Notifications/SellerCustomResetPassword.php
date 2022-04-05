@@ -63,10 +63,11 @@ class SellerCustomResetPassword extends Notification
 
         return (new MailMessage)
             ->from('haikishare.mail@gmail.com', config('app.name'))
-            ->subject('パスワード再設定')
+            ->subject('パスワード再設定 | haiki-share')
             ->line('下のボタンをクリックしてパスワードを再設定してください。')
             ->action('パスワード再設定', url(config('app.url') . route('seller.password.reset', $this->token, false)))
-            ->line('もし心当たりがない場合は、本メッセージは破棄してください。');
+            ->line('このメールの有効期限は60分です。')
+            ->line('もしメールに心当たりがない場合は、本メッセージは破棄してください。');
     }
 
     /**
