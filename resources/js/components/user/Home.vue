@@ -80,7 +80,7 @@ export default {
             axios
                 .get("/user/api/getallpurchasedproducts")
                 .then((response) => {
-                    console.log(response);
+                    // console.log(response);
                     this.purchasedProducts = response.data.data;
                     if (this.purchasedProducts.length == 0) {
                         this.emptyMessages.purchasedProducts =

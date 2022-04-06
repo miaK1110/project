@@ -20,7 +20,7 @@ export default {
             axios
                 .post("/user/api/delete")
                 .then((Response) => {
-                    console.log(Response);
+                    // console.log(Response);
                     window.location.href = "/";
                 })
                 .catch((error) => {

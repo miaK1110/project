@@ -309,7 +309,7 @@ export default {
                 }
             })
             .catch((err) => {
-                // カテゴリー取得できていない場合、マイページへ遷移
+                // カテゴリー取得できていない場合
                 window.location.href = "/seller/home";
             });
     },

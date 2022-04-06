@@ -115,7 +115,7 @@ export default {
             axios
                 .get("/seller/api/getallsellerproducts?page=" + page)
                 .then(({ data }) => {
-                    console.log(data);
+                    // console.log(data);
                     this.sellerProducts = data.data.data;
                     if (this.sellerProducts.length == 0) {
                         this.emptyMessages.sellingProducts =
