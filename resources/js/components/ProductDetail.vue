@@ -132,8 +132,7 @@ export default {
                     this.isPurchaser = response.data.is_purchaser;
                 })
                 .catch(function (error) {
-                    // 不正な値が入っていた場合または商品が見つからない場合
-                    // window.location.href = "/products-list";
+                    // console.log(err);
                 });
         },
         getRole() {

@@ -4,6 +4,9 @@
     width: 80%;
     margin: 0 auto;
     overflow: hidden;
+    @include mq(sm) {
+        width: 90%;
+    }
     @include mq(dw) {
         width: 60%;
         margin-top: 60px;

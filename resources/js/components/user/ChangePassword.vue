@@ -86,7 +86,7 @@ export default {
             axios
                 .get("/api/getrole")
                 .then((response) => {
-                    console.log(response);
+                    // console.log(response);
                     if (response.status === 200) {
                         this.id = response.data.id;
                     }

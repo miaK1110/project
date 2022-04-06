@@ -1935,6 +1935,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HamburgerMenu",
   data: function data() {
@@ -1972,6 +1974,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -2236,8 +2240,7 @@ moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale("ja");
         _this.company = response.data.companyname;
         _this.sold = response.data.productdata.is_sold;
         _this.isPurchaser = response.data.is_purchaser;
-      })["catch"](function (error) {// 不正な値が入っていた場合または商品が見つからない場合
-        // window.location.href = "/products-list";
+      })["catch"](function (error) {// console.log(err);
       });
     },
     getRole: function getRole() {
@@ -3171,7 +3174,7 @@ Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vu
         _this3.categoryList = response.data.categoryList;
       }
     })["catch"](function (err) {
-      // カテゴリー取得できていない場合、マイページへ遷移
+      // カテゴリー取得できていない場合
       window.location.href = "/seller/home";
     });
   }
@@ -3490,13 +3493,11 @@ Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vu
       var _this = this;
 
       axios.get("/api/getcategorylist").then(function (response) {
-        console.log(response);
-
+        // console.log(response);
         if (response.status === 200) {
           _this.categoryList = response.data.categoryList;
         }
-      })["catch"](function (err) {
-        _this.message = err.response.data.errors;
+      })["catch"](function (err) {// console.log(err);
       });
     },
     getProductData: function getProductData() {
@@ -3525,7 +3526,7 @@ Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vu
     },
     // ファイル選択してる時に実行されるメソッド
     onChangeFile: function onChangeFile(e) {
-      console.log(e);
+      // console.log(e);
       this.file = e.target.files[0]; // もしファイルが未選択なら中断する
 
       if (e.target.files.length === 0) {
@@ -3535,7 +3536,6 @@ Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vu
 
 
       if (!e.target.files[0].type.match("image.*")) {
-        alert("oi");
         this.reset();
         return false;
       } // 画像をプレビューさせる
@@ -3577,7 +3577,6 @@ Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vu
       var data = new FormData();
       data.set("id", this.id);
       data.set("seller", this.seller);
-      console.log(this.id);
       data.set("name", this.name);
       data.set("category", this.category);
       data.set("description", this.description);
@@ -3586,13 +3585,7 @@ Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vu
       data.set("bestBeforeDate", this.bestBeforeDate);
 
       if (this.file !== "") {
-        data.set("file", this.file);
-        console.log(data.get("file"));
-      } else {
-        // this.errMessages.fileErr = "画像ファイルが同じです";
-        // this.url = this.url.slice(8);
-        // data.set("file", this.url);
-        console.log(data.get("file"));
+        data.set("file", this.file); // console.log(data.get("file"));
       }
 
       axios.post("/seller/api/updateproduct", data).then(function (response) {
@@ -3621,6 +3614,7 @@ Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vu
         } else if (error.file) {
           _this4.errMessages.fileErr = error.file[0];
         } else {
+          // バリデーション以外のエラーならマイページへ
           window.location.href = "/seller/home";
         }
       });
@@ -3633,21 +3627,18 @@ Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vu
       data.append("seller", this.seller); // 万が一、削除前に違うファイルが選択されていたら
 
       if (this.file !== "") {
-        // // 一度リロード
-        // location.reload();
         this.errMessages.fileErr = "削除前に新しく画像を選ぶことはできません。ページを更新してください。";
         return false;
       }
 
-      data.append("file", this.url);
-      console.log(data.get("id"));
+      data.append("file", this.url); // console.log(data.get("id"));
+
       var confirm = window.confirm("この商品を削除してもよろしいですか?");
 
       if (confirm) {
         this.isLoading = true;
         axios.post("/seller/api/deleteproduct", data).then(function (response) {
-          _this5.isLoading = false;
-          console.log(response);
+          _this5.isLoading = false; // console.log(response);
 
           if (response.status === 200) {
             // status 200ならマイページへ戻る
@@ -3874,8 +3865,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get("/seller/api/getsellerandprefdata").then(function (response) {
-        console.log(response);
-
+        // console.log(response);
         if (response.status === 200) {
           _this.prefData = response.data.prefData;
           var sellerData = response.data.sellerData;
@@ -3888,9 +3878,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.address = sellerData.address;
           _this.phone = sellerData.phone;
         }
-      })["catch"](function (err) {
-        // status 500ならマイページへ戻る
-        window.location.href = "/seller/home";
+      })["catch"](function (err) {// console.log(err);
       });
     },
     editInfo: function editInfo() {
@@ -4088,7 +4076,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get("/seller/api/getsellingproducts").then(function (response) {
-        console.log(response);
+        // console.log(response);
         _this.sellingProducts = response.data.data;
 
         if (_this.sellingProducts.length == 0) {
@@ -4105,7 +4093,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.get("/seller/api/getsoldproducts").then(function (response) {
-        console.log(response);
+        // console.log(response);
         _this2.soldProducts = response.data.data;
 
         if (_this2.soldProducts.length == 0) {
@@ -4265,7 +4253,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/seller/api/getallsellerproducts?page=" + page).then(function (_ref) {
         var data = _ref.data;
-        console.log(data);
+        // console.log(data);
         _this.sellerProducts = data.data.data;
 
         if (_this.sellerProducts.length == 0) {
@@ -4574,8 +4562,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get("/api/getrole").then(function (response) {
-        console.log(response);
-
+        // console.log(response);
         if (response.status === 200) {
           _this.id = response.data.id;
         }
@@ -4658,7 +4645,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     userDelete: function userDelete() {
       axios.post("/user/api/delete").then(function (Response) {
-        console.log(Response);
+        // console.log(Response);
         window.location.href = "/";
       })["catch"](function (error) {
         // 退会処理に問題があった場合マイページへ戻る
@@ -4877,8 +4864,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get("/user/api/getuserandprefdata").then(function (response) {
-        console.log(response);
-
+        // console.log(response);
         if (response.status === 200) {
           _this.prefData = response.data.prefData;
           var userData = response.data.userData;
@@ -5051,7 +5037,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get("/user/api/getallpurchasedproducts").then(function (response) {
-        console.log(response);
+        // console.log(response);
         _this.purchasedProducts = response.data.data;
 
         if (_this.purchasedProducts.length == 0) {
@@ -62251,7 +62237,7 @@ var render = function () {
         _c(
           "div",
           {
-            staticClass: "hamburger_btn",
+            staticClass: "p-hamburger__btn",
             on: {
               click: function ($event) {
                 _vm.ActiveBtn = !_vm.ActiveBtn
@@ -62260,25 +62246,25 @@ var render = function () {
           },
           [
             _c("span", {
-              staticClass: "line line_01",
-              class: { btn_line01: _vm.ActiveBtn },
+              staticClass: "p-hamburger__line p-hamburger__line01",
+              class: { "p-menu-btn__line01": _vm.ActiveBtn },
             }),
             _vm._v(" "),
             _c("span", {
-              staticClass: "line line_02",
-              class: { btn_line02: _vm.ActiveBtn },
+              staticClass: "p-hamburger__line p-hamburger__line02",
+              class: { "p-menu-btn__line02": _vm.ActiveBtn },
             }),
             _vm._v(" "),
             _c("span", {
-              staticClass: "line line_03",
-              class: { btn_line03: _vm.ActiveBtn },
+              staticClass: "p-hamburger__line p-hamburger__line03",
+              class: { "p-menu-btn__line03": _vm.ActiveBtn },
             }),
           ]
         ),
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "menu", class: { "is-active": _vm.ActiveBtn } },
+          { staticClass: "p-menu", class: { "is-active": _vm.ActiveBtn } },
           [
             _vm._m(0),
             _vm._v(" "),
@@ -62297,7 +62283,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "menu__item" }, [
+    return _c("div", { staticClass: "p-menu__item" }, [
       _c("a", { attrs: { href: "https://haikishare.com" } }, [
         _vm._v("トップページ"),
       ]),
@@ -62307,7 +62293,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "menu__item" }, [
+    return _c("div", { staticClass: "p-menu__item" }, [
       _c("a", { attrs: { href: "/products-list" } }, [_vm._v("商品一覧")]),
     ])
   },
@@ -62315,7 +62301,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "menu__item" }, [
+    return _c("div", { staticClass: "p-menu__item" }, [
       _c("a", { attrs: { href: "/login" } }, [_vm._v("ログイン")]),
     ])
   },
@@ -62323,7 +62309,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "menu__item" }, [
+    return _c("div", { staticClass: "p-menu__item" }, [
       _c("a", { attrs: { href: "/register" } }, [_vm._v("会員登録")]),
     ])
   },
@@ -62350,11 +62336,11 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.SmallScreen
-    ? _c("div", [
+    ? _c("div", { staticClass: "p-hamburger" }, [
         _c(
           "div",
           {
-            staticClass: "hamburger_btn",
+            staticClass: "p-hamburger__btn",
             on: {
               click: function ($event) {
                 _vm.ActiveBtn = !_vm.ActiveBtn
@@ -62363,32 +62349,32 @@ var render = function () {
           },
           [
             _c("span", {
-              staticClass: "line line_01",
-              class: { btn_line01: _vm.ActiveBtn },
+              staticClass: "p-hamburger__line p-hamburger__line01",
+              class: { "p-menu-btn__line01": _vm.ActiveBtn },
             }),
             _vm._v(" "),
             _c("span", {
-              staticClass: "line line_02",
-              class: { btn_line02: _vm.ActiveBtn },
+              staticClass: "p-hamburger__line p-hamburger__line02",
+              class: { "p-menu-btn__line02": _vm.ActiveBtn },
             }),
             _vm._v(" "),
             _c("span", {
-              staticClass: "line line_03",
-              class: { btn_line03: _vm.ActiveBtn },
+              staticClass: "p-hamburger__line p-hamburger__line03",
+              class: { "p-menu-btn__line03": _vm.ActiveBtn },
             }),
           ]
         ),
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "menu", class: { "is-active": _vm.ActiveBtn } },
+          { staticClass: "p-menu", class: { "is-active": _vm.ActiveBtn } },
           [
             _vm._m(0),
             _vm._v(" "),
             _vm._m(1),
             _vm._v(" "),
             this.role === "user"
-              ? _c("div", { staticClass: "menu__item" }, [
+              ? _c("div", { staticClass: "p-menu__item" }, [
                   _c(
                     "a",
                     { attrs: { href: "https://haikishare.com/user/home" } },
@@ -62398,7 +62384,7 @@ var render = function () {
               : _vm._e(),
             _vm._v(" "),
             this.role === "seller"
-              ? _c("div", { staticClass: "menu__item" }, [
+              ? _c("div", { staticClass: "p-menu__item" }, [
                   _c(
                     "a",
                     { attrs: { href: "https://haikishare.com/seller/home" } },
@@ -62408,7 +62394,7 @@ var render = function () {
               : _vm._e(),
             _vm._v(" "),
             this.role === "user"
-              ? _c("div", { staticClass: "menu__item" }, [
+              ? _c("div", { staticClass: "p-menu__item" }, [
                   _c(
                     "a",
                     { attrs: { href: "https://haikishare.com/user/logout" } },
@@ -62436,7 +62422,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "menu__item" }, [
+    return _c("div", { staticClass: "p-menu__item" }, [
       _c("a", { attrs: { href: "https://haikishare.com" } }, [
         _vm._v("トップページ"),
       ]),
@@ -62446,7 +62432,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "menu__item" }, [
+    return _c("div", { staticClass: "p-menu__item" }, [
       _c("a", { attrs: { href: "/products-list" } }, [_vm._v("商品一覧")]),
     ])
   },
@@ -86506,15 +86492,12 @@ module.exports = function(module) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue_moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vue-moment.js");
-/* harmony import */ var vue_moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_moment__WEBPACK_IMPORTED_MODULE_1__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-
 
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");

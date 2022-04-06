@@ -1,31 +1,33 @@
 <template>
-    <div v-if="SmallScreen">
-        <div class="hamburger_btn" v-on:click="ActiveBtn = !ActiveBtn">
+    <div v-if="SmallScreen" class="p-hamburger">
+        <div class="p-hamburger__btn" v-on:click="ActiveBtn = !ActiveBtn">
             <span
-                class="line line_01"
-                v-bind:class="{ btn_line01: ActiveBtn }"
+                class="p-hamburger__line p-hamburger__line01"
+                v-bind:class="{ 'p-menu-btn__line01': ActiveBtn }"
             ></span>
             <span
-                class="line line_02"
-                v-bind:class="{ btn_line02: ActiveBtn }"
+                class="p-hamburger__line p-hamburger__line02"
+                v-bind:class="{ 'p-menu-btn__line02': ActiveBtn }"
             ></span>
             <span
-                class="line line_03"
-                v-bind:class="{ btn_line03: ActiveBtn }"
+                class="p-hamburger__line p-hamburger__line03"
+                v-bind:class="{ 'p-menu-btn__line03': ActiveBtn }"
             ></span>
         </div>
-        <div class="menu" v-bind:class="{ 'is-active': ActiveBtn }">
-            <div class="menu__item">
+        <div class="p-menu" v-bind:class="{ 'is-active': ActiveBtn }">
+            <div class="p-menu__item">
                 <a href="https://haikishare.com">トップページ</a>
             </div>
-            <div class="menu__item"><a href="/products-list">商品一覧</a></div>
-            <div v-if="this.role === 'user'" class="menu__item">
+            <div class="p-menu__item">
+                <a href="/products-list">商品一覧</a>
+            </div>
+            <div v-if="this.role === 'user'" class="p-menu__item">
                 <a href="https://haikishare.com/user/home">マイページ</a>
             </div>
-            <div v-if="this.role === 'seller'" class="menu__item">
+            <div v-if="this.role === 'seller'" class="p-menu__item">
                 <a href="https://haikishare.com/seller/home">マイページ</a>
             </div>
-            <div v-if="this.role === 'user'" class="menu__item">
+            <div v-if="this.role === 'user'" class="p-menu__item">
                 <a href="https://haikishare.com/user/logout">ログアウト</a>
             </div>
             <div v-if="this.role === 'seller'" class="menu__item">

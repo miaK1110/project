@@ -189,7 +189,7 @@ export default {
             axios
                 .get("/seller/api/getsellerandprefdata")
                 .then((response) => {
-                    console.log(response);
+                    // console.log(response);
                     if (response.status === 200) {
                         this.prefData = response.data.prefData;
 
@@ -206,8 +206,7 @@ export default {
                     }
                 })
                 .catch((err) => {
-                    // status 500ならマイページへ戻る
-                    window.location.href = "/seller/home";
+                    // console.log(err);
                 });
         },
         editInfo() {

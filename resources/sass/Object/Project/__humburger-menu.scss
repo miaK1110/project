@@ -1,86 +1,82 @@
-/*----------------------------
-* メニュー本体
-*----------------------------*/
-.menu{
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 1;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: $bg-color-primary;
-  opacity: 0.9;
-}
-.menu__item{
-  width: 100%;
-  height: auto;
-  padding: .5em 1em;
-  text-align: center;
-  color: $font-color-default;
-  box-sizing: border-box;
+.p-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: $bg-color-primary;
+    opacity: 0.9;
+    &__item {
+        width: 100%;
+        height: auto;
+        padding: 0.5em 1em;
+        text-align: center;
+        color: $font-color-default;
+        box-sizing: border-box;
+    }
 }
 
-// アニメーション部分
-
-/* アニメーション前のメニューの状態 */
-.menu{
-  transform: translateX(100vw);
-  transition: all .3s linear;
-}
-/* アニメーション後のメニューの状態 */
-.menu.is-active{
-  transform: translateX(0);
+.p-menu {
+    // アニメーション前のメニューの状態
+    transform: translateX(100vw);
+    transition: all 0.3s linear;
+    // アニメーション後のメニューの状態
+    &.is-active {
+        transform: translateX(0);
+    }
 }
 
 /*ボタン*/
-.hamburger_btn {
-    position: fixed; /*常に最上部に表示したいので固定*/
-    top: 0;
-    right: 0;
-    width: 70px;
-    height: 72px;
-    cursor: pointer;
-    z-index: 50;
-  }
-  
-  .hamburger_btn .line {
-    position: absolute;
-    top: 0;
-    left: 20px;
-    width: 32px;
-    height: 2px;
-    background: #333333;
-    text-align: center;
-  }
-  
-  .hamburger_btn .line_01 {
-    top: 16px;
-    transition: 0.4s ease;
-  }
-  .hamburger_btn .line_02 {
-    top: 26px;
-    transition: 0.4s ease;
-  }
-  .hamburger_btn .line_03 {
-    top: 36px;
-    transition: 0.4s ease;
-  }
-  
-  
-  .btn_line01 {
-    transform: translateY(10px) rotate(-45deg);
-    transition: 0.4s ease;
-  }
-  .btn_line02 {
-    transition: 0.4s ease;
-    opacity: 0;
-  }
-  .btn_line03 {
-    transform: translateY(-10px) rotate(45deg);
-    transition: 0.4s ease;
-  }
-  
+
+.p-hamburger {
+    &__btn {
+        position: fixed; /*常に最上部に表示したいので固定*/
+        top: 0;
+        right: 0;
+        width: 70px;
+        height: 72px;
+        cursor: pointer;
+        z-index: 50;
+    }
+    &__line {
+        position: absolute;
+        top: 0;
+        left: 20px;
+        width: 32px;
+        height: 2px;
+        background: #333333;
+        text-align: center;
+    }
+    &__line01 {
+        top: 16px;
+        transition: 0.4s ease;
+    }
+    &__line02 {
+        top: 26px;
+        transition: 0.4s ease;
+    }
+    &__line03 {
+        top: 36px;
+        transition: 0.4s ease;
+    }
+}
+
+.p-menu-btn {
+    &__line01 {
+        transform: translateY(10px) rotate(-45deg);
+        transition: 0.4s ease;
+    }
+    &__line02 {
+        transition: 0.4s ease;
+        opacity: 0;
+    }
+    &__line03 {
+        transform: translateY(-10px) rotate(45deg);
+        transition: 0.4s ease;
+    }
+}

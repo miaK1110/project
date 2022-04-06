@@ -233,13 +233,13 @@ export default {
             axios
                 .get("/api/getcategorylist")
                 .then((response) => {
-                    console.log(response);
+                    // console.log(response);
                     if (response.status === 200) {
                         this.categoryList = response.data.categoryList;
                     }
                 })
                 .catch((err) => {
-                    this.message = err.response.data.errors;
+                    // console.log(err);
                 });
         },
         getProductData() {
@@ -271,7 +271,7 @@ export default {
         },
         // ファイル選択してる時に実行されるメソッド
         onChangeFile(e) {
-            console.log(e);
+            // console.log(e);
             this.file = e.target.files[0];
             // もしファイルが未選択なら中断する
             if (e.target.files.length === 0) {
@@ -280,7 +280,6 @@ export default {
             }
             // もしファイルが画像ではなかったら処理を中断する
             if (!e.target.files[0].type.match("image.*")) {
-                alert("oi");
                 this.reset();
                 return false;
             }
@@ -318,7 +317,6 @@ export default {
 
             data.set("id", this.id);
             data.set("seller", this.seller);
-            console.log(this.id);
             data.set("name", this.name);
             data.set("category", this.category);
             data.set("description", this.description);
@@ -328,12 +326,7 @@ export default {
 
             if (this.file !== "") {
                 data.set("file", this.file);
-                console.log(data.get("file"));
-            } else {
-                // this.errMessages.fileErr = "画像ファイルが同じです";
-                // this.url = this.url.slice(8);
-                // data.set("file", this.url);
-                console.log(data.get("file"));
+                // console.log(data.get("file"));
             }
 
             axios
@@ -365,6 +358,7 @@ export default {
                     } else if (error.file) {
                         this.errMessages.fileErr = error.file[0];
                     } else {
+                        // バリデーション以外のエラーならマイページへ
                         window.location.href = "/seller/home";
                     }
                 });
@@ -376,14 +370,12 @@ export default {
             data.append("seller", this.seller);
             // 万が一、削除前に違うファイルが選択されていたら
             if (this.file !== "") {
-                // // 一度リロード
-                // location.reload();
                 this.errMessages.fileErr =
                     "削除前に新しく画像を選ぶことはできません。ページを更新してください。";
                 return false;
             }
             data.append("file", this.url);
-            console.log(data.get("id"));
+            // console.log(data.get("id"));
 
             const confirm =
                 window.confirm("この商品を削除してもよろしいですか?");
@@ -394,7 +386,7 @@ export default {
                     .post("/seller/api/deleteproduct", data)
                     .then((response) => {
                         this.isLoading = false;
-                        console.log(response);
+                        // console.log(response);
                         if (response.status === 200) {
                             // status 200ならマイページへ戻る
                             window.location.href = "/seller/home";

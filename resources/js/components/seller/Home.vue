@@ -120,7 +120,7 @@ export default {
             axios
                 .get("/seller/api/getsellingproducts")
                 .then((response) => {
-                    console.log(response);
+                    // console.log(response);
                     this.sellingProducts = response.data.data;
                     if (this.sellingProducts.length == 0) {
                         this.emptyMessages.sellingProducts =
@@ -138,7 +138,7 @@ export default {
             axios
                 .get("/seller/api/getsoldproducts")
                 .then((response) => {
-                    console.log(response);
+                    // console.log(response);
                     this.soldProducts = response.data.data;
                     if (this.soldProducts.length == 0) {
                         this.emptyMessages.soldProducts =
