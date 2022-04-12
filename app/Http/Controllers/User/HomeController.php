@@ -35,7 +35,6 @@ class HomeController extends Controller
             );
         } else {
             // 商品情報取得できてないなら
-            session()->flash('msg_error', '商品情報を取得できませんでした。');
             return response()->json(
                 [
                     "message" => "何らかの理由で商品情報を取得出来ませんでした。",

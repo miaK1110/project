@@ -28,7 +28,6 @@ class HomeController extends Controller
                 200
             );
         } else {
-            session()->flash('msg_error', 'システムエラーです。しばらく待ってからもう一度お試しください。');
             return response()->json(
                 [
                     "role" => 'guest',
@@ -52,7 +51,6 @@ class HomeController extends Controller
             );
         } else {
             // 情報取得できてないなら
-            session()->flash('msg_error', 'システムエラーです。しばらく待ってからもう一度お試しください。');
             return response()->json(
                 [
                     "message" => "何らかの理由で情報を取得出来ませんでした。",
@@ -76,7 +74,6 @@ class HomeController extends Controller
             );
             // カテゴリーを取得できてないなら
         } else {
-            session()->flash('msg_error', 'システムエラーです。しばらく待ってからもう一度お試しください。');
             return response()->json(
                 [
                     "message" => "何らかの理由でカテゴリーリストを取得できませんでした。",

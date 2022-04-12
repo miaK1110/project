@@ -104,6 +104,11 @@ Vue.component(
 );
 
 Vue.component("loading-component", require("./components/Loading.vue").default);
+
+Vue.component(
+    "error-page-component",
+    require("./components/ErrorPage.vue").default
+);
 /**
  *
  *

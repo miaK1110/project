@@ -19,6 +19,9 @@
                         autofocus
                         v-model="email"
                     />
+                    <p class="c-form__err-msg" v-if="errMessages.emailErr">
+                        {{ errMessages.emailErr }}
+                    </p>
                 </div>
 
                 <div class="c-form__item">
@@ -35,6 +38,9 @@
                         autofocus
                         v-model="branch"
                     />
+                    <p class="c-form__err-msg" v-if="errMessages.branchErr">
+                        {{ errMessages.branchErr }}
+                    </p>
                 </div>
 
                 <div class="c-form__item">
@@ -51,6 +57,9 @@
                         autofocus
                         v-model="postcode"
                     />
+                    <p class="c-form__err-msg" v-if="errMessages.postcodeErr">
+                        {{ errMessages.postcodeErr }}
+                    </p>
                 </div>
 
                 <div class="c-form__item">
@@ -76,6 +85,9 @@
                             {{ val }}
                         </option>
                     </select>
+                    <p class="c-form__err-msg" v-if="errMessages.prefErr">
+                        {{ errMessages.prefErr }}
+                    </p>
                 </div>
 
                 <div class="c-form__item">
@@ -92,6 +104,9 @@
                         autofocus
                         v-model="city"
                     />
+                    <p class="c-form__err-msg" v-if="errMessages.cityErr">
+                        {{ errMessages.cityErr }}
+                    </p>
                 </div>
 
                 <div class="c-form__item">
@@ -108,6 +123,9 @@
                         autofocus
                         v-model="address"
                     />
+                    <p class="c-form__err-msg" v-if="errMessages.addressErr">
+                        {{ errMessages.addressErr }}
+                    </p>
                 </div>
 
                 <div class="c-form__item">
@@ -123,9 +141,12 @@
                         autofocus
                         v-model="phone"
                     />
+                    <p class="c-form__err-msg" v-if="errMessages.phoneErr">
+                        {{ errMessages.phoneErr }}
+                    </p>
                 </div>
                 <!-- エラーメッセージ -->
-                <div class="u-pb__m">
+                <div class="c-form__errs_container u-pb__m">
                     <p class="c-form__err-msg" v-if="errMessages.emailErr">
                         {{ errMessages.emailErr }}
                     </p>
@@ -206,7 +227,10 @@ export default {
                     }
                 })
                 .catch((err) => {
-                    // console.log(err);
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
                 });
         },
         editInfo() {
@@ -244,6 +268,10 @@ export default {
                 })
                 .catch((err) => {
                     this.isLoading = false;
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
                     const error = err.response.data.errors;
                     if (error.email) {
                         this.errMessages.emailErr = error.email[0];
@@ -259,10 +287,6 @@ export default {
                         this.errMessages.addressErr = error.address[0];
                     } else if (error.phone) {
                         this.errMessages.phoneErr = error.phone[0];
-                    }
-                    // ステータスが500ならマイページへ戻る
-                    if (err.status === 500) {
-                        window.location.href = "/seller/home";
                     }
                 });
         },

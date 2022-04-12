@@ -33,7 +33,6 @@ class CancelPurchaseController extends Controller
             session()->flash('msg_success', '購入をキャンセルしました。');
             return response(200);
         } else {
-            session()->flash('msg_error', '何らかの理由により購入をキャンセルできませんでした。しばらく待ってからもう一度お試しください。');
             response()->json(
                 [
                     "message" => '何らかの理由で購入をキャンセルできませんでした',

@@ -658,6 +658,10 @@ img {
   color: #f44336;
 }
 
+.c-form__errs-container {
+  font-weight: bold;
+}
+
 .c-form__remember-me {
   text-align: center;
   padding-bottom: 1rem;
@@ -1070,13 +1074,19 @@ img {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> develop
 @media screen and (max-width: 414px) {
   .p-questions {
     width: 90%;
   }
 }
 
+<<<<<<< HEAD
+>>>>>>> develop
+=======
 >>>>>>> develop
 @media screen and (min-width: 1365px) {
   .p-questions {

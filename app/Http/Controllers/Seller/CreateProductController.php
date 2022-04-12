@@ -56,7 +56,7 @@ class CreateProductController extends Controller
                 $product->is_expired = 1;
             }
 
-            $product->is_sold = 0;
+            $product->is_sold = 20000;
             $product->prefecture = Auth::guard('seller')->user()->prefecture;
 
             // バケットの`product-images`フォルダへアップロード
@@ -71,9 +71,8 @@ class CreateProductController extends Controller
                     "message" => '商品を登録しました'
                 ],
                 200,
-            );;
+            );
         } else {
-            session()->flash('msg_error', '何らかの理由により商品が登録できませんでした。');
             return response()->json(
                 [
                     "message" => '何らかの理由により商品が登録できませんでした'

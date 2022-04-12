@@ -32,7 +32,6 @@ class ChangePasswordController extends Controller
                 200
             );
         } else {
-            session()->flash('msg_erorr', '何らかの理由によりパスワードを変更できませんでした。しばらく待ってからもう一度お試しください。');
             return response()->json(
                 [
                     "message" => '何らかの理由によりパスワードが変更できませんでした'

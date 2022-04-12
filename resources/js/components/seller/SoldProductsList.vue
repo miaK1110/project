@@ -121,8 +121,10 @@ export default {
                     this.to = data.data.to;
                 })
                 .catch((err) => {
-                    // エラーならマイページへもどる
-                    window.location.href = "/seller/home";
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
                 });
         },
         change(page) {

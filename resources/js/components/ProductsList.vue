@@ -184,16 +184,24 @@ export default {
 
     methods: {
         getProducts(page) {
-            axios.get("/api/getproducts?page=" + page).then(({ data }) => {
-                // console.log(data);
-                this.allProducts = data.data.data;
+            axios
+                .get("/api/getproducts?page=" + page)
+                .then(({ data }) => {
+                    // console.log(data);
+                    this.allProducts = data.data.data;
 
-                this.current_page = data.data.current_page;
-                this.last_page = data.data.last_page;
-                this.total = data.data.total;
-                this.from = data.data.from;
-                this.to = data.data.to;
-            });
+                    this.current_page = data.data.current_page;
+                    this.last_page = data.data.last_page;
+                    this.total = data.data.total;
+                    this.from = data.data.from;
+                    this.to = data.data.to;
+                })
+                .catch((err) => {
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
+                });
         },
         getSelectedProducts(page) {
             axios
@@ -216,6 +224,12 @@ export default {
                     this.total = data.data.total;
                     this.from = data.data.from;
                     this.to = data.data.to;
+                })
+                .catch((err) => {
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
                 });
         },
         change(page) {
@@ -232,7 +246,10 @@ export default {
                     }
                 })
                 .catch((err) => {
-                    this.message = err.response.data.errors;
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
                 });
         },
         getCategoryData() {
@@ -245,7 +262,10 @@ export default {
                     }
                 })
                 .catch((err) => {
-                    this.message = err.response.data.errors;
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
                 });
         },
         ShowFilter() {

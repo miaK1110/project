@@ -57,7 +57,6 @@ class EditProductController extends Controller
                 );
             } else {
                 // 情報取得できてないなら
-                session()->flash('msg_error', '何らかの理由により商品の情報が取得できませんでした。しばらく待ってからもう一度お試しください。');
                 return response()->json(
                     [
                         "message" => "何らかの理由で情報を取得出来ませんでした。",
@@ -67,7 +66,6 @@ class EditProductController extends Controller
             }
         } else {
             // 商品IDが不正な値だった場合404ページを表示するが、念の為の処理
-            session()->flash('msg_error', '不正なアクセスです。URLをご確認ください。');
             return response()->json(
                 [
                     "message" => "不正なアクセスです。",
@@ -135,7 +133,6 @@ class EditProductController extends Controller
                     200,
                 );
             } else {
-                session()->flash('msg_error', '何らかの理由により商品の編集ができませんでした。しばらく待ってからもう一度お試しください。');
                 return response()->json(
                     [
                         "message" => '何らかの理由により商品の編集ができませんでした'
@@ -144,7 +141,6 @@ class EditProductController extends Controller
                 );
             }
         } else {
-            session()->flash('msg_error', '認証に失敗しました。ログインしてください。');
             return response()->json(
                 [
                     "message" => 'ログインしていません'
@@ -185,7 +181,6 @@ class EditProductController extends Controller
                     200,
                 );
             } else {
-                session()->flash('msg_error', '何らかの理由により商品が削除できませんでした。しばらく待ってからもう一度お試しください。');
                 return response()->json(
                     [
                         "message" => '何らかの理由により商品が削除できませんでした'
@@ -194,7 +189,6 @@ class EditProductController extends Controller
                 );
             }
         } else {
-            session()->flash('msg_error', '認証に失敗しました。ログインしてください。');
             return response()->json(
                 [
                     "message" => 'ログインしていません'

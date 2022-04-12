@@ -104,6 +104,9 @@
         padding-top: 6px;
         color: $font-color-error;
     }
+    &__errs-container {
+        font-weight: bold;
+    }
     &__remember-me {
         text-align: center;
         padding-bottom: 1rem;

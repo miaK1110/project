@@ -36,7 +36,6 @@ class DeleteController extends Controller
                 200
             );
         } else {
-            session()->flash('msg_erorr', '何らかの理由により退会処理ができませんでした。しばらく待ってからもう一度お試しください。');
             return response()->json(
                 [
                     "message" =>  [Auth::check(), "何らかの理由により退会処理が出来ませんでした。"],

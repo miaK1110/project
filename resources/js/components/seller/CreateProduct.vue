@@ -165,6 +165,40 @@
                     </label>
                 </div>
                 <div class="c-form__preview" v-if="url"><img :src="url" /></div>
+                <!-- エラーメッセージ -->
+                <div class="c-form__errs-container u-pb__m">
+                    <p class="c-form__err-msg" v-if="errMessages.nameErr">
+                        {{ errMessages.nameErr }}
+                    </p>
+                    <p class="c-form__err-msg" v-if="errMessages.categoryErr">
+                        {{ errMessages.categoryErr }}
+                    </p>
+                    <p
+                        class="c-form__err-msg"
+                        v-if="errMessages.descriptionErr"
+                    >
+                        {{ errMessages.descriptionErr }}
+                    </p>
+                    <p
+                        class="c-form__err-msg"
+                        v-if="errMessages.originalPriceErr"
+                    >
+                        {{ errMessages.originalPriceErr }}
+                    </p>
+                    <p class="c-form__err-msg" v-if="errMessages.priceErr">
+                        {{ errMessages.priceErr }}
+                    </p>
+                    <p
+                        class="c-form__err-msg"
+                        v-if="errMessages.bestBeforeDateErr"
+                    >
+                        {{ errMessages.bestBeforeDateErr }}
+                    </p>
+                    <p class="c-form__err-msg" v-if="errMessages.fileErr">
+                        {{ errMessages.fileErr }}
+                    </p>
+                </div>
+                <!-- エラーメッセージここまで -->
                 <button
                     class="c-btn__primary"
                     @click="createProduct"
@@ -275,6 +309,10 @@ export default {
                 })
                 .catch((err) => {
                     this.isLoading = false;
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
                     const error = err.response.data.errors;
                     if (error.name) {
                         this.errMessages.nameErr = error.name[0];
@@ -292,9 +330,6 @@ export default {
                             error.bestBeforeDate[0];
                     } else if (error.file) {
                         this.errMessages.fileErr = error.file[0];
-                    } else {
-                        // バリデーションエラーじゃないエラーならマイページへ戻る
-                        window.location.href = "/seller/home";
                     }
                 });
         },
@@ -310,7 +345,10 @@ export default {
             })
             .catch((err) => {
                 // カテゴリー取得できていない場合
-                window.location.href = "/seller/home";
+                if (err.response.status === 500) {
+                    // 500エラーページを表示
+                    window.location.href = "/500";
+                }
             });
     },
 };
