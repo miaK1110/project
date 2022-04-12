@@ -71,7 +71,6 @@ class EditUserInfoController extends Controller
                 200
             );
         } else {
-            session()->flash('msg_error', '何らかの理由により登録情報を編集できませんでした。しばらく待ってからもう一度お試しください。');
             return response()->json(
                 [
                     "message" => "何らかの理由で情報を取得出来ませんでした。",

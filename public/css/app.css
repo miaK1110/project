@@ -658,6 +658,10 @@ img {
   color: #f44336;
 }
 
+.c-form__errs-container {
+  font-weight: bold;
+}
+
 .c-form__remember-me {
   text-align: center;
   padding-bottom: 1rem;

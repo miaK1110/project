@@ -214,8 +214,10 @@ export default {
                     }
                 })
                 .catch((err) => {
-                    // 必要な情報を取得できていない場合マイページへ戻る
-                    window.location.href = "/user/home";
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
                 });
         },
         editInfo() {
@@ -246,14 +248,18 @@ export default {
 
             axios
                 .post("/user/api/edituserinfo", data)
-                .then((response) => {
+                .then((res) => {
                     // console.log(response);
-                    if (response.status === 200) {
+                    if (res.status === 200) {
                         // status 200ならマイページへ戻る
                         window.location.href = "/user/home";
                     }
                 })
                 .catch((err) => {
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
                     const error = err.response.data.errors;
                     if (error.email) {
                         this.errMessages.emailErr = error.email[0];
@@ -271,9 +277,6 @@ export default {
                         this.errMessages.addressErr = error.address[0];
                     } else if (error.phone) {
                         this.errMessages.phoneErr = error.phone[0];
-                    } else {
-                        // バリデーションエラーじゃないエラーならマイページへ戻る
-                        window.location.href = "/user/home";
                     }
                 });
         },

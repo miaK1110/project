@@ -20,6 +20,9 @@
                         autofocus
                         v-model="name"
                     />
+                    <p class="c-form__err-msg" v-if="errMessages.nameErr">
+                        {{ errMessages.nameErr }}
+                    </p>
                 </div>
                 <div class="c-form__item">
                     <label for="category_id" class="c-form__label">
@@ -44,6 +47,9 @@
                             {{ category.category_name }}
                         </option>
                     </select>
+                    <p class="c-form__err-msg" v-if="errMessages.categoryErr">
+                        {{ errMessages.categoryErr }}
+                    </p>
                 </div>
                 <div class="c-form__item">
                     <label for="description" class="c-form__label">
@@ -59,6 +65,12 @@
                         autofocus
                         v-model="description"
                     />
+                    <p
+                        class="c-form__err-msg"
+                        v-if="errMessages.descriptionErr"
+                    >
+                        {{ errMessages.descriptionErr }}
+                    </p>
                 </div>
                 <div class="c-form__item">
                     <label for="original-price" class="c-form__label">
@@ -78,6 +90,12 @@
                         v-model="originalPrice"
                         @keydown.69.prevent
                     />
+                    <p
+                        class="c-form__err-msg"
+                        v-if="errMessages.originalPriceErr"
+                    >
+                        {{ errMessages.originalPriceErr }}
+                    </p>
                 </div>
                 <div class="c-form__item">
                     <label for="price" class="c-form__label">
@@ -97,6 +115,9 @@
                         v-model="price"
                         @keydown.69.prevent
                     />
+                    <p class="c-form__err-msg" v-if="errMessages.priceErr">
+                        {{ errMessages.priceErr }}
+                    </p>
                 </div>
                 <div class="c-form__item">
                     <label for="best-before-date" class="c-form__label">
@@ -113,6 +134,12 @@
                         autofocus
                         v-model="bestBeforeDate"
                     />
+                    <p
+                        class="c-form__err-msg"
+                        v-if="errMessages.bestBeforeDateErr"
+                    >
+                        {{ errMessages.bestBeforeDateErr }}
+                    </p>
                 </div>
                 <div class="c-form__item">
                     <label for="product_img_file_path" class="c-form__label">
@@ -131,6 +158,12 @@
                                 @change="onChangeFile"
                                 ref="preview"
                             />
+                            <p
+                                class="c-form__err-msg"
+                                v-if="errMessages.fileErr"
+                            >
+                                {{ errMessages.fileErr }}
+                            </p>
                         </div>
                     </label>
                 </div>
@@ -138,7 +171,7 @@
                     <img :src="url" @error="noImage" />
                 </div>
                 <!-- エラーメッセージ -->
-                <div class="u-pb__m">
+                <div class="c-form__errs-container u-pb__m">
                     <p class="c-form__err-msg" v-if="errMessages.nameErr">
                         {{ errMessages.nameErr }}
                     </p>
@@ -150,6 +183,12 @@
                         v-if="errMessages.descriptionErr"
                     >
                         {{ errMessages.descriptionErr }}
+                    </p>
+                    <p
+                        class="c-form__err-msg"
+                        v-if="errMessages.originalPriceErr"
+                    >
+                        {{ errMessages.originalPriceErr }}
                     </p>
                     <p class="c-form__err-msg" v-if="errMessages.priceErr">
                         {{ errMessages.priceErr }}
@@ -239,7 +278,10 @@ export default {
                     }
                 })
                 .catch((err) => {
-                    // console.log(err);
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
                 });
         },
         getProductData() {
@@ -264,8 +306,8 @@ export default {
                 })
                 .catch((err) => {
                     if (err.response.status === 500) {
-                        // status 500ならhomeへ戻る
-                        window.location.href = "/seller/home";
+                        // 500エラーページを表示
+                        window.location.href = "/500";
                     }
                 });
         },
@@ -340,7 +382,15 @@ export default {
                 })
                 .catch((err) => {
                     this.isLoading = false;
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
                     const error = err.response.data.errors;
+                    // 各バリデーションに引っかかるとnullが入るのでリセット
+                    if (!this.description) {
+                        this.description = "";
+                    }
                     if (error.name) {
                         this.errMessages.nameErr = error.name[0];
                     } else if (error.category) {
@@ -357,9 +407,6 @@ export default {
                             error.bestBeforeDate[0];
                     } else if (error.file) {
                         this.errMessages.fileErr = error.file[0];
-                    } else {
-                        // バリデーション以外のエラーならマイページへ
-                        window.location.href = "/seller/home";
                     }
                 });
         },
@@ -395,8 +442,8 @@ export default {
                     .catch((err) => {
                         this.isLoading = false;
                         if (err.response.status === 500) {
-                            // status 500ならhomeへ戻る
-                            window.location.href = "/seller/home";
+                            // 500エラーページを表示
+                            window.location.href = "/500";
                         }
                     });
             } else {

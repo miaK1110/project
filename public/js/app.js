@@ -1899,6 +1899,34 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ErrorPage.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ErrorPage.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "ErrorPage",
+  props: {
+    url: String
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HamburgerMenu.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HamburgerMenu.vue?vue&type=script&lang=js& ***!
@@ -2040,9 +2068,11 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get("/api/getrole").then(function (response) {
       _this.role = response.data.role;
-    })["catch"](function (error) {
-      // エラーならフラッシュメッセージ表示
-      window.location.reload();
+    })["catch"](function (err) {
+      if (err.response.status === 500) {
+        // 500エラーページを表示
+        window.location.href = "/500";
+      }
     });
   },
   destroyed: function destroyed() {
@@ -2240,7 +2270,11 @@ moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale("ja");
         _this.company = response.data.companyname;
         _this.sold = response.data.productdata.is_sold;
         _this.isPurchaser = response.data.is_purchaser;
-      })["catch"](function (error) {// console.log(err);
+      })["catch"](function (err) {
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
       });
     },
     getRole: function getRole() {
@@ -2249,9 +2283,11 @@ moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale("ja");
       axios.get("/api/getrole").then(function (response) {
         _this2.role = response.data.role;
         _this2.uId = response.data.id; // console.log(response);
-      })["catch"](function (error) {
-        // エラーならフラッシュメッセージ表示
-        window.location.reload();
+      })["catch"](function (err) {
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
       });
     },
     purchaseProduct: function purchaseProduct() {
@@ -2269,10 +2305,13 @@ moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale("ja");
           // status 200ならマイページへ戻る
           window.location.href = "/user/home";
         }
-      })["catch"](function (error) {
+      })["catch"](function (err) {
         _this3.isLoading = false; // エラーが発生した場合
 
-        window.location.href = "/user/home";
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
       });
     },
     cancelPurchase: function cancelPurchase() {
@@ -2291,7 +2330,10 @@ moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale("ja");
       })["catch"](function (err) {
         _this4.isLoading = false; // エラーが発生した場合
 
-        window.location.href = "/user/home";
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
       });
     }
   },
@@ -2512,6 +2554,11 @@ __webpack_require__.r(__webpack_exports__);
         _this.total = data.data.total;
         _this.from = data.data.from;
         _this.to = data.data.to;
+      })["catch"](function (err) {
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
       });
     },
     getSelectedProducts: function getSelectedProducts(page) {
@@ -2525,6 +2572,11 @@ __webpack_require__.r(__webpack_exports__);
         _this2.total = data.data.total;
         _this2.from = data.data.from;
         _this2.to = data.data.to;
+      })["catch"](function (err) {
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
       });
     },
     change: function change(page) {
@@ -2539,7 +2591,10 @@ __webpack_require__.r(__webpack_exports__);
           _this3.prefData = response.data.prefData;
         }
       })["catch"](function (err) {
-        _this3.message = err.response.data.errors;
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
       });
     },
     getCategoryData: function getCategoryData() {
@@ -2551,7 +2606,10 @@ __webpack_require__.r(__webpack_exports__);
           _this4.categoryList = response.data.categoryList;
         }
       })["catch"](function (err) {
-        _this4.message = err.response.data.errors;
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
       });
     },
     ShowFilter: function ShowFilter() {
@@ -2808,8 +2866,10 @@ __webpack_require__.r(__webpack_exports__);
           _this.id = response.data.id;
         }
       })["catch"](function (err) {
-        // 情報取得できていないならマイページへ戻る
-        window.location.href = "/seller/home";
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
       });
     },
     changePassword: function changePassword() {
@@ -2838,16 +2898,18 @@ __webpack_require__.r(__webpack_exports__);
           window.location.href = "/seller/home";
         }
       })["catch"](function (err) {
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
+
         var error = err.response.data.errors; // バリデーションエラー
 
         if (error.current_password) {
           _this2.errMessages.currentPasswordErr = error.current_password[0];
         } else if (error.new_password) {
           _this2.errMessages.newPasswordErr = error.new_password[0];
-        } else {
-          // バリデーションエラーじゃないエラーならマイページへ戻る
-          window.location.href = "/seller/home";
-        }
+        } else {}
       });
     }
   },
@@ -2867,6 +2929,40 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3142,6 +3238,12 @@ Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vu
         }
       })["catch"](function (err) {
         _this2.isLoading = false;
+
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
+
         var error = err.response.data.errors;
 
         if (error.name) {
@@ -3158,9 +3260,6 @@ Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vu
           _this2.errMessages.bestBeforeDateErr = error.bestBeforeDate[0];
         } else if (error.file) {
           _this2.errMessages.fileErr = error.file[0];
-        } else {
-          // バリデーションエラーじゃないエラーならマイページへ戻る
-          window.location.href = "/seller/home";
         }
       });
     }
@@ -3175,7 +3274,10 @@ Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vu
       }
     })["catch"](function (err) {
       // カテゴリー取得できていない場合
-      window.location.href = "/seller/home";
+      if (err.response.status === 500) {
+        // 500エラーページを表示
+        window.location.href = "/500";
+      }
     });
   }
 });
@@ -3231,16 +3333,18 @@ __webpack_require__.r(__webpack_exports__);
           // 200ならトップページへ遷移
           window.location.href = "/";
         }
-      })["catch"](function (error) {
+      })["catch"](function (err) {
         _this.isLoading = false;
 
-        if (error.response.status === 401) {
+        if (err.response.status === 401) {
           // 認証エラーならログイン画面へ戻る
           window.location.href = "/seller/login";
-        } // 退会処理エラーならマイページへ戻る
+        }
 
-
-        window.location.href = "/seller/home";
+        if (err.response.status === 500) {
+          // 500エラーなら500エラーページを表示
+          window.location.href = "/500";
+        }
       });
     }
   }
@@ -3259,6 +3363,45 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3497,7 +3640,11 @@ Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vu
         if (response.status === 200) {
           _this.categoryList = response.data.categoryList;
         }
-      })["catch"](function (err) {// console.log(err);
+      })["catch"](function (err) {
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
       });
     },
     getProductData: function getProductData() {
@@ -3519,8 +3666,8 @@ Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vu
         _this2.url = resData.product_img_file_path;
       })["catch"](function (err) {
         if (err.response.status === 500) {
-          // status 500ならhomeへ戻る
-          window.location.href = "/seller/home";
+          // 500エラーページを表示
+          window.location.href = "/500";
         }
       });
     },
@@ -3597,7 +3744,17 @@ Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vu
         }
       })["catch"](function (err) {
         _this4.isLoading = false;
-        var error = err.response.data.errors;
+
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
+
+        var error = err.response.data.errors; // 各バリデーションに引っかかるとnullが入るのでリセット
+
+        if (!_this4.description) {
+          _this4.description = "";
+        }
 
         if (error.name) {
           _this4.errMessages.nameErr = error.name[0];
@@ -3613,9 +3770,6 @@ Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vu
           _this4.errMessages.bestBeforeDateErr = error.bestBeforeDate[0];
         } else if (error.file) {
           _this4.errMessages.fileErr = error.file[0];
-        } else {
-          // バリデーション以外のエラーならマイページへ
-          window.location.href = "/seller/home";
         }
       });
     },
@@ -3648,8 +3802,8 @@ Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vu
           _this5.isLoading = false;
 
           if (err.response.status === 500) {
-            // status 500ならhomeへ戻る
-            window.location.href = "/seller/home";
+            // 500エラーページを表示
+            window.location.href = "/500";
           }
         });
       } else {
@@ -3675,6 +3829,27 @@ Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vu
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3878,7 +4053,11 @@ __webpack_require__.r(__webpack_exports__);
           _this.address = sellerData.address;
           _this.phone = sellerData.phone;
         }
-      })["catch"](function (err) {// console.log(err);
+      })["catch"](function (err) {
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
       });
     },
     editInfo: function editInfo() {
@@ -3914,6 +4093,12 @@ __webpack_require__.r(__webpack_exports__);
         }
       })["catch"](function (err) {
         _this2.isLoading = false;
+
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
+
         var error = err.response.data.errors;
 
         if (error.email) {
@@ -3930,11 +4115,6 @@ __webpack_require__.r(__webpack_exports__);
           _this2.errMessages.addressErr = error.address[0];
         } else if (error.phone) {
           _this2.errMessages.phoneErr = error.phone[0];
-        } // ステータスが500ならマイページへ戻る
-
-
-        if (err.status === 500) {
-          window.location.href = "/seller/home";
         }
       });
     }
@@ -4084,8 +4264,10 @@ __webpack_require__.r(__webpack_exports__);
           return false;
         }
       })["catch"](function (err) {
-        // エラーならフラッシュメッセージ表示
-        window.location.href = "/seller/home";
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
       });
     },
     // 購入された商品の最新5件を取得
@@ -4100,8 +4282,10 @@ __webpack_require__.r(__webpack_exports__);
           _this2.emptyMessages.soldProducts = "表示できる商品がありません";
         }
       })["catch"](function (err) {
-        // エラーならフラッシュメッセージ表示
-        window.location.href = "/seller/home";
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
       });
     },
     url: function url(pid) {
@@ -4267,8 +4451,10 @@ __webpack_require__.r(__webpack_exports__);
         _this.from = data.data.from;
         _this.to = data.data.to;
       })["catch"](function (err) {
-        // エラーならマイページへもどる
-        window.location.href = "/seller/home";
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
       });
     },
     change: function change(page) {
@@ -4437,8 +4623,10 @@ __webpack_require__.r(__webpack_exports__);
         _this.from = data.data.from;
         _this.to = data.data.to;
       })["catch"](function (err) {
-        // エラーならマイページへもどる
-        window.location.href = "/seller/home";
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
       });
     },
     change: function change(page) {
@@ -4567,8 +4755,10 @@ __webpack_require__.r(__webpack_exports__);
           _this.id = response.data.id;
         }
       })["catch"](function (err) {
-        // データ取得できてないならマイページへ戻る
-        window.location.href = "/user/home";
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
       });
     },
     changePassword: function changePassword() {
@@ -4597,15 +4787,17 @@ __webpack_require__.r(__webpack_exports__);
           window.location.href = "/user/home";
         }
       })["catch"](function (err) {
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
+
         var error = err.response.data.errors; // バリデーションエラー
 
         if (error.current_password) {
           _this2.errMessages.currentPasswordErr = error.current_password[0];
         } else if (error.new_password) {
           _this2.errMessages.newPasswordErr = error.new_password[0];
-        } else {
-          // バリデーションエラーじゃないエラーならマイページへ戻る
-          window.location.href = "/user/home";
         }
       });
     }
@@ -4644,12 +4836,13 @@ __webpack_require__.r(__webpack_exports__);
   name: "DeleteUser",
   methods: {
     userDelete: function userDelete() {
-      axios.post("/user/api/delete").then(function (Response) {
-        // console.log(Response);
+      axios.post("/user/api/delete").then(function (res) {
         window.location.href = "/";
-      })["catch"](function (error) {
-        // 退会処理に問題があった場合マイページへ戻る
-        window.location.href = "/user/home";
+      })["catch"](function (err) {
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
       });
     }
   }
@@ -4879,8 +5072,10 @@ __webpack_require__.r(__webpack_exports__);
           _this.phone = userData.phone;
         }
       })["catch"](function (err) {
-        // 必要な情報を取得できていない場合マイページへ戻る
-        window.location.href = "/user/home";
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
       });
     },
     editInfo: function editInfo() {
@@ -4908,13 +5103,18 @@ __webpack_require__.r(__webpack_exports__);
       data.append("address", this.address);
       data.append("phone", this.phone); // console.log(...data.entries());
 
-      axios.post("/user/api/edituserinfo", data).then(function (response) {
+      axios.post("/user/api/edituserinfo", data).then(function (res) {
         // console.log(response);
-        if (response.status === 200) {
+        if (res.status === 200) {
           // status 200ならマイページへ戻る
           window.location.href = "/user/home";
         }
       })["catch"](function (err) {
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
+
         var error = err.response.data.errors;
 
         if (error.email) {
@@ -4933,9 +5133,6 @@ __webpack_require__.r(__webpack_exports__);
           _this2.errMessages.addressErr = error.address[0];
         } else if (error.phone) {
           _this2.errMessages.phoneErr = error.phone[0];
-        } else {
-          // バリデーションエラーじゃないエラーならマイページへ戻る
-          window.location.href = "/user/home";
         }
       });
     }
@@ -5045,8 +5242,10 @@ __webpack_require__.r(__webpack_exports__);
           return false;
         }
       })["catch"](function (err) {
-        // なんらかの問題があった場合
-        window.location.href = "/user/home";
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
       });
     },
     cancelPurchase: function cancelPurchase(id) {
@@ -5064,7 +5263,11 @@ __webpack_require__.r(__webpack_exports__);
         }
       })["catch"](function (err) {
         _this2.isLoading = false;
-        window.location.href = "/user/home";
+
+        if (err.response.status === 500) {
+          // 500エラーページを表示
+          window.location.href = "/500";
+        }
       });
     }
   },
@@ -62217,6 +62420,42 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ErrorPage.vue?vue&type=template&id=2bc5db5c&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ErrorPage.vue?vue&type=template&id=2bc5db5c& ***!
+  \************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "c-error-page" }, [
+    _c("h2", { staticClass: "c-error-page__title" }, [_vm._v("500エラー")]),
+    _vm._v(" "),
+    _c("p", { staticClass: "c-error-page__message" }, [
+      _vm._v(
+        "\n        申し訳ありません。現在このサイトがメンテナンス中あるいはエラーが発生している為ページを表示できません。\n    "
+      ),
+    ]),
+    _vm._v(" "),
+    _c("a", { staticClass: "c-link__underline", attrs: { href: _vm.url } }, [
+      _vm._v("前のページに戻る"),
+    ]),
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HamburgerMenu.vue?vue&type=template&id=f4d1d6a6&":
 /*!****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HamburgerMenu.vue?vue&type=template&id=f4d1d6a6& ***!
@@ -63881,6 +64120,78 @@ var render = function () {
               ])
             : _vm._e(),
           _vm._v(" "),
+          _c("div", { staticClass: "c-form__errs-container u-pb__m" }, [
+            _vm.errMessages.nameErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.nameErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errMessages.categoryErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.categoryErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errMessages.descriptionErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.descriptionErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errMessages.originalPriceErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.originalPriceErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errMessages.priceErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.priceErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errMessages.bestBeforeDateErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.bestBeforeDateErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errMessages.fileErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.fileErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
+          ]),
+          _vm._v(" "),
           _c(
             "button",
             {
@@ -64108,6 +64419,16 @@ var render = function () {
                 },
               },
             }),
+            _vm._v(" "),
+            _vm.errMessages.nameErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.nameErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "c-form__item" }, [
@@ -64174,6 +64495,16 @@ var render = function () {
               ],
               2
             ),
+            _vm._v(" "),
+            _vm.errMessages.categoryErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.categoryErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "c-form__item" }, [
@@ -64206,6 +64537,16 @@ var render = function () {
                 },
               },
             }),
+            _vm._v(" "),
+            _vm.errMessages.descriptionErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.descriptionErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "c-form__item" }, [
@@ -64247,6 +64588,16 @@ var render = function () {
                 },
               },
             }),
+            _vm._v(" "),
+            _vm.errMessages.originalPriceErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.originalPriceErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "c-form__item" }, [
@@ -64288,6 +64639,16 @@ var render = function () {
                 },
               },
             }),
+            _vm._v(" "),
+            _vm.errMessages.priceErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.priceErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "c-form__item" }, [
@@ -64321,6 +64682,16 @@ var render = function () {
                 },
               },
             }),
+            _vm._v(" "),
+            _vm.errMessages.bestBeforeDateErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.bestBeforeDateErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "c-form__item" }, [
@@ -64347,6 +64718,16 @@ var render = function () {
                     },
                     on: { change: _vm.onChangeFile },
                   }),
+                  _vm._v(" "),
+                  _vm.errMessages.fileErr
+                    ? _c("p", { staticClass: "c-form__err-msg" }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.errMessages.fileErr) +
+                            "\n                        "
+                        ),
+                      ])
+                    : _vm._e(),
                 ]),
               ]
             ),
@@ -64361,7 +64742,7 @@ var render = function () {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _c("div", { staticClass: "u-pb__m" }, [
+          _c("div", { staticClass: "c-form__errs-container u-pb__m" }, [
             _vm.errMessages.nameErr
               ? _c("p", { staticClass: "c-form__err-msg" }, [
                   _vm._v(
@@ -64387,6 +64768,16 @@ var render = function () {
                   _vm._v(
                     "\n                    " +
                       _vm._s(_vm.errMessages.descriptionErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errMessages.originalPriceErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.originalPriceErr) +
                       "\n                "
                   ),
                 ])
@@ -64598,6 +64989,16 @@ var render = function () {
                 },
               },
             }),
+            _vm._v(" "),
+            _vm.errMessages.emailErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.emailErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "c-form__item" }, [
@@ -64630,6 +65031,16 @@ var render = function () {
                 },
               },
             }),
+            _vm._v(" "),
+            _vm.errMessages.branchErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.branchErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "c-form__item" }, [
@@ -64662,6 +65073,16 @@ var render = function () {
                 },
               },
             }),
+            _vm._v(" "),
+            _vm.errMessages.postcodeErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.postcodeErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "c-form__item" }, [
@@ -64725,6 +65146,16 @@ var render = function () {
               ],
               2
             ),
+            _vm._v(" "),
+            _vm.errMessages.prefErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.prefErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "c-form__item" }, [
@@ -64757,6 +65188,16 @@ var render = function () {
                 },
               },
             }),
+            _vm._v(" "),
+            _vm.errMessages.cityErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.cityErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "c-form__item" }, [
@@ -64789,6 +65230,16 @@ var render = function () {
                 },
               },
             }),
+            _vm._v(" "),
+            _vm.errMessages.addressErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.addressErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "c-form__item" }, [
@@ -64815,9 +65266,19 @@ var render = function () {
                 },
               },
             }),
+            _vm._v(" "),
+            _vm.errMessages.phoneErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.phoneErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "u-pb__m" }, [
+          _c("div", { staticClass: "c-form__errs_container u-pb__m" }, [
             _vm.errMessages.emailErr
               ? _c("p", { staticClass: "c-form__err-msg" }, [
                   _vm._v(
@@ -86532,6 +86993,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("edit-user-info-component",
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("change-seller-password-component", __webpack_require__(/*! ./components/seller/ChangePassword.vue */ "./resources/js/components/seller/ChangePassword.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("change-user-password-component", __webpack_require__(/*! ./components/user/ChangePassword.vue */ "./resources/js/components/user/ChangePassword.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("loading-component", __webpack_require__(/*! ./components/Loading.vue */ "./resources/js/components/Loading.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("error-page-component", __webpack_require__(/*! ./components/ErrorPage.vue */ "./resources/js/components/ErrorPage.vue")["default"]);
 /**
  *
  *
@@ -86588,6 +87050,75 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/ErrorPage.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/ErrorPage.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ErrorPage_vue_vue_type_template_id_2bc5db5c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ErrorPage.vue?vue&type=template&id=2bc5db5c& */ "./resources/js/components/ErrorPage.vue?vue&type=template&id=2bc5db5c&");
+/* harmony import */ var _ErrorPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ErrorPage.vue?vue&type=script&lang=js& */ "./resources/js/components/ErrorPage.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ErrorPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ErrorPage_vue_vue_type_template_id_2bc5db5c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ErrorPage_vue_vue_type_template_id_2bc5db5c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ErrorPage.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ErrorPage.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/ErrorPage.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ErrorPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ErrorPage.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ErrorPage.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ErrorPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ErrorPage.vue?vue&type=template&id=2bc5db5c&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/ErrorPage.vue?vue&type=template&id=2bc5db5c& ***!
+  \******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ErrorPage_vue_vue_type_template_id_2bc5db5c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ErrorPage.vue?vue&type=template&id=2bc5db5c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ErrorPage.vue?vue&type=template&id=2bc5db5c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ErrorPage_vue_vue_type_template_id_2bc5db5c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ErrorPage_vue_vue_type_template_id_2bc5db5c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

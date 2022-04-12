@@ -129,8 +129,10 @@ export default {
                     }
                 })
                 .catch((err) => {
-                    // エラーならフラッシュメッセージ表示
-                    window.location.href = "/seller/home";
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
                 });
         },
         // 購入された商品の最新5件を取得
@@ -146,8 +148,10 @@ export default {
                     }
                 })
                 .catch((err) => {
-                    // エラーならフラッシュメッセージ表示
-                    window.location.href = "/seller/home";
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
                 });
         },
         url(pid) {

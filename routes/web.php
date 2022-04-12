@@ -42,11 +42,14 @@ Route::get('api/getselectedproducts', 'ProductController@getSelectedProducts');
 
 // 商品詳細商画面用の商品情報取得API（一品）
 Route::get('api/getproduct/{id}', 'ProductController@getOneProduct');
-
+// 閲覧しているユーザーのロールをチェックするAPI
 Route::get('api/getrole', 'HomeController@getRole');
-
+// 閲覧してるユーザーが商品を購入した人かどうかを判定するAPI
 Route::get('api/checkpurchaser', 'ProductController@checkPurchaser');
-
+// APIのレスポンスが500だった時に表示する画面
+Route::get('/500', function () {
+    return view('errors.error_page');
+});
 
 // 商品を購入するボタンを押下した時の処理API
 Route::post('api/purchaseproduct', 'ProductController@purchaseProduct');

@@ -131,8 +131,11 @@ export default {
                     this.sold = response.data.productdata.is_sold;
                     this.isPurchaser = response.data.is_purchaser;
                 })
-                .catch(function (error) {
-                    // console.log(err);
+                .catch((err) => {
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
                 });
         },
         getRole() {
@@ -143,9 +146,11 @@ export default {
                     this.uId = response.data.id;
                     // console.log(response);
                 })
-                .catch((error) => {
-                    // エラーならフラッシュメッセージ表示
-                    window.location.reload();
+                .catch((err) => {
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
                 });
         },
 
@@ -165,10 +170,13 @@ export default {
                         window.location.href = "/user/home";
                     }
                 })
-                .catch((error) => {
+                .catch((err) => {
                     this.isLoading = false;
                     // エラーが発生した場合
-                    window.location.href = "/user/home";
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
                 });
         },
         cancelPurchase() {
@@ -189,7 +197,10 @@ export default {
                 .catch((err) => {
                     this.isLoading = false;
                     // エラーが発生した場合
-                    window.location.href = "/user/home";
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
                 });
         },
     },

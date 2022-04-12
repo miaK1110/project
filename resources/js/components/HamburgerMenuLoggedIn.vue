@@ -66,9 +66,11 @@ export default {
             .then((response) => {
                 this.role = response.data.role;
             })
-            .catch(function (error) {
-                // エラーならフラッシュメッセージ表示
-                window.location.reload();
+            .catch((err) => {
+                if (err.response.status === 500) {
+                    // 500エラーページを表示
+                    window.location.href = "/500";
+                }
             });
     },
     destroyed() {

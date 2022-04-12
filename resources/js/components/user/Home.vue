@@ -89,8 +89,10 @@ export default {
                     }
                 })
                 .catch((err) => {
-                    // なんらかの問題があった場合
-                    window.location.href = "/user/home";
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
                 });
         },
         cancelPurchase(id) {
@@ -110,7 +112,10 @@ export default {
                 })
                 .catch((err) => {
                     this.isLoading = false;
-                    window.location.href = "/user/home";
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
                 });
         },
     },

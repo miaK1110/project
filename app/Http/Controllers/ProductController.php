@@ -140,7 +140,12 @@ class ProductController extends Controller
                 ->send(new SoldNotification($user, $product));
 
             session()->flash('msg_success', '商品を購入しました');
-            return response(200);
+            return response()->json(
+                [
+                    "message" => '商品を購入しました。',
+                ],
+                200
+            );
         } else {
             return response()->json(
                 [

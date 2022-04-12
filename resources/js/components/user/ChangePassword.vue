@@ -92,8 +92,10 @@ export default {
                     }
                 })
                 .catch((err) => {
-                    // データ取得できてないならマイページへ戻る
-                    window.location.href = "/user/home";
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
                 });
         },
         changePassword() {
@@ -126,6 +128,10 @@ export default {
                     }
                 })
                 .catch((err) => {
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
                     const error = err.response.data.errors;
 
                     // バリデーションエラー
@@ -134,9 +140,6 @@ export default {
                             error.current_password[0];
                     } else if (error.new_password) {
                         this.errMessages.newPasswordErr = error.new_password[0];
-                    } else {
-                        // バリデーションエラーじゃないエラーならマイページへ戻る
-                        window.location.href = "/user/home";
                     }
                 });
         },

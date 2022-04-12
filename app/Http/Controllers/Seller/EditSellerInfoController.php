@@ -39,7 +39,6 @@ class EditSellerInfoController extends Controller
             );
         } else {
             // 情報取得できてないなら
-            session()->flash('msg_erorr', '何らかの理由により店舗情報を取得できませんでした');
             return response()->json(
                 [
                     "message" => "何らかの理由で店舗情報を取得出来ませんでした。",
@@ -71,7 +70,6 @@ class EditSellerInfoController extends Controller
                 200,
             );
         } else {
-            session()->flash('msg_erorr', '何らかの理由により店舗情報を編集できませんでした。');
             return response()->json(
                 [
                     "message" => '何らかの理由により店舗情報を編集できませんでした'

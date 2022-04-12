@@ -37,14 +37,16 @@ export default {
                         window.location.href = "/";
                     }
                 })
-                .catch((error) => {
+                .catch((err) => {
                     this.isLoading = false;
-                    if (error.response.status === 401) {
+                    if (err.response.status === 401) {
                         // 認証エラーならログイン画面へ戻る
                         window.location.href = "/seller/login";
                     }
-                    // 退会処理エラーならマイページへ戻る
-                    window.location.href = "/seller/home";
+                    if (err.response.status === 500) {
+                        // 500エラーなら500エラーページを表示
+                        window.location.href = "/500";
+                    }
                 });
         },
     },

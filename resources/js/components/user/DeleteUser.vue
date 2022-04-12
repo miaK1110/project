@@ -19,13 +19,14 @@ export default {
         userDelete: function () {
             axios
                 .post("/user/api/delete")
-                .then((Response) => {
-                    // console.log(Response);
+                .then((res) => {
                     window.location.href = "/";
                 })
-                .catch((error) => {
-                    // 退会処理に問題があった場合マイページへ戻る
-                    window.location.href = "/user/home";
+                .catch((err) => {
+                    if (err.response.status === 500) {
+                        // 500エラーページを表示
+                        window.location.href = "/500";
+                    }
                 });
         },
     },
