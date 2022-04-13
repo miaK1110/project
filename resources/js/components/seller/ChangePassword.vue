@@ -132,14 +132,16 @@ export default {
                         // 500エラーページを表示
                         window.location.href = "/500";
                     }
-                    const error = err.response.data.errors;
-                    // バリデーションエラー
-                    if (error.current_password) {
-                        this.errMessages.currentPasswordErr =
-                            error.current_password[0];
-                    } else if (error.new_password) {
-                        this.errMessages.newPasswordErr = error.new_password[0];
-                    } else {
+                    if (err.response.status === 422) {
+                        const error = err.response.data.errors;
+                        // バリデーションエラー
+                        if (error.current_password) {
+                            this.errMessages.currentPasswordErr =
+                                error.current_password[0];
+                        } else if (error.new_password) {
+                            this.errMessages.newPasswordErr =
+                                error.new_password[0];
+                        }
                     }
                 });
         },

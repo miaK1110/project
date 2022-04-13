@@ -1073,21 +1073,12 @@ img {
   overflow: hidden;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> develop
 @media screen and (max-width: 414px) {
   .p-questions {
     width: 90%;
   }
 }
 
-<<<<<<< HEAD
->>>>>>> develop
-=======
->>>>>>> develop
 @media screen and (min-width: 1365px) {
   .p-questions {
     width: 60%;

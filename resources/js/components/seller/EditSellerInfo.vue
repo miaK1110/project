@@ -272,21 +272,23 @@ export default {
                         // 500エラーページを表示
                         window.location.href = "/500";
                     }
-                    const error = err.response.data.errors;
-                    if (error.email) {
-                        this.errMessages.emailErr = error.email[0];
-                    } else if (error.branch) {
-                        this.errMessages.branchErr = error.branch[0];
-                    } else if (error.postcode) {
-                        this.errMessages.postcodeErr = error.postcode[0];
-                    } else if (error.pref) {
-                        this.errMessages.prefErr = error.pref[0];
-                    } else if (error.city) {
-                        this.errMessages.cityErr = error.city[0];
-                    } else if (error.address) {
-                        this.errMessages.addressErr = error.address[0];
-                    } else if (error.phone) {
-                        this.errMessages.phoneErr = error.phone[0];
+                    if (err.response.status === 422) {
+                        const error = err.response.data.errors;
+                        if (error.email) {
+                            this.errMessages.emailErr = error.email[0];
+                        } else if (error.branch) {
+                            this.errMessages.branchErr = error.branch[0];
+                        } else if (error.postcode) {
+                            this.errMessages.postcodeErr = error.postcode[0];
+                        } else if (error.pref) {
+                            this.errMessages.prefErr = error.pref[0];
+                        } else if (error.city) {
+                            this.errMessages.cityErr = error.city[0];
+                        } else if (error.address) {
+                            this.errMessages.addressErr = error.address[0];
+                        } else if (error.phone) {
+                            this.errMessages.phoneErr = error.phone[0];
+                        }
                     }
                 });
         },
