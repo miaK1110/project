@@ -241,8 +241,8 @@ export default {
     methods: {
         // ファイル選択してる時に実行されるメソッド
         onChangeFile(e) {
-            // console.log(e);
-            this.file = e.target.files[0];
+            this.errMessages.fileErr = "";
+
             // もしファイルが未選択なら中断する
             if (e.target.files.length === 0) {
                 this.reset();
@@ -251,23 +251,27 @@ export default {
             // もしファイルが画像ではなかったら処理を中断する
             if (!e.target.files[0].type.match("image.*")) {
                 this.reset();
+                this.errMessages.fileErr = "画像ファイルを選択してください";
                 return false;
             }
+
+            const reader = new FileReader();
             // 画像をプレビューさせる
-            const file = this.$refs.preview.files[0];
-            this.url = URL.createObjectURL(file);
-            this.createImage(this.file);
-        },
-        createImage(file) {
-            // FileReaderインスタンスを作成しファイルを読み込み
-            let reader = new FileReader();
-            reader.readAsDataURL(file);
             reader.onload = (e) => {
-                this.onChangeFile = e.target.result;
+                this.url = e.target.result;
             };
+            reader.readAsDataURL(e.target.files[0]);
+            this.file = e.target.files[0];
         },
         reset() {
-            (this.file = ""), (this.url = "");
+            // ファイルアップロードでバリデーションにひっかかった時に
+            // リセットする処理
+            this.file = "";
+            this.url = "";
+            this.$el.querySelector('input[type="file"]').value = null;
+            if (!this.description) {
+                this.description = "";
+            }
         },
         createProduct(e) {
             // console.log(this.$refs.preview.files[0]);
@@ -309,27 +313,36 @@ export default {
                 })
                 .catch((err) => {
                     this.isLoading = false;
+
+                    if (err.response.status === 413) {
+                        // Payload Too Largeの時
+                        this.errMessages.fileErr = "画像ファイルが大きすぎます";
+                    }
+                    if (err.response.status === 422) {
+                        // バリデーションエラーの時
+                        const error = err.response.data.errors;
+                        if (error.name) {
+                            this.errMessages.nameErr = error.name[0];
+                        } else if (error.category) {
+                            this.errMessages.categoryErr = error.category[0];
+                        } else if (error.description) {
+                            this.errMessages.descriptionErr =
+                                error.description[0];
+                        } else if (error.originalPrice) {
+                            this.errMessages.originalPriceErr =
+                                error.originalPrice[0];
+                        } else if (error.price) {
+                            this.errMessages.priceErr = error.price[0];
+                        } else if (error.bestBeforeDate) {
+                            this.errMessages.bestBeforeDateErr =
+                                error.bestBeforeDate[0];
+                        } else if (error.file) {
+                            this.errMessages.fileErr = error.file[0];
+                        }
+                    }
                     if (err.response.status === 500) {
                         // 500エラーページを表示
                         window.location.href = "/500";
-                    }
-                    const error = err.response.data.errors;
-                    if (error.name) {
-                        this.errMessages.nameErr = error.name[0];
-                    } else if (error.category) {
-                        this.errMessages.categoryErr = error.category[0];
-                    } else if (error.description) {
-                        this.errMessages.descriptionErr = error.description[0];
-                    } else if (error.originalPrice) {
-                        this.errMessages.originalPriceErr =
-                            error.originalPrice[0];
-                    } else if (error.price) {
-                        this.errMessages.priceErr = error.price[0];
-                    } else if (error.bestBeforeDate) {
-                        this.errMessages.bestBeforeDateErr =
-                            error.bestBeforeDate[0];
-                    } else if (error.file) {
-                        this.errMessages.fileErr = error.file[0];
                     }
                 });
         },

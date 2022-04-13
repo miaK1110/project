@@ -56,7 +56,7 @@ class CreateProductController extends Controller
                 $product->is_expired = 1;
             }
 
-            $product->is_sold = 20000;
+            $product->is_sold = 0;
             $product->prefecture = Auth::guard('seller')->user()->prefecture;
 
             // バケットの`product-images`フォルダへアップロード

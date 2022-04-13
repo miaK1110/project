@@ -1,0 +1,301 @@
+-- MySQL dump 10.13  Distrib 5.6.51, for Linux (x86_64)
+--
+-- Host: localhost    Database: haiki_share
+-- ------------------------------------------------------
+-- Server version	5.6.51
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `categories` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categories`
+--
+
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES (1,'おむすび','2022-03-21 02:46:07','2022-03-21 02:46:07'),(2,'お弁当','2022-03-21 02:46:07','2022-03-21 02:46:07'),(3,'お寿司','2022-03-21 02:46:07','2022-03-21 02:46:07'),(4,'サンドイッチ','2022-03-21 02:46:07','2022-03-21 02:46:07'),(5,'パン','2022-03-21 02:46:07','2022-03-21 02:46:07'),(6,'麺類','2022-03-21 02:46:07','2022-03-21 02:46:07'),(7,'パスタ','2022-03-21 02:46:07','2022-03-21 02:46:07'),(8,'サラダ','2022-03-21 02:46:07','2022-03-21 02:46:07'),(9,'デザート','2022-03-21 02:46:07','2022-03-21 02:46:07'),(10,'お菓子','2022-03-21 02:46:07','2022-03-21 02:46:07');
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `companies`
+--
+
+DROP TABLE IF EXISTS `companies`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `companies` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `company_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alias` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `companies`
+--
+
+LOCK TABLES `companies` WRITE;
+/*!40000 ALTER TABLE `companies` DISABLE KEYS */;
+INSERT INTO `companies` VALUES (1,'株式会社セブン-イレブン・ジャパン','セブンイレブン',NULL,NULL),(2,'株式会社ファミリーマート','ファミリーマート',NULL,NULL),(3,'株式会社ローソン','ローソン',NULL,NULL);
+/*!40000 ALTER TABLE `companies` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `failed_jobs`
+--
+
+DROP TABLE IF EXISTS `failed_jobs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `failed_jobs`
+--
+
+LOCK TABLES `failed_jobs` WRITE;
+/*!40000 ALTER TABLE `failed_jobs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `migrations`
+--
+
+DROP TABLE IF EXISTS `migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `migrations`
+--
+
+LOCK TABLES `migrations` WRITE;
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+INSERT INTO `migrations` VALUES (17,'2014_10_12_000000_create_users_table',1),(18,'2014_10_12_100000_create_password_resets_table',1),(19,'2019_08_19_000000_create_failed_jobs_table',1),(20,'2022_03_21_094014_add_columns_to_users',1),(21,'2022_03_21_100143_create_table_sellers',1),(22,'2022_03_21_101609_create_seller_password_resets_table',1),(23,'2022_03_21_102152_create_companies_table',1),(24,'2022_03_21_102504_create_categories_table',1),(25,'2022_03_21_102719_create_products_table',1);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `password_resets`
+--
+
+DROP TABLE IF EXISTS `password_resets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `password_resets` (
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `password_resets_email_index` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+LOCK TABLES `password_resets` WRITE;
+/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `products`
+--
+
+DROP TABLE IF EXISTS `products`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `products` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `seller_id` bigint(20) unsigned NOT NULL,
+  `company_id` bigint(20) unsigned NOT NULL,
+  `user_id` bigint(20) unsigned DEFAULT NULL,
+  `category_id` int(11) NOT NULL,
+  `product_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(120) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `original_price` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `best_defore_date` datetime NOT NULL,
+  `product_img_file_path` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prefecture` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_expired` tinyint(1) NOT NULL,
+  `is_sold` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `products_seller_id_foreign` (`seller_id`),
+  KEY `products_user_id_foreign` (`user_id`),
+  KEY `products_company_id_foreign` (`company_id`),
+  CONSTRAINT `products_company_id_foreign` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`),
+  CONSTRAINT `products_seller_id_foreign` FOREIGN KEY (`seller_id`) REFERENCES `sellers` (`id`),
+  CONSTRAINT `products_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `products`
+--
+
+LOCK TABLES `products` WRITE;
+/*!40000 ALTER TABLE `products` DISABLE KEYS */;
+INSERT INTO `products` VALUES (1,1,1,NULL,1,'和風ツナマヨおにぎり','',110,60,'2022-03-28 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/WJNNdR5aR7C06Dpl41cGS7wcZXDXrXBdq7MCDNYh.jpg','北海道',0,0,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(2,1,1,NULL,2,'ボリューム満点からあげ弁当','',445,220,'2022-03-28 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/4ckHNvCmo44iw04CrWu9tdeZ1ykWXmFVpcdFpA0C.jpg','北海道',0,0,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(3,1,1,NULL,3,'旬のお魚にぎり寿司セット','',600,300,'2022-03-28 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/n3IXKVzSAd9WQ9YOYr6smVHYDz4ZaYyDM1kRpnS3.jpg','北海道',0,0,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(4,1,1,NULL,4,'ハムたまご＆野菜ミックス','',290,180,'2022-03-28 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/1kegy0ElzuXgc7aSgmZXYPHGQkgXCUr3Qqb5nMur.jpg','北海道',0,0,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(5,1,1,NULL,5,'しっとりシナモンロール 2個入り','テキストテキストテキストテキストテキスト',160,80,'2022-03-28 11:46:00','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/BEAlMedtmb6bZtl2d607rewlhP9XTeH4nVDjvbjG.jpg','北海道',1,0,'2022-03-21 02:46:07','2022-04-03 23:01:00'),(6,1,1,NULL,6,'のどごしちゅるっとうどん','テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト',480,240,'2022-03-28 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/tgDRqQufQnwaGUibhSX2wOg7WFNt1P6bEYtvkm0l.jpg','北海道',0,0,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(7,1,1,NULL,7,'大盛 シーフードぺぺロンチーノ','テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト',500,250,'2022-03-28 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/Uuiwgd6geaovQVUgIi3cpAUiFh3LK1mCUkIJMyN0.jpg','北海道',0,0,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(8,1,1,NULL,8,'5種類のデリサラダ','テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト',280,140,'2022-03-28 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/PNFyt4at6ckpRk2IybT2DK3LhpkUSCVlQq8pTzrz.jpg','北海道',0,0,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(9,1,1,NULL,9,'本格イタリアンティラミス','テキストテキストテキストテキストテキストテキストテキスト',340,170,'2022-03-28 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/HXab44VYjVutPLMi1RkOqwrtoqUbEsqm7GbZ5P7h.jpg','北海道',0,0,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(10,1,1,NULL,10,'コンソメ風味のポテトチップス','テキストテキストテキストテキストテキストテキストテキストテキスト',180,90,'2022-03-28 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/6OoxTziqa5VuhiSDoN3RdPHPXUbad98kNx7JhHBu.jpg','北海道',0,0,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(11,1,1,NULL,10,'コンソメ風味のポテトチップス','テキストテキストテキストテキストテキストテキストテキストテキスト',180,90,'2022-03-28 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/6OoxTziqa5VuhiSDoN3RdPHPXUbad98kNx7JhHBu.jpg','北海道',0,0,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(12,2,2,1,1,'和風ツナマヨおにぎり','',110,60,'2022-03-28 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/WJNNdR5aR7C06Dpl41cGS7wcZXDXrXBdq7MCDNYh.jpg','青森県',0,1,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(13,2,2,1,2,'ボリューム満点からあげ弁当','',445,220,'2022-03-28 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/4ckHNvCmo44iw04CrWu9tdeZ1ykWXmFVpcdFpA0C.jpg','青森県',0,1,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(14,2,2,1,3,'旬のお魚にぎり寿司セット','',600,300,'2022-03-28 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/n3IXKVzSAd9WQ9YOYr6smVHYDz4ZaYyDM1kRpnS3.jpg','青森県',0,1,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(15,2,2,1,4,'ハムたまご＆野菜ミックス','',290,180,'2022-03-28 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/1kegy0ElzuXgc7aSgmZXYPHGQkgXCUr3Qqb5nMur.jpg','青森県',0,1,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(16,2,2,1,5,'しっとりシナモンロール 2個入り','',160,80,'2022-03-28 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/BEAlMedtmb6bZtl2d607rewlhP9XTeH4nVDjvbjG.jpg','青森県',0,1,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(17,2,2,2,6,'のどごしちゅるっとうどん','',480,240,'2022-03-28 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/tgDRqQufQnwaGUibhSX2wOg7WFNt1P6bEYtvkm0l.jpg','青森県',0,1,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(18,2,2,2,7,'大盛 シーフードぺぺロンチーノ','',500,250,'2022-03-28 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/Uuiwgd6geaovQVUgIi3cpAUiFh3LK1mCUkIJMyN0.jpg','青森県',0,1,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(19,2,2,2,8,'5種類のデリサラダ','',280,140,'2022-03-28 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/PNFyt4at6ckpRk2IybT2DK3LhpkUSCVlQq8pTzrz.jpg','青森県',0,1,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(20,2,2,2,9,'本格イタリアンティラミス','',340,170,'2022-03-28 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/HXab44VYjVutPLMi1RkOqwrtoqUbEsqm7GbZ5P7h.jpg','青森県',0,1,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(21,2,2,2,10,'コンソメ風味のポテトチップス','',180,90,'2022-03-28 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/6OoxTziqa5VuhiSDoN3RdPHPXUbad98kNx7JhHBu.jpg','青森県',0,1,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(22,3,3,NULL,1,'和風ツナマヨおにぎり','テキストテキストテキストテキストテキストテキスト',110,60,'2022-03-14 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/WJNNdR5aR7C06Dpl41cGS7wcZXDXrXBdq7MCDNYh.jpg','岩手県',1,0,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(23,3,3,NULL,2,'ボリューム満点からあげ弁当','',445,220,'2022-03-14 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/4ckHNvCmo44iw04CrWu9tdeZ1ykWXmFVpcdFpA0C.jpg','岩手県',1,0,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(24,3,3,NULL,3,'旬のお魚にぎり寿司セット','テキストテキストテキストテキストテキストテキスト',600,300,'2022-03-14 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/n3IXKVzSAd9WQ9YOYr6smVHYDz4ZaYyDM1kRpnS3.jpg','岩手県',1,0,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(25,3,3,NULL,4,'ハムたまご＆野菜ミックス','',290,180,'2022-03-14 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/1kegy0ElzuXgc7aSgmZXYPHGQkgXCUr3Qqb5nMur.jpg','岩手県',1,0,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(26,3,3,NULL,5,'しっとりシナモンロール 2個入り','テキストテキストテキストテキストテキストテキスト',160,80,'2022-03-14 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/BEAlMedtmb6bZtl2d607rewlhP9XTeH4nVDjvbjG.jpg','岩手県',1,0,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(27,3,3,NULL,6,'のどごしちゅるっとうどん','',480,240,'2022-03-14 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/tgDRqQufQnwaGUibhSX2wOg7WFNt1P6bEYtvkm0l.jpg','岩手県',1,0,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(28,3,3,NULL,7,'大盛 シーフードぺぺロンチーノ','',500,250,'2022-03-14 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/Uuiwgd6geaovQVUgIi3cpAUiFh3LK1mCUkIJMyN0.jpg','岩手県',1,0,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(29,3,3,NULL,8,'5種類のデリサラダ','',280,140,'2022-03-14 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/PNFyt4at6ckpRk2IybT2DK3LhpkUSCVlQq8pTzrz.jpg','岩手県',1,0,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(30,3,3,NULL,9,'本格イタリアンティラミス','',340,170,'2022-03-14 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/HXab44VYjVutPLMi1RkOqwrtoqUbEsqm7GbZ5P7h.jpg','岩手県',1,0,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(31,3,3,NULL,10,'コンソメ風味のポテトチップス','',180,90,'2022-03-14 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/6OoxTziqa5VuhiSDoN3RdPHPXUbad98kNx7JhHBu.jpg','岩手県',1,0,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(32,3,3,NULL,10,'コンソメ風味のポテトチップス','',180,90,'2022-03-14 11:46:07','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/6OoxTziqa5VuhiSDoN3RdPHPXUbad98kNx7JhHBu.jpg','岩手県',1,0,'2022-03-21 02:46:07','2022-03-21 02:46:07'),(33,1,1,NULL,1,'aaaaaaaaaaa','',120,65,'2022-04-07 08:08:00','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/Dgk0DgE7lgVyV8rgiKmMHZTk3uSD5ezZEAeH8jKj.jpg','北海道',0,0,'2022-04-03 23:08:12','2022-04-03 23:08:12'),(34,1,1,NULL,1,'aaaaaaaaaaa','',120,65,'2022-04-07 08:08:00','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/waIJwq2bpxzJAAp88kb6Lq6hF47TOaBVnHQbe7vh.jpg','北海道',0,0,'2022-04-03 23:08:14','2022-04-03 23:08:14'),(35,1,1,NULL,1,'aaaaaaaaaaa','',120,65,'2022-04-07 08:08:00','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/jQGWnV5gq4UskKVq6Vfxc4VmyL6bWbRQj7NROXdd.jpg','北海道',0,0,'2022-04-03 23:08:16','2022-04-03 23:08:16'),(36,1,1,NULL,1,'aaaaaaaaaaa','',120,65,'2022-04-07 08:08:00','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/UJYdk86eFrJNjkUKDKUDJl2MbyzGrF5xMzk9Dbg2.jpg','北海道',0,0,'2022-04-03 23:08:19','2022-04-03 23:08:19'),(37,1,1,NULL,1,'aaaaaaaaaaa','',120,65,'2022-04-07 08:08:00','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/7oH3lZQXBsg4Fy6OdyH4NCj4nA0bKvD9D19Iri1t.jpg','北海道',0,0,'2022-04-03 23:08:21','2022-04-03 23:08:21'),(38,1,1,NULL,1,'あ',NULL,120,65,'2022-04-07 08:08:00','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/mQOxOuCdbusGvdWWCXO4tFerL9xuvuOiys3hitR5.jpg','北海道',0,0,'2022-04-03 23:08:23','2022-04-03 23:24:56'),(39,1,1,NULL,1,'aaaaaaaaaaa','',120,65,'2022-04-07 08:08:00','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/hC4zhSv5WuoqTBS144MNk7zuTp8YFqwsABTUEE74.jpg','北海道',0,0,'2022-04-03 23:08:26','2022-04-03 23:08:26'),(40,1,1,NULL,3,'aaaaaaaaaaaqあ','null',120,65,'2022-04-07 08:08:00','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/mttZYIXg5bgy5C8Vyj6zeZotK7w9s1QN39SfS8dt.jpg','北海道',0,0,'2022-04-03 23:08:28','2022-04-03 23:24:07'),(41,1,1,NULL,10,'いろどり豊かな 三色お弁当','null',200,100,'2022-04-08 08:21:00','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/Yn3aXUI1mKmgGWf3TVph3dsy92r9WDyeubDnFBeO.jpg','北海道',0,0,'2022-04-03 23:21:30','2022-04-04 04:00:05'),(42,1,1,NULL,7,'ああああああああああ','あああああ',111111111,11,'2022-04-30 14:07:00','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/5oqHQTUAi6640cjjiw0Nk2Pu8GQsaY67tbCqvfPd.jpg','北海道',0,0,'2022-04-04 05:07:48','2022-04-04 05:07:48'),(43,1,1,NULL,7,'ああ','',123,11,'2022-04-01 14:09:00','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/PxHtCgJPPZXcrOOOV0nW8LoHMS0kq3NcEZdPrAPy.jpg','北海道',1,0,'2022-04-04 05:09:46','2022-04-04 05:09:46'),(44,1,1,NULL,7,'ああ','',123,11,'2022-04-01 14:09:00','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/TNhUTtIRwCNvKyD8skz1Qf8tGYq2AZ7V4cTPDl9o.jpg','北海道',1,0,'2022-04-04 05:10:06','2022-04-04 05:10:06'),(45,1,1,NULL,7,'ああ','',123,11,'2022-04-01 14:09:00','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/oHYwGyuondYYICVWCPE1THeWFDa4xf8eCawtdWtK.jpg','北海道',1,0,'2022-04-04 05:10:17','2022-04-04 05:10:17'),(46,1,1,NULL,6,'aaaaaaa','',122,12,'2022-04-15 14:12:00','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/OZjmNH761tA27c8cE3xinW73uCTaqF2Gzkxfh6gh.jpg','北海道',0,0,'2022-04-04 05:12:27','2022-04-04 05:12:27'),(47,1,1,NULL,7,'いろどり豊かな 三色お弁当','',119,111,'2022-04-28 14:12:00','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/NQf4VRjUe9TJ62sKxCO6uMVByt1TuOPiagSnsQMk.jpg','北海道',0,0,'2022-04-04 05:13:14','2022-04-04 05:13:14'),(48,1,1,NULL,7,'いろどり豊かな 三色お弁当','',119,111,'2022-04-28 14:12:00','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/qatHH5CTY5KY8u3A6Qy4hDSYXolVaogHifnaTaR7.jpg','北海道',0,0,'2022-04-04 05:13:55','2022-04-04 05:13:55'),(49,1,1,NULL,4,'aaaaaaaaaaa','',300,150,'2022-04-08 14:14:00','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/NEySZaz0nrANuRAwJd2tB822alVlixkuHZvFti08.jpg','北海道',0,0,'2022-04-04 05:14:41','2022-04-04 05:14:41'),(50,1,1,NULL,5,'aaaaaaaaaa',NULL,111,10,'2022-04-22 15:44:00','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/hzK7eyNGPz6tr4ICnt3HWAUSCIOmUTMela1WTiJz.jpg','北海道',0,0,'2022-04-04 06:45:07','2022-04-11 07:10:02'),(51,1,1,NULL,1,'aaaaaaaaass','cassa',111,11,'2022-04-20 16:11:00','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/9rRvTzq3pqjhMAVCR4dTIAjPp6E1HsVx4DqnknPk.jpg','北海道',0,0,'2022-04-11 07:11:33','2022-04-11 07:22:21'),(52,1,1,NULL,2,'aaaaaaaaaaaaaa','',1111,111,'2022-04-15 16:30:00','https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/product-images/r60g15DuaIqcNYDJpqO5MUEjRHo2Bjfo3wytV6xp.jpg','北海道',0,0,'2022-04-11 07:31:03','2022-04-11 07:31:03');
+/*!40000 ALTER TABLE `products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `seller_password_resets`
+--
+
+DROP TABLE IF EXISTS `seller_password_resets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `seller_password_resets` (
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `seller_password_resets_email_index` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `seller_password_resets`
+--
+
+LOCK TABLES `seller_password_resets` WRITE;
+/*!40000 ALTER TABLE `seller_password_resets` DISABLE KEYS */;
+INSERT INTO `seller_password_resets` VALUES ('seller1@test.com','$2y$10$sO5vZg6z1FOkdSqRGOtt4eSqNsoYBpCKXuMNKGZKKFTTIVKai/oaG','2022-04-05 03:25:30');
+/*!40000 ALTER TABLE `seller_password_resets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sellers`
+--
+
+DROP TABLE IF EXISTS `sellers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sellers` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company` int(11) NOT NULL,
+  `branch` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `postcode` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prefecture` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `city` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(161) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(21) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `sellers_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sellers`
+--
+
+LOCK TABLES `sellers` WRITE;
+/*!40000 ALTER TABLE `sellers` DISABLE KEYS */;
+INSERT INTO `sellers` VALUES (1,'seller1@test.com',NULL,'$2y$10$Sko2ZxXkp5ghTV6kDTYM8.igoyOnI3SmudQfIioFucSt8aRk2UcEm','BPzGYeWUhFC6AyDOS1PuJhtAh1VmyS0U54jkk0wb8B2Q3gShf9vtr0ftyJbg',1,'テストいち店','0123456','北海道','テスト市','テスト丁目二番三号','0123456789','2022-03-21 02:46:07','2022-04-04 05:17:39',NULL),(2,'seller2@test.com',NULL,'$2y$10$.0XEnsFaE6r8KWiX6vQk1.hxBTDFeEmHdeLnN4nVik/rq7Le5AOcm',NULL,2,'テスト2店','0123456','青森県','テスト市','テスト丁目二番三号','0123456789','2022-03-21 02:46:07','2022-03-21 02:46:07',NULL),(3,'seller3@test.com',NULL,'$2y$10$3QlMHVOd1xACsUF09wUbweETDTyXn.iC8fuWtszZfukF87RQhiZTe',NULL,3,'テスト3店','0123456','岩手県','テスト市','テスト丁目二番三号','0123456789','2022-03-21 02:46:07','2022-03-21 02:46:07',NULL),(4,'seller4@test.com',NULL,'$2y$10$8AKbV/T4J/zX201ubp3lGO9f5R9jXbiBN36BJQwONYCcuvnoKFKXm',NULL,1,'テスト4店','0123456','宮城県','テスト市','テスト丁目二番三号','0123456789','2022-03-21 02:46:07','2022-03-21 02:46:07','2022-03-21 02:46:07'),(5,'sukithewestie1011@gmail.com',NULL,'$2y$10$9dCIppz5EbgxrEEFk/SkS.aq.pC9w9HvWOC7FQo2pAMflHB9bds.y',NULL,1,'テスト100店','111111','宮城県','テスト','ああああ','0435876422','2022-04-04 05:19:00','2022-04-04 05:19:10','2022-04-04 05:19:10');
+/*!40000 ALTER TABLE `sellers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `family_name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `first_name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prefecture` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `city` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(161) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(21) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `postcode` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'user1@test.com',NULL,'$2y$10$/jjoQ7NSdgmgghpyueqknuLPBsXM.OlJie7M5Q5uJXJ/crWzL5m1i',NULL,'テスト1','テスト1','北海道','テスト市','テスト丁二番三号','0123456789','0123456','2022-03-21 02:46:07','2022-03-21 02:46:07',NULL),(2,'user2@test.com',NULL,'$2y$10$jVEwzSi.OGlV1VVek4PGqOUhjOZHNgFYUtgJ2S36VRaHi4GOodaxC',NULL,'テスト2','テスト2','青森県','テスト市','テスト丁二番三号','012345689','0123456','2022-03-21 02:46:07','2022-03-21 02:46:07',NULL),(3,'user3@test.com',NULL,'$2y$10$JQM0P3P3TmedXCHJDeHL3O4HP5tmULtL4e7Q4hwPRj8xhb8GVAWdS',NULL,'テスト3','テスト3','岩手県','テスト市','テスト丁二番三号','012345689','0123456','2022-03-21 02:46:07','2022-03-21 02:46:07','2022-03-21 02:46:07'),(4,'sukithewestie1011@gmail.com',NULL,'$2y$10$0tNWs3vM6go6zL/Z42qNJOeUCv/uyviE0JX9ptHYIcBq6kQWmre52',NULL,'KING','MISA','千葉県','ああああ','36 Lister Cres','0435876422','111111','2022-04-04 05:23:39','2022-04-04 05:24:06','2022-04-04 05:24:06');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2022-04-12 15:31:09
