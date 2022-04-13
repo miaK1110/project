@@ -3758,10 +3758,7 @@ Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vu
           window.location.href = "/seller/home";
         }
       })["catch"](function (err) {
-        _this4.isLoading = false; // if (err.response.status === 500) {
-        //     // 500エラーページを表示
-        //     // window.location.href = "/500";
-        // }
+        _this4.isLoading = false;
 
         if (err.response.status === 413) {
           // Payload Too Largeの時

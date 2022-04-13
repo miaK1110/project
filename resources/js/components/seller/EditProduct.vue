@@ -385,10 +385,7 @@ export default {
                 })
                 .catch((err) => {
                     this.isLoading = false;
-                    // if (err.response.status === 500) {
-                    //     // 500エラーページを表示
-                    //     // window.location.href = "/500";
-                    // }
+
                     if (err.response.status === 413) {
                         // Payload Too Largeの時
                         this.errMessages.fileErr =
