@@ -2212,6 +2212,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vue-moment.js"));
  // momentの表示言語を日本語にする
 
@@ -2289,6 +2292,10 @@ moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale("ja");
           window.location.href = "/500";
         }
       });
+    },
+    noImage: function noImage(element) {
+      // 画像パスが切れている時のデフォルト画像
+      element.target.src = "https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/common-img/default-product-image.jpg";
     },
     purchaseProduct: function purchaseProduct() {
       var _this3 = this;
@@ -2515,6 +2522,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ProductsList",
   data: function data() {
@@ -2578,6 +2586,10 @@ __webpack_require__.r(__webpack_exports__);
           window.location.href = "/500";
         }
       });
+    },
+    noImage: function noImage(element) {
+      // 画像パスが切れている時のデフォルト画像
+      element.target.src = "https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/common-img/default-product-image.jpg";
     },
     change: function change(page) {
       if (page >= 1 && page <= this.last_page) this.getSelectedProducts(page);
@@ -3677,6 +3689,10 @@ Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vu
         }
       });
     },
+    noImage: function noImage(element) {
+      // 画像パスが切れている時のデフォルト画像
+      element.target.src = "https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/common-img/default-product-image.jpg";
+    },
     // ファイル選択してる時に実行されるメソッド
     onChangeFile: function onChangeFile(e) {
       var _this3 = this;
@@ -4257,6 +4273,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HomeSeller",
   data: function data() {
@@ -4307,6 +4325,10 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
+    noImage: function noImage(element) {
+      // 画像パスが切れている時のデフォルト画像
+      element.target.src = "https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/common-img/default-product-image.jpg";
+    },
     url: function url(pid) {
       var url = "/product-detail/" + pid;
       return url;
@@ -4333,6 +4355,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -4476,6 +4499,10 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
+    noImage: function noImage(element) {
+      // 画像パスが切れている時のデフォルト画像
+      element.target.src = "https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/common-img/default-product-image.jpg";
+    },
     change: function change(page) {
       if (page >= 1 && page <= this.last_page) this.getAllSellerProducts(page);
     },
@@ -4514,6 +4541,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -4647,6 +4675,10 @@ __webpack_require__.r(__webpack_exports__);
           window.location.href = "/500";
         }
       });
+    },
+    noImage: function noImage(element) {
+      // 画像パスが切れている時のデフォルト画像
+      element.target.src = "https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/common-img/default-product-image.jpg";
     },
     change: function change(page) {
       if (page >= 1 && page <= this.last_page) this.getAllSoldProducts(page);
@@ -5237,6 +5269,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HomeUser",
   data: function data() {
@@ -5270,6 +5303,10 @@ __webpack_require__.r(__webpack_exports__);
           window.location.href = "/500";
         }
       });
+    },
+    noImage: function noImage(element) {
+      // 画像パスが切れている時のデフォルト画像
+      element.target.src = "https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/common-img/default-product-image.jpg";
     },
     cancelPurchase: function cancelPurchase(id) {
       var _this2 = this;
@@ -62775,7 +62812,10 @@ var render = function () {
         _vm._v(" "),
         _c("div", { staticClass: "p-product-detail__wrapper" }, [
           _c("div", { staticClass: "p-product-detail__image-container" }, [
-            _c("img", { attrs: { src: this.product.product_img_file_path } }),
+            _c("img", {
+              attrs: { src: this.product.product_img_file_path },
+              on: { error: _vm.noImage },
+            }),
           ]),
           _vm._v(" "),
           _c(
@@ -63195,6 +63235,7 @@ var render = function () {
                               src: productdata.product_img_file_path,
                               alt: "商品の画像",
                             },
+                            on: { error: _vm.noImage },
                           }),
                         ])
                       : _vm._e(),
@@ -64758,7 +64799,10 @@ var render = function () {
           _vm._v(" "),
           _vm.url
             ? _c("div", { staticClass: "c-form__preview" }, [
-                _c("img", { attrs: { src: _vm.url } }),
+                _c("img", {
+                  attrs: { src: _vm.url },
+                  on: { error: _vm.noImage },
+                }),
               ])
             : _vm._e(),
           _vm._v(" "),
@@ -65548,6 +65592,7 @@ var render = function () {
                           src: productdata.product_img_file_path,
                           alt: "商品の画像",
                         },
+                        on: { error: _vm.noImage },
                       }),
                     ]),
                     _vm._v(" "),
@@ -65641,6 +65686,7 @@ var render = function () {
                           src: productdata.product_img_file_path,
                           alt: "商品の画像",
                         },
+                        on: { error: _vm.noImage },
                       }),
                     ]),
                     _vm._v(" "),
@@ -65769,6 +65815,7 @@ var render = function () {
                           src: productdata.product_img_file_path,
                           alt: "商品の画像",
                         },
+                        on: { error: _vm.noImage },
                       }),
                     ]),
                     _vm._v(" "),
@@ -65982,6 +66029,7 @@ var render = function () {
                           src: productdata.product_img_file_path,
                           alt: "商品の画像",
                         },
+                        on: { error: _vm.noImage },
                       }),
                     ]),
                     _vm._v(" "),
@@ -66924,6 +66972,7 @@ var render = function () {
                               src: productdata.product_img_file_path,
                               alt: "商品の画像",
                             },
+                            on: { error: _vm.noImage },
                           }),
                         ]),
                         _vm._v(" "),

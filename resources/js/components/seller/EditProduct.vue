@@ -165,7 +165,7 @@
                     </p>
                 </div>
                 <div class="c-form__preview" v-if="url">
-                    <img :src="url" />
+                    <img :src="url" @error="noImage" />
                 </div>
                 <!-- エラーメッセージ -->
                 <div class="c-form__errs-container u-pb__m">
@@ -303,6 +303,11 @@ export default {
                         window.location.href = "/500";
                     }
                 });
+        },
+        noImage(element) {
+            // 画像パスが切れている時のデフォルト画像
+            element.target.src =
+                "https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/common-img/default-product-image.jpg";
         },
         // ファイル選択してる時に実行されるメソッド
         onChangeFile(e) {
