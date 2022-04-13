@@ -7,7 +7,10 @@
             </h3>
             <div class="p-product-detail__wrapper">
                 <div class="p-product-detail__image-container">
-                    <img :src="this.product.product_img_file_path" />
+                    <img
+                        :src="this.product.product_img_file_path"
+                        @error="noImage"
+                    />
                 </div>
                 <div class="p-product-detail__text-container">
                     <h4 class="p-product-detail__description">
@@ -153,7 +156,11 @@ export default {
                     }
                 });
         },
-
+        noImage(element) {
+            // 画像パスが切れている時のデフォルト画像
+            element.target.src =
+                "https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/common-img/default-product-image.jpg";
+        },
         purchaseProduct() {
             this.isLoading = true;
             let data = new FormData();

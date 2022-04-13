@@ -88,6 +88,7 @@
                             >
                                 <img
                                     :src="productdata.product_img_file_path"
+                                    @error="noImage"
                                     alt="商品の画像"
                                 />
                             </div>
@@ -231,6 +232,11 @@ export default {
                         window.location.href = "/500";
                     }
                 });
+        },
+        noImage(element) {
+            // 画像パスが切れている時のデフォルト画像
+            element.target.src =
+                "https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/common-img/default-product-image.jpg";
         },
         change(page) {
             if (page >= 1 && page <= this.last_page)
