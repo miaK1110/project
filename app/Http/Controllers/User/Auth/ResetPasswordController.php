@@ -33,7 +33,6 @@ class ResetPasswordController extends Controller
         session()->flash('msg_success', '新しいパスワードを設定しました。');
         return 'user/home';
     }
-    // protected $redirectTo = RouteServiceProvider::HOME;
 
     public function showResetForm(Request $request, $token = null)
     {

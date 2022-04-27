@@ -171,7 +171,7 @@
                 </div>
                 <!-- エラーメッセージここまで -->
 
-                <button class="c-btn__primary" @click="editInfo">
+                <button class="c-btn--primary" @click="editInfo">
                     編集する
                 </button>
             </div>
@@ -210,7 +210,6 @@ export default {
             axios
                 .get("/seller/api/getsellerandprefdata")
                 .then((response) => {
-                    // console.log(response);
                     if (response.status === 200) {
                         this.prefData = response.data.prefData;
 
@@ -255,12 +254,10 @@ export default {
             data.append("city", this.city);
             data.append("address", this.address);
             data.append("phone", this.phone);
-            // console.log(...data.entries());
 
             axios
                 .post("/seller/api/editsellerinfo", data)
                 .then((response) => {
-                    // console.log(response)
                     this.isLoading = false;
                     if (response.status === 200) {
                         window.location.href = "/seller/home";

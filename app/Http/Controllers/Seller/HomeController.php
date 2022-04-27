@@ -1,7 +1,5 @@
 <?php
 
-// mypage after seller logged in
-
 namespace App\Http\Controllers\Seller;
 
 use App\Models\Product;
@@ -88,7 +86,7 @@ class HomeController extends Controller
         $products = Product::where('seller_id', $id)->latest()->get();
         // ページネート
         $data = $products->paginate($per_page);
-        // dd($data);
+
         if ($data) {
             // 商品情報取得できたなら商品情報をjson形式で返す
             return response()->json(

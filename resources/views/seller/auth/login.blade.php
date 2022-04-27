@@ -38,7 +38,7 @@
                 {{ __('ログイン状態を保持する') }}
             </label>
 
-            <button type="submit" class="c-btn__primary u-mb__s">
+            <button type="submit" class="c-btn--primary u-mb__s">
                 {{ __('ログイン') }}
             </button>
 

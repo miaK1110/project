@@ -30,7 +30,6 @@
         }
     }
     &__item {
-        cursor: pointer;
         width: 48%;
     }
     &__img {
@@ -41,13 +40,16 @@
         margin-bottom: 30px;
     }
     &__btn {
+        cursor: pointer;
         text-align: center;
     }
     &__url-box {
-        a {
-            display: block;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
+        display: block;
+        text-align: center;
+    }
+    &__url-item {
+        display: block;
+        margin-bottom: 1rem;
+        text-align: center;
     }
 }

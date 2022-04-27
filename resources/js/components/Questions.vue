@@ -1,52 +1,21 @@
 <template>
     <section class="p-questions">
         <h3 class="p-questions__title">よくある質問</h3>
-        <div class="p-questions__list">
-            <dl class="p-questions__items" v-on:click="toggle('1')">
-                <dt class="p-questions__question">
-                    Q. サイトの利用は無料ですか？
-                </dt>
+        <div
+            class="p-questions__list"
+            v-for="(qa, index) in qaContents"
+            v-bind:key="index"
+        >
+            <dl class="p-questions__items" v-on:click="toggle(qa.index)">
+                <dt class="p-questions__question">Q. {{ qa.question }}</dt>
                 <dd
                     class="p-questions__answer"
-                    v-show="ShowContents.indexOf('1') >= 0"
+                    v-show="showContents.indexOf(qa.index) >= 0"
                 >
-                    <p><span>A</span>. サイトの登録・利用は無料です。</p>
-                </dd>
-            </dl>
-            <dl class="p-questions__items" v-on:click="toggle('2')">
-                <dt class="p-questions__question">
-                    Q. 買ったものはいつまで食べれますか？
-                </dt>
-                <dd
-                    class="p-questions__answer"
-                    v-show="ShowContents.indexOf('2') >= 0"
-                >
-                    <p>
-                        <span>A</span>. 消費期限が切れるまでお食べいただけます。
+                    <p class="p-questions__answer-text">
+                        <span class="p-questions__answer-accent">A</span>.
+                        {{ qa.answer }}
                     </p>
-                </dd>
-            </dl>
-            <dl class="p-questions__items" v-on:click="toggle('3')">
-                <dt class="p-questions__question">
-                    Q. キャンセルはできますか？
-                </dt>
-                <dd
-                    class="p-questions__answer"
-                    v-show="ShowContents.indexOf('3') >= 0"
-                >
-                    <p>
-                        <span>A</span>.
-                        注文履歴又は商品ページよりキャンセルが可能です。
-                    </p>
-                </dd>
-            </dl>
-            <dl class="p-questions__items" v-on:click="toggle('4')">
-                <dt class="p-questions__question">Q. 配送は可能ですか？</dt>
-                <dd
-                    class="p-questions__answer"
-                    v-show="ShowContents.indexOf('4') >= 0"
-                >
-                    <p><span>A</span>. 配送はいたしかねます。</p>
                 </dd>
             </dl>
         </div>
@@ -57,15 +26,37 @@ export default {
     name: "Questions",
     data() {
         return {
-            ShowContents: [],
+            showContents: [],
+            qaContents: [
+                {
+                    index: 1,
+                    question: "サイトの利用は無料ですか？",
+                    answer: "サイトの利用・登録は無料です。",
+                },
+                {
+                    index: 2,
+                    question: "買ったものはいつまで食べれますか？",
+                    answer: "消費期限が切れるまでお食べいただけます。",
+                },
+                {
+                    index: 3,
+                    question: "キャンセルはできますか？",
+                    answer: "注文履歴又は商品ページよりキャンセルが可能です。",
+                },
+                {
+                    index: 4,
+                    question: "配送は可能ですか？",
+                    answer: "配送はいたしかねます。",
+                },
+            ],
         };
     },
     methods: {
         toggle: function (data) {
-            if (this.ShowContents.indexOf(data) >= 0) {
-                this.ShowContents = this.ShowContents.filter((n) => n !== data);
+            if (this.showContents.indexOf(data) >= 0) {
+                this.showContents = this.showContents.filter((n) => n !== data);
             } else {
-                this.ShowContents.push(data);
+                this.showContents.push(data);
             }
         },
     },

@@ -160,7 +160,7 @@
                 </p>
             </div>
 
-            <button class="c-btn__primary" @click="editInfo">編集する</button>
+            <button class="c-btn--primary" @click="editInfo">編集する</button>
         </div>
     </div>
 </template>

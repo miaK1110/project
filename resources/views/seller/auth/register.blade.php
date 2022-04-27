@@ -163,7 +163,7 @@
                 @enderror
             </div>
 
-            <button type="submit" class="c-btn__primary">
+            <button type="submit" class="c-btn--primary">
                 {{ __('店舗登録する') }}
             </button>
         </form>

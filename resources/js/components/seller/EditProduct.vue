@@ -148,7 +148,7 @@
                         </div>
                         商品写真
                         <div class="c-form__control--file">
-                            <p>変更する画像を選ぶ</p>
+                            <p class="c-form__file-text">変更する画像を選ぶ</p>
                             <input
                                 id="product_img_file_path"
                                 type="file"
@@ -208,14 +208,14 @@
                 </div>
                 <!-- エラーメッセージここまで -->
                 <button
-                    class="c-btn__primary u-mb__s"
+                    class="c-btn--primary u-mb__s"
                     @click="editProduct"
                     :disabled="isLoading"
                 >
                     編集する
                 </button>
                 <button
-                    class="c-btn__danger"
+                    class="c-btn--danger"
                     @click="deleteProduct"
                     :disabled="isLoading"
                 >
@@ -271,7 +271,6 @@ export default {
             axios
                 .get("/api/getcategorylist")
                 .then((response) => {
-                    // console.log(response);
                     if (response.status === 200) {
                         this.categoryList = response.data.categoryList;
                     }
@@ -351,7 +350,6 @@ export default {
         },
         editProduct(e) {
             this.isLoading = true;
-            // console.log(this.$refs.preview.files[0]);
             // エラーメッセージをクリアに
             this.errMessages = {
                 nameErr: "",
@@ -376,7 +374,6 @@ export default {
 
             if (this.file !== "") {
                 data.set("file", this.file);
-                // console.log(data.get("file"));
             }
 
             axios
@@ -384,7 +381,7 @@ export default {
                 .then((response) => {
                     this.isLoading = false;
                     if (response.status === 200) {
-                        // status 201ならマイページへ戻る
+                        // status 200ならマイページへ戻る
                         window.location.href = "/seller/home";
                     }
                 })
@@ -440,7 +437,6 @@ export default {
                 return false;
             }
             data.append("file", this.url);
-            // console.log(data.get("id"));
 
             const confirm =
                 window.confirm("この商品を削除してもよろしいですか?");
@@ -451,7 +447,6 @@ export default {
                     .post("/seller/api/deleteproduct", data)
                     .then((response) => {
                         this.isLoading = false;
-                        // console.log(response);
                         if (response.status === 200) {
                             // status 200ならマイページへ戻る
                             window.location.href = "/seller/home";

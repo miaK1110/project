@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // defultでutf8mb4が設定されてるので255文字にするとエラーになる
+        // defaultでutf8mb4が設定されてるので255文字にするとエラーになる
         Schema::defaultStringLength(191);
 
 

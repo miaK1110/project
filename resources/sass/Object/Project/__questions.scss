@@ -1,6 +1,5 @@
 .p-questions {
     margin-top: 100px;
-    cursor: pointer;
     width: 80%;
     margin: 0 auto;
     overflow: hidden;
@@ -15,6 +14,7 @@
         margin: 40px 0 50px 0;
     }
     &__question {
+        cursor: pointer;
         background-color: $bg-color-secondary;
         padding: 1rem 1rem;
         margin-bottom: 1px;
@@ -24,13 +24,14 @@
         }
     }
     &__answer {
+        cursor: pointer;
         background-color: $bg-color-teritary;
         padding: 1rem 2rem;
-        span {
-            color: $font-color-accent;
-        }
-        p {
-            letter-spacing: 0;
-        }
+    }
+    &__answer-text {
+        letter-spacing: 0;
+    }
+    &__answer-accent {
+        color: $font-color-accent;
     }
 }

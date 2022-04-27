@@ -49,16 +49,20 @@
                 <!-- 一般ユーザーで商品が売り切れじゃない場合 -->
                 <div v-if="this.role === 'user' && this.sold === 0">
                     <button
-                        class="c-btn__primary c-btn__primary--big u-mb__s"
+                        class="c-btn--primary c-btn--primary--big u-mb__s"
                         @click="purchaseProduct"
                     >
                         この商品を購入する
                     </button>
-                    <p>お支払いは店舗でしていただきます。</p>
+                    <p class="p-product-detail__attention">
+                        お支払いは店舗でしていただきます。
+                    </p>
                 </div>
                 <!-- ゲストユーザーで商品が売り切れじゃない場合 -->
                 <div v-if="this.role === 'guest' && this.sold === 0">
-                    <p>商品を購入するにはログインが必要です。</p>
+                    <p class="p-product-detail__attention">
+                        商品を購入するにはログインが必要です。
+                    </p>
                     <a
                         class="c-link__underline"
                         href="https://haikishare.com/user/login"
@@ -68,11 +72,13 @@
             </div>
             <!-- 商品が売り切れだった場合 -->
             <div class="u-align__center u-pb__s" v-if="this.sold === 1">
-                <p>この商品は売り切れです。</p>
+                <p class="p-product-detail__attention">
+                    この商品は売り切れです。
+                </p>
             </div>
             <div class="u-align__center">
                 <button
-                    class="c-btn__danger"
+                    class="c-btn--danger"
                     v-if="isPurchaser"
                     @click="cancelPurchase()"
                 >

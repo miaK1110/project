@@ -69,10 +69,10 @@
         padding: 15px 0px;
         border-radius: 5px;
         align-items: center;
-        p {
-            margin: 0 auto;
-            cursor: pointer;
-        }
+    }
+    &__file-text {
+        margin: 0 auto;
+        cursor: pointer;
     }
     &__title {
         padding-bottom: 40px;

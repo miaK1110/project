@@ -37,7 +37,7 @@
                 <input id="password-confirm" type="password" class="c-form__control" name="password_confirmation" required
                     autofocus="new-password" />
             </div>
-            <button type="submit" class="c-btn c-btn__primary">
+            <button type="submit" class="c-btn c-btn--primary">
                 パスワードを更新する
             </button>
         </div>

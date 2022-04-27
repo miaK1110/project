@@ -52,7 +52,6 @@ class RegisterController extends Controller
     // バリデーション
     protected function validator(array $data)
     {
-        // dd($data);
         return Validator::make($data, [
             'email'    => ['required', 'string', 'email', 'max:191', 'unique:sellers'],
             // 半角英数字6文字〜191文字まで

@@ -2,36 +2,22 @@
     width: 90%;
     margin: 0 auto;
     margin-top: 40px;
+    @include mq(sm) {
+        width: 90%;
+    }
     @include mq(dw) {
         width: 60%;
         margin-top: 80px;
     }
-    p {
+    &__text {
         letter-spacing: 0;
         line-height: 1.2;
     }
-    @include mq(sm) {
-        width: 90%;
-    }
-    h3 {
+    &__title {
         margin-bottom: 40px;
     }
     &__img {
         width: 80px;
         height: 80px;
-    }
-    &__text {
-        line-height: 1.2;
-    }
-    &__person {
-        margin-top: 20px;
-        display: flex;
-        flex-direction: row;
-        align-items: flex-end;
-        float: right;
-        p {
-            padding-bottom: 1rem;
-            padding-right: 0.5rem;
-        }
     }
 }

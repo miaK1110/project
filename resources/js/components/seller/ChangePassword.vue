@@ -42,7 +42,7 @@
                 </p>
             </div>
 
-            <div class="c-form__item">
+            <div class="c-form__item u-pb__m">
                 <label for="rePassword" class="c-form__label">
                     新しいパスワード(再確認)
                 </label>
@@ -59,7 +59,7 @@
                     {{ errMessages.rePasswordErr }}
                 </p>
             </div>
-            <button class="c-btn__primary" @click="changePassword">
+            <button class="c-btn--primary" @click="changePassword">
                 パスワードを更新する
             </button>
         </div>
@@ -86,7 +86,6 @@ export default {
             axios
                 .get("/api/getrole")
                 .then((response) => {
-                    // console.log(response);
                     if (response.status === 200) {
                         this.id = response.data.id;
                     }
@@ -121,7 +120,6 @@ export default {
             axios
                 .post("/seller/api/changepassword", data)
                 .then((response) => {
-                    // console.log(response);
                     if (response.status === 200) {
                         // status 200ならマイページへ戻る
                         window.location.href = "/seller/home";
