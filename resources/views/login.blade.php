@@ -11,19 +11,19 @@
                 <img class="p-register-login__img"
                     src="https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/common-img/female-left.png"
                     alt="img-female-left" />
-                <a class="c-btn__primary p-register-login__btn" href="/seller/login">ログイン</a>
+                <a class="c-btn--primary p-register-login__btn" href="/seller/login">ログイン</a>
             </div>
             <div class="p-register-login__item">
                 <h4 class="p-register-login__title">一般ログイン</h4>
                 <img class="p-register-login__img"
                     src="https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/common-img/male-right.png"
                     alt="img-male-right" />
-                <a class="c-btn__primary p-register-login__btn" href="/user/login">ログイン</a>
+                <a class="c-btn--primary p-register-login__btn" href="/user/login">ログイン</a>
             </div>
         </div>
         <div class="p-register-login__url-box">
-            <a href="/register" class="c-link__underline">登録がお済みでない方はこちらへ</a>
-            <a href="/" class="c-link__underline">トップページへ戻る</a>
+            <a href="/register" class="p-register-login__url-item c-link__underline">登録がお済みでない方はこちらへ</a>
+            <a href="/" class="p-register-login__url-item c-link__underline">トップページへ戻る</a>
         </div>
     </div>
 @endsection

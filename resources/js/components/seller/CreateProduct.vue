@@ -147,7 +147,7 @@
                         </div>
                         商品写真
                         <div class="c-form__control--file">
-                            <p>画像を選ぶ</p>
+                            <p class="c-form__file-text">画像を選ぶ</p>
                             <input
                                 id="product_img_file_path"
                                 type="file"
@@ -200,7 +200,7 @@
                 </div>
                 <!-- エラーメッセージここまで -->
                 <button
-                    class="c-btn__primary"
+                    class="c-btn--primary"
                     @click="createProduct"
                     :disabled="isLoading"
                 >
@@ -274,7 +274,6 @@ export default {
             }
         },
         createProduct(e) {
-            // console.log(this.$refs.preview.files[0]);
             this.isLoading = true;
 
             // エラーメッセージをクリアに
@@ -298,14 +297,10 @@ export default {
             data.append("bestBeforeDate", this.bestBeforeDate);
             data.append("file", this.file);
 
-            // console.log(...data.entries());
-            // console.log("ファイルの中身", this.file);
-
             axios
                 .post("/seller/api/addproduct", data)
                 .then((response) => {
                     this.isLoading = false;
-                    // console.log(response);
                     if (response.status === 200) {
                         // status 201ならマイページへ戻る
                         window.location.href = "/seller/home";
@@ -351,7 +346,6 @@ export default {
         axios
             .get("/api/getcategorylist")
             .then((response) => {
-                // console.log(response);
                 if (response.status === 200) {
                     this.categoryList = response.data.categoryList;
                 }

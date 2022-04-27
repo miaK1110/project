@@ -24,7 +24,7 @@
                     </span>
                 @enderror
             </div>
-            <button type="submit" class="c-btn__primary">
+            <button type="submit" class="c-btn--primary">
                 メールを送る
             </button>
             <a href="/user/login" class="c-link__underline u-align__center u-pt__s">ログイン画面に戻る</a>

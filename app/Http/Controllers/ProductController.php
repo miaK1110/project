@@ -178,7 +178,6 @@ class ProductController extends Controller
         }
         // 価格が高い順が選択された時
         if (!empty($input['price']) && $input['price'] == 'desc') {
-            // $products = $products->sortByDesc('price');
             $products = $products->sortByDesc('price');
         }
         // 価格が低い順が選択された時

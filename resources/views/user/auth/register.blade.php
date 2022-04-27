@@ -164,7 +164,7 @@
 
 
 
-            <button type="submit" class="c-btn__primary">
+            <button type="submit" class="c-btn--primary">
                 {{ __('登録する') }}
             </button>
         </form>

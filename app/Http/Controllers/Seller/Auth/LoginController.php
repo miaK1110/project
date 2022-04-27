@@ -22,7 +22,6 @@ class LoginController extends Controller
         session()->flash('msg_success', 'ログインしました');
         return 'seller/home';
     }
-    // protected $redirectTo = 'seller/home';
 
     public function __construct()
     {

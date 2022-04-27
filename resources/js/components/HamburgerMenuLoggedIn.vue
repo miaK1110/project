@@ -3,15 +3,15 @@
         <div class="p-hamburger__btn" v-on:click="ActiveBtn = !ActiveBtn">
             <span
                 class="p-hamburger__line p-hamburger__line01"
-                v-bind:class="{ 'p-menu-btn__line01': ActiveBtn }"
+                v-bind:class="{ 'p-hamburger--active__line01': ActiveBtn }"
             ></span>
             <span
                 class="p-hamburger__line p-hamburger__line02"
-                v-bind:class="{ 'p-menu-btn__line02': ActiveBtn }"
+                v-bind:class="{ 'p-hamburger--active__line02': ActiveBtn }"
             ></span>
             <span
                 class="p-hamburger__line p-hamburger__line03"
-                v-bind:class="{ 'p-menu-btn__line03': ActiveBtn }"
+                v-bind:class="{ 'p-hamburger--active__line03': ActiveBtn }"
             ></span>
         </div>
         <div class="p-menu" v-bind:class="{ 'is-active': ActiveBtn }">

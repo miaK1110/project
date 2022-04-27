@@ -9,7 +9,7 @@
                         ></i>
                         絞り込み条件
                     </h3>
-                    <div v-if="OpenFilter">
+                    <div v-if="openFilter">
                         <form action="GET">
                             <select
                                 id="pref"
@@ -118,38 +118,66 @@
                 <!-- ページネーション -->
                 <div class="c-pager u-mb__l">
                     <ul class="c-pager__pagination">
-                        <li :class="{ disabled: current_page <= 1 }">
-                            <a href="#" @click="change(1)"><span>«</span></a>
-                        </li>
                         <li
-                            :class="{ disabled: current_page <= 1 }"
-                            class="c-pager--pre"
+                            :class="{ disabled: currentPageNum <= 1 }"
+                            class="c-pager__item"
                         >
-                            <a href="#" @click="change(current_page - 1)"
-                                ><span>&lt;</span></a
+                            <a href="#" @click="change(1)" class="c-pager__link"
+                                ><span class="c-pager__mark">«</span></a
                             >
                         </li>
-                        <li v-for="page in pages" :key="page">
+                        <li
+                            :class="{ disabled: currentPageNum <= 1 }"
+                            class="c-pager--pre c-pager__item"
+                        >
+                            <a
+                                href="#"
+                                @click="change(currentPageNum - 1)"
+                                class="c-pager__link"
+                                ><span class="c-pager__mark">&lt;</span></a
+                            >
+                        </li>
+                        <li
+                            v-for="page in pages"
+                            :key="page"
+                            class="c-pager__item"
+                        >
                             <a
                                 href="#"
                                 @click="change(page)"
                                 :class="{
-                                    'c-pager--active': page === current_page,
+                                    'c-pager--active': page === currentPageNum,
                                 }"
-                                ><span>{{ page }}</span></a
+                                class="c-pager__link"
+                                ><span class="c-pager__mark">{{
+                                    page
+                                }}</span></a
                             >
                         </li>
                         <li
-                            :class="{ disabled: current_page >= last_page }"
-                            class="c-pager--next"
+                            :class="{
+                                disabled: currentPageNum >= totalPageNum,
+                            }"
+                            class="c-pager--next c-pager__item"
                         >
-                            <a href="#" @click="change(current_page + 1)"
-                                ><span>&gt;</span></a
+                            <a
+                                href="#"
+                                @click="change(currentPageNum + 1)"
+                                class="c-pager__link"
+                                ><span class="c-pager__mark">&gt;</span></a
                             >
                         </li>
-                        <li :class="{ disabled: current_page >= last_page }">
-                            <a href="#" @click="change(last_page)"
-                                ><span>»</span></a
+                        <li
+                            :class="{
+                                disabled: currentPageNum >= totalPageNum,
+                            }"
+                            class="c-pager__item"
+                        >
+                            <a
+                                href="#"
+                                @click="change(totalPageNum)"
+                                class="c-pager__link"
+                                ><span class="c-pager__mark">»</span></a
                             >
                         </li>
                     </ul>
@@ -172,14 +200,10 @@ export default {
             price: "",
             isExpired: "",
             isSold: 0,
-            OpenFilter: false,
+            openFilter: false,
             allProducts: {},
-            page: 1,
-            current_page: 1, // 現在のページ番号
-            last_page: 1, // 最終ページ番号
-            total: 1, //総レコード数
-            from: 0, // 表示する先頭のレコード
-            to: 0, // 表示する最後のレコード
+            currentPageNum: 1,
+            totalPageNum: 1,
         };
     },
 
@@ -188,14 +212,10 @@ export default {
             axios
                 .get("/api/getproducts?page=" + page)
                 .then(({ data }) => {
-                    // console.log(data);
                     this.allProducts = data.data.data;
 
-                    this.current_page = data.data.current_page;
-                    this.last_page = data.data.last_page;
-                    this.total = data.data.total;
-                    this.from = data.data.from;
-                    this.to = data.data.to;
+                    this.currentPageNum = data.data.current_page;
+                    this.totalPageNum = data.data.last_page;
                 })
                 .catch((err) => {
                     if (err.response.status === 500) {
@@ -220,11 +240,8 @@ export default {
                 )
                 .then(({ data }) => {
                     this.allProducts = data.data.data;
-                    this.current_page = data.data.current_page;
-                    this.last_page = data.data.last_page;
-                    this.total = data.data.total;
-                    this.from = data.data.from;
-                    this.to = data.data.to;
+                    this.currentPageNum = data.data.current_page;
+                    this.totalPageNum = data.data.last_page;
                 })
                 .catch((err) => {
                     if (err.response.status === 500) {
@@ -239,14 +256,13 @@ export default {
                 "https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/common-img/default-product-image.jpg";
         },
         change(page) {
-            if (page >= 1 && page <= this.last_page)
+            if (page >= 1 && page <= this.totalPageNum)
                 this.getSelectedProducts(page);
         },
         getPrefData() {
             axios
                 .get("/api/getprefdata")
                 .then((response) => {
-                    // console.log(response);
                     if (response.status === 200) {
                         this.prefData = response.data.prefData;
                     }
@@ -262,7 +278,7 @@ export default {
             axios
                 .get("/api/getcategorylist")
                 .then((response) => {
-                    // console.log(response);
+                    console.log(response);
                     if (response.status === 200) {
                         this.categoryList = response.data.categoryList;
                     }
@@ -275,11 +291,10 @@ export default {
                 });
         },
         ShowFilter() {
-            this.OpenFilter = !this.OpenFilter;
+            this.openFilter = !this.openFilter;
         },
         url(pid) {
             const url = "/product-detail/" + pid;
-            // console.log(url);
             return url;
         },
     },
@@ -292,8 +307,8 @@ export default {
     },
     computed: {
         pages() {
-            let start = _.max([this.current_page - 2, 1]);
-            let end = _.min([start + 5, this.last_page + 1]);
+            let start = _.max([this.currentPageNum - 2, 1]);
+            let end = _.min([start + 5, this.totalPageNum + 1]);
             start = _.max([end - 5, 1]);
             return _.range(start, end);
         },
