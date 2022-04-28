@@ -8,27 +8,31 @@
         </div>
         <nav class="l-header__menu">
             <ul>
-                <li><a href="https://haikishare.com">トップ</a></li>
-                <span>|</span>
-                <li><a href="/products-list">商品一覧</a></li>
+                <li class="l-header__menu-item"><a href="https://haikishare.com" class="l-header__menu-link">トップ</a></li>
+                <span class="l-header__menu-accent">|</span>
+                <li class="l-header__menu-item"><a href="/products-list" class="l-header__menu-link">商品一覧</a></li>
                 {{-- ログインしているユーザーが店舗ユーザーの時 --}}
                 @if (Auth::guard('seller')->check())
-                    <span>|</span>
-                    <li><a href="https://haikishare.com/seller/home">マイページ</a></li>
-                    <span>|</span>
-                    <li><a href="https://haikishare.com/seller/logout">ログアウト</a></li>
+                    <span class="l-header__menu-accent">|</span>
+                    <li class="l-header__menu-item"><a href="https://haikishare.com/seller/home"
+                            class="l-header__menu-link">マイページ</a></li>
+                    <span class="l-header__menu-accent">|</span>
+                    <li class="l-header__menu-item"><a href="https://haikishare.com/seller/logout"
+                            class="l-header__menu-link">ログアウト</a></li>
                     {{-- ログインしているユーザーが一般ユーザーの時 --}}
                 @elseif(Auth::guard('user')->check())
-                    <span>|</span>
-                    <li><a href="https://haikishare.com/user/home">マイページ</a></li>
-                    <span>|</span>
-                    <li><a href="https://haikishare.com/user/logout">ログアウト</a></li>
+                    <span class="l-header__menu-accent">|</span>
+                    <li class="l-header__menu-item"><a href="https://haikishare.com/user/home"
+                            class="l-header__menu-link">マイページ</a></li>
+                    <span class="l-header__menu-accent">|</span>
+                    <li class="l-header__menu-item"><a href="https://haikishare.com/user/logout"
+                            class="l-header__menu-link">ログアウト</a></li>
                     {{-- ゲストユーザーの時 --}}
                 @else
-                    <span>|</span>
-                    <li><a href="/login">ログイン</a></li>
-                    <span>|</span>
-                    <li><a href="/register">会員登録</a></li>
+                    <span class="l-header__menu-accent">|</span>
+                    <li class="l-header__menu-item"><a href="/login" class="l-header__menu-link">ログイン</a></li>
+                    <span class="l-header__menu-accent">|</span>
+                    <li class="l-header__menu-item"><a href="/register" class="l-header__menu-link">会員登録</a></li>
                 @endif
             </ul>
         </nav>

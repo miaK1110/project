@@ -26,7 +26,7 @@ class PasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            'new_password'              => ['required', 'min:6', 'max:32'],
+            'new_password'              => ['required', 'min:6', 'max:191'],
             'current_password'       => [
                 'required', function ($attribute, $value, $fail) {
                     if (!Hash::check($value, Auth::user()->password)) {

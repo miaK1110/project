@@ -3,8 +3,14 @@
     padding-top: 100px;
     margin: 0 auto;
     margin-bottom: 60px;
+    // 全体的にfontsize:smallerを適用
     p {
         font-size: smaller;
+    }
+    @include mq(smtomd) {
+        width: 80%;
+        margin: 0 auto;
+        padding-left: 0;
     }
     @include mq(dw) {
         width: 70%;
@@ -22,7 +28,7 @@
         margin: 0 auto;
         justify-content: center;
         margin-bottom: 60px;
-        @include mq(sm) {
+        @include mq(md) {
             flex-flow: column;
             margin-bottom: 30px;
         }
@@ -35,20 +41,31 @@
             width: 100%;
             min-height: 0;
         }
+        @include mq(smtomd) {
+            width: 100%;
+            margin: 0 auto;
+            min-height: 0;
+        }
         @include mq(dw) {
             width: 50%;
             min-height: 400px;
         }
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    }
+    &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
     &__text-container {
         width: 50%;
         padding-left: 1.5rem;
+        word-wrap: break-word;
         @include mq(sm) {
+            width: 100%;
+            margin: 0 auto;
+            padding-left: 0;
+        }
+        @include mq(smtomd) {
             width: 100%;
             margin: 0 auto;
             padding-left: 0;
@@ -58,8 +75,12 @@
         font-weight: bold;
         line-height: 1.5;
         margin-bottom: 20px;
+        word-wrap: break-word;
         @include mq(sm) {
             margin-top: 20px;
+        }
+        @include mq(smtomd) {
+            margin-top: 30px;
         }
     }
     &__price {

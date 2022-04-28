@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Seller;
 
 use Carbon\Carbon;
 use App\Models\Seller;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SellerRequest;
@@ -27,13 +28,16 @@ class EditSellerInfoController extends Controller
         $sellerData = Auth::user();
         // 都道府県情報を取得
         $prefData = config('pref');
+        // 企業一覧を取得
+        $companyData = Company::pluck('company_name');
 
-        if ($sellerData && $prefData) {
+        if ($sellerData && $prefData && $companyData) {
             // 情報取得できたなら情報をjson形式で返す
             return response()->json(
                 [
                     "sellerData" => $sellerData,
-                    "prefData" => $prefData
+                    "prefData" => $prefData,
+                    "companyData" => $companyData
                 ],
                 200
             );
@@ -55,7 +59,9 @@ class EditSellerInfoController extends Controller
         if (Auth::guard('seller')->user()->id == $id) {
             $seller = Seller::find($id);
             $seller->email = $request->email;
+            $seller->company = $request->company;
             $seller->branch = $request->branch;
+            $seller->postcode = $request->postcode;
             $seller->prefecture = $request->pref;
             $seller->city = $request->city;
             $seller->address = $request->address;

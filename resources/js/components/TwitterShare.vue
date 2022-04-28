@@ -4,7 +4,8 @@
             class="c-btn__share c-btn__share--twitter"
             @click="twitterShare"
         >
-            <i class="fa-brands fa-twitter"></i> この商品をシェアする
+            <i class="c-btn__share-icon fa-brands fa-twitter"></i>
+            この商品をシェアする
         </button>
     </div>
 </template>

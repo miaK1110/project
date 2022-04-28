@@ -36,6 +36,7 @@
                     required
                     autofocus
                     v-model="newPassword"
+                    placeholder="半角英数字6文字以上でご入力ください"
                 />
                 <p class="c-form__err-msg" v-if="errMessages.newPasswordErr">
                     {{ errMessages.newPasswordErr }}
@@ -59,7 +60,7 @@
                     {{ errMessages.rePasswordErr }}
                 </p>
             </div>
-            <button class="c-btn--primary" @click="changePassword">
+            <button class="c-btn--primary--higher" @click="changePassword">
                 パスワードを更新する
             </button>
         </div>

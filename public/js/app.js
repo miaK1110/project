@@ -2221,6 +2221,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vue-moment.js"));
  // momentの表示言語を日本語にする
 
@@ -2367,6 +2368,8 @@ moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale("ja");
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -2762,6 +2765,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TwitterShare",
   props: ["id", "name"],
@@ -2789,6 +2793,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -3607,6 +3612,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vue-moment.js"));
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4037,13 +4046,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "EditSellerInfo",
   data: function data() {
     return {
+      companyData: {},
       prefData: {},
       id: "",
       email: "",
+      company: "",
       branch: "",
       postcode: "",
       pref: "",
@@ -4052,6 +4094,7 @@ __webpack_require__.r(__webpack_exports__);
       phone: "",
       errMessages: {
         emailErr: "",
+        companyErr: "",
         branchErr: "",
         postcodeErr: "",
         prefErr: "",
@@ -4068,10 +4111,12 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/seller/api/getsellerandprefdata").then(function (response) {
         if (response.status === 200) {
+          _this.companyData = response.data.companyData;
           _this.prefData = response.data.prefData;
           var sellerData = response.data.sellerData;
           _this.id = sellerData.id;
           _this.email = sellerData.email;
+          _this.company = sellerData.company;
           _this.branch = sellerData.branch;
           _this.pref = sellerData.prefecture;
           _this.postcode = sellerData.postcode;
@@ -4093,6 +4138,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.errMessages = {
         emailErr: "",
+        companyErr: "",
         branchErr: "",
         postcodeErr: "",
         prefErr: "",
@@ -4103,6 +4149,7 @@ __webpack_require__.r(__webpack_exports__);
       var data = new FormData();
       data.append("id", this.id);
       data.append("email", this.email);
+      data.append("company", this.company);
       data.append("branch", this.branch);
       data.append("postcode", this.postcode);
       data.append("pref", this.pref);
@@ -4161,6 +4208,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -4344,6 +4393,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -4643,6 +4693,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "productsList",
   data: function data() {
@@ -4723,6 +4774,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -5086,6 +5138,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "EditUserInfo",
   data: function data() {
@@ -5161,10 +5244,8 @@ __webpack_require__.r(__webpack_exports__);
       data.append("pref", this.pref);
       data.append("city", this.city);
       data.append("address", this.address);
-      data.append("phone", this.phone); // console.log(...data.entries());
-
+      data.append("phone", this.phone);
       axios.post("/user/api/edituserinfo", data).then(function (res) {
-        // console.log(response);
         if (res.status === 200) {
           // status 200ならマイページへ戻る
           window.location.href = "/user/home";
@@ -5215,6 +5296,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -62819,6 +62901,7 @@ var render = function () {
         _c("div", { staticClass: "p-product-detail__wrapper" }, [
           _c("div", { staticClass: "p-product-detail__image-container" }, [
             _c("img", {
+              staticClass: "p-product-detail__img",
               attrs: { src: this.product.product_img_file_path },
               on: { error: _vm.noImage },
             }),
@@ -63249,6 +63332,7 @@ var render = function () {
                     productdata.is_sold === 0
                       ? _c("div", { staticClass: "p-product-list__img-box" }, [
                           _c("img", {
+                            staticClass: "p-product-list__img",
                             attrs: {
                               src: productdata.product_img_file_path,
                               alt: "商品の画像",
@@ -63264,6 +63348,7 @@ var render = function () {
                           { staticClass: "p-product-list__img-box--is-sold" },
                           [
                             _c("img", {
+                              staticClass: "p-product-list__img--is-sold",
                               attrs: {
                                 src: productdata.product_img_file_path,
                                 alt: "商品の画像",
@@ -63558,8 +63643,8 @@ var render = function () {
         on: { click: _vm.twitterShare },
       },
       [
-        _c("i", { staticClass: "fa-brands fa-twitter" }),
-        _vm._v(" この商品をシェアする\n    "),
+        _c("i", { staticClass: "c-btn__share-icon fa-brands fa-twitter" }),
+        _vm._v("\n        この商品をシェアする\n    "),
       ]
     ),
   ])
@@ -63659,6 +63744,7 @@ var render = function () {
             name: "newPassword",
             required: "",
             autofocus: "",
+            placeholder: "半角英数字6文字以上でご入力ください",
           },
           domProps: { value: _vm.newPassword },
           on: {
@@ -63730,7 +63816,10 @@ var render = function () {
       _vm._v(" "),
       _c(
         "button",
-        { staticClass: "c-btn--primary", on: { click: _vm.changePassword } },
+        {
+          staticClass: "c-btn--primary--higher",
+          on: { click: _vm.changePassword },
+        },
         [_vm._v("\n            パスワードを更新する\n        ")]
       ),
     ]),
@@ -64192,7 +64281,7 @@ var render = function () {
           _c(
             "button",
             {
-              staticClass: "c-btn--primary",
+              staticClass: "c-btn--primary--higher",
               attrs: { disabled: _vm.isLoading },
               on: { click: _vm.createProduct },
             },
@@ -64735,6 +64824,7 @@ var render = function () {
           _vm.url
             ? _c("div", { staticClass: "c-form__preview" }, [
                 _c("img", {
+                  staticClass: "c-form__preview-img",
                   attrs: { src: _vm.url },
                   on: { error: _vm.noImage },
                 }),
@@ -64816,7 +64906,7 @@ var render = function () {
           _c(
             "button",
             {
-              staticClass: "c-btn--primary u-mb__s",
+              staticClass: "c-btn--primary--higher u-mb__s",
               attrs: { disabled: _vm.isLoading },
               on: { click: _vm.editProduct },
             },
@@ -64826,7 +64916,7 @@ var render = function () {
           _c(
             "button",
             {
-              staticClass: "c-btn--danger",
+              staticClass: "c-btn--danger--higher",
               attrs: { disabled: _vm.isLoading },
               on: { click: _vm.deleteProduct },
             },
@@ -65003,6 +65093,82 @@ var render = function () {
           _c("div", { staticClass: "c-form__item" }, [
             _vm._m(1),
             _vm._v(" "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.company,
+                    expression: "company",
+                  },
+                ],
+                staticClass: "c-form__control",
+                attrs: {
+                  id: "company",
+                  name: "company",
+                  autocomplete: "company",
+                  autofocus: "",
+                },
+                on: {
+                  change: function ($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function (o) {
+                        return o.selected
+                      })
+                      .map(function (o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.company = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                },
+              },
+              [
+                _c("option", { attrs: { value: "", hidden: "" } }, [
+                  _vm._v("選択してください"),
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.companyData, function (val, key, index) {
+                  return _c(
+                    "option",
+                    {
+                      key: index,
+                      domProps: {
+                        value: key + 1,
+                        selected: key == _vm.company,
+                      },
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(val) +
+                          "\n                    "
+                      ),
+                    ]
+                  )
+                }),
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _vm.errMessages.companyErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.companyErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "c-form__item" }, [
+            _vm._m(2),
+            _vm._v(" "),
             _c("input", {
               directives: [
                 {
@@ -65043,7 +65209,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "c-form__item" }, [
-            _vm._m(2),
+            _vm._m(3),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -65085,7 +65251,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "c-form__item" }, [
-            _vm._m(3),
+            _vm._m(4),
             _vm._v(" "),
             _c(
               "select",
@@ -65158,7 +65324,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "c-form__item" }, [
-            _vm._m(4),
+            _vm._m(5),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -65200,7 +65366,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "c-form__item" }, [
-            _vm._m(5),
+            _vm._m(6),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -65242,7 +65408,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "c-form__item" }, [
-            _vm._m(6),
+            _vm._m(7),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -65283,6 +65449,16 @@ var render = function () {
                   _vm._v(
                     "\n                    " +
                       _vm._s(_vm.errMessages.emailErr) +
+                      "\n                "
+                  ),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errMessages.companyErr
+              ? _c("p", { staticClass: "c-form__err-msg" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.errMessages.companyErr) +
                       "\n                "
                   ),
                 ])
@@ -65351,7 +65527,10 @@ var render = function () {
           _vm._v(" "),
           _c(
             "button",
-            { staticClass: "c-btn--primary", on: { click: _vm.editInfo } },
+            {
+              staticClass: "c-btn--primary--higher",
+              on: { click: _vm.editInfo },
+            },
             [_vm._v("\n                編集する\n            ")]
           ),
         ]),
@@ -65371,6 +65550,19 @@ var staticRenderFns = [
       [
         _c("span", { staticClass: "c-tag__require" }, [_vm._v("必須")]),
         _vm._v("\n                    メールアドレス\n                "),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "c-form__label", attrs: { for: "company" } },
+      [
+        _c("span", { staticClass: "c-tag__require" }, [_vm._v("必須")]),
+        _vm._v("\n                    企業名\n                "),
       ]
     )
   },
@@ -65523,6 +65715,7 @@ var render = function () {
                   [
                     _c("div", { staticClass: "p-product-list__img-box" }, [
                       _c("img", {
+                        staticClass: "p-product-list__img",
                         attrs: {
                           src: productdata.product_img_file_path,
                           alt: "商品の画像",
@@ -65617,6 +65810,7 @@ var render = function () {
                   [
                     _c("div", { staticClass: "p-product-list__img-box" }, [
                       _c("img", {
+                        staticClass: "p-product-list__img",
                         attrs: {
                           src: productdata.product_img_file_path,
                           alt: "商品の画像",
@@ -65746,6 +65940,7 @@ var render = function () {
                   [
                     _c("div", { staticClass: "p-product-list__img-box" }, [
                       _c("img", {
+                        staticClass: "p-product-list__img",
                         attrs: {
                           src: productdata.product_img_file_path,
                           alt: "商品の画像",
@@ -65983,6 +66178,7 @@ var render = function () {
                   [
                     _c("div", { staticClass: "p-product-list__img-box" }, [
                       _c("img", {
+                        staticClass: "p-product-list__img",
                         attrs: {
                           src: productdata.product_img_file_path,
                           alt: "商品の画像",
@@ -66298,6 +66494,7 @@ var render = function () {
             name: "rePassword",
             required: "",
             autofocus: "",
+            placeholder: "半角英数字6文字以上でご入力ください",
           },
           domProps: { value: _vm.rePassword },
           on: {
@@ -66323,7 +66520,10 @@ var render = function () {
       _vm._v(" "),
       _c(
         "button",
-        { staticClass: "c-btn--primary", on: { click: _vm.changePassword } },
+        {
+          staticClass: "c-btn--primary--higher",
+          on: { click: _vm.changePassword },
+        },
         [_vm._v("\n            パスワードを更新する\n        ")]
       ),
     ]),
@@ -66735,7 +66935,7 @@ var render = function () {
           : _vm._e(),
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "c-form__item" }, [
+      _c("div", { staticClass: "c-form__item u-pb__m" }, [
         _vm._m(7),
         _vm._v(" "),
         _c("input", {
@@ -66771,10 +66971,92 @@ var render = function () {
           : _vm._e(),
       ]),
       _vm._v(" "),
+      _c("div", { staticClass: "c-form__errs-container u-pb__m" }, [
+        _vm.errMessages.emailErr
+          ? _c("p", { staticClass: "c-form__err-msg" }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.errMessages.emailErr) +
+                  "\n            "
+              ),
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.errMessages.familyNameErr
+          ? _c("p", { staticClass: "c-form__err-msg" }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.errMessages.familyNameErr) +
+                  "\n            "
+              ),
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.errMessages.firstNameErr
+          ? _c("p", { staticClass: "c-form__err-msg" }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.errMessages.firstNameErr) +
+                  "\n            "
+              ),
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.errMessages.postcodeErr
+          ? _c("p", { staticClass: "c-form__err-msg" }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.errMessages.postcodeErr) +
+                  "\n            "
+              ),
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.errMessages.prefErr
+          ? _c("p", { staticClass: "c-form__err-msg" }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.errMessages.prefErr) +
+                  "\n            "
+              ),
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.errMessages.cityErr
+          ? _c("p", { staticClass: "c-form__err-msg" }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.errMessages.cityErr) +
+                  "\n            "
+              ),
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.errMessages.addressErr
+          ? _c("p", { staticClass: "c-form__err-msg" }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.errMessages.addressErr) +
+                  "\n            "
+              ),
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.errMessages.phoneErr
+          ? _c("p", { staticClass: "c-form__err-msg" }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.errMessages.phoneErr) +
+                  "\n            "
+              ),
+            ])
+          : _vm._e(),
+      ]),
+      _vm._v(" "),
       _c(
         "button",
-        { staticClass: "c-btn--primary", on: { click: _vm.editInfo } },
-        [_vm._v("編集する")]
+        { staticClass: "c-btn--primary--higher", on: { click: _vm.editInfo } },
+        [_vm._v("\n            編集する\n        ")]
       ),
     ]),
   ])
@@ -66949,6 +67231,7 @@ var render = function () {
                       [
                         _c("div", { staticClass: "p-product-list__img-box" }, [
                           _c("img", {
+                            staticClass: "p-product-list__img",
                             attrs: {
                               src: productdata.product_img_file_path,
                               alt: "商品の画像",

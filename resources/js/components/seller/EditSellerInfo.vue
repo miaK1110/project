@@ -25,6 +25,34 @@
                 </div>
 
                 <div class="c-form__item">
+                    <label for="company" class="c-form__label">
+                        <span class="c-tag__require">必須</span>
+                        企業名
+                    </label>
+                    <select
+                        id="company"
+                        class="c-form__control"
+                        name="company"
+                        autocomplete="company"
+                        autofocus
+                        v-model="company"
+                    >
+                        <option value="" hidden>選択してください</option>
+                        <option
+                            v-for="(val, key, index) in companyData"
+                            v-bind:value="key + 1"
+                            v-bind:key="index"
+                            :selected="key == company"
+                        >
+                            {{ val }}
+                        </option>
+                    </select>
+                    <p class="c-form__err-msg" v-if="errMessages.companyErr">
+                        {{ errMessages.companyErr }}
+                    </p>
+                </div>
+
+                <div class="c-form__item">
                     <label for="branch" class="c-form__label">
                         <span class="c-tag__require">必須</span>
                         支店名
@@ -150,6 +178,9 @@
                     <p class="c-form__err-msg" v-if="errMessages.emailErr">
                         {{ errMessages.emailErr }}
                     </p>
+                    <p class="c-form__err-msg" v-if="errMessages.companyErr">
+                        {{ errMessages.companyErr }}
+                    </p>
                     <p class="c-form__err-msg" v-if="errMessages.branchErr">
                         {{ errMessages.branchErr }}
                     </p>
@@ -171,7 +202,7 @@
                 </div>
                 <!-- エラーメッセージここまで -->
 
-                <button class="c-btn--primary" @click="editInfo">
+                <button class="c-btn--primary--higher" @click="editInfo">
                     編集する
                 </button>
             </div>
@@ -184,9 +215,11 @@ export default {
     name: "EditSellerInfo",
     data() {
         return {
+            companyData: {},
             prefData: {},
             id: "",
             email: "",
+            company: "",
             branch: "",
             postcode: "",
             pref: "",
@@ -195,6 +228,7 @@ export default {
             phone: "",
             errMessages: {
                 emailErr: "",
+                companyErr: "",
                 branchErr: "",
                 postcodeErr: "",
                 prefErr: "",
@@ -211,12 +245,13 @@ export default {
                 .get("/seller/api/getsellerandprefdata")
                 .then((response) => {
                     if (response.status === 200) {
+                        this.companyData = response.data.companyData;
                         this.prefData = response.data.prefData;
-
                         const sellerData = response.data.sellerData;
 
                         this.id = sellerData.id;
                         this.email = sellerData.email;
+                        this.company = sellerData.company;
                         this.branch = sellerData.branch;
                         this.pref = sellerData.prefecture;
                         this.postcode = sellerData.postcode;
@@ -237,6 +272,7 @@ export default {
             // エラーメッセージをリセット
             this.errMessages = {
                 emailErr: "",
+                companyErr: "",
                 branchErr: "",
                 postcodeErr: "",
                 prefErr: "",
@@ -248,6 +284,7 @@ export default {
 
             data.append("id", this.id);
             data.append("email", this.email);
+            data.append("company", this.company);
             data.append("branch", this.branch);
             data.append("postcode", this.postcode);
             data.append("pref", this.pref);

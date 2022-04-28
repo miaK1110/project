@@ -142,7 +142,7 @@
                 </p>
             </div>
 
-            <div class="c-form__item">
+            <div class="c-form__item u-pb__m">
                 <label for="phone" class="c-form__label">
                     <span class="c-tag__require">必須</span>
                     電話番号
@@ -160,7 +160,38 @@
                 </p>
             </div>
 
-            <button class="c-btn--primary" @click="editInfo">編集する</button>
+            <!-- エラーメッセージ -->
+            <div class="c-form__errs-container u-pb__m">
+                <p class="c-form__err-msg" v-if="errMessages.emailErr">
+                    {{ errMessages.emailErr }}
+                </p>
+                <p class="c-form__err-msg" v-if="errMessages.familyNameErr">
+                    {{ errMessages.familyNameErr }}
+                </p>
+                <p class="c-form__err-msg" v-if="errMessages.firstNameErr">
+                    {{ errMessages.firstNameErr }}
+                </p>
+                <p class="c-form__err-msg" v-if="errMessages.postcodeErr">
+                    {{ errMessages.postcodeErr }}
+                </p>
+                <p class="c-form__err-msg" v-if="errMessages.prefErr">
+                    {{ errMessages.prefErr }}
+                </p>
+                <p class="c-form__err-msg" v-if="errMessages.cityErr">
+                    {{ errMessages.cityErr }}
+                </p>
+                <p class="c-form__err-msg" v-if="errMessages.addressErr">
+                    {{ errMessages.addressErr }}
+                </p>
+                <p class="c-form__err-msg" v-if="errMessages.phoneErr">
+                    {{ errMessages.phoneErr }}
+                </p>
+            </div>
+            <!-- エラーメッセージここまで -->
+
+            <button class="c-btn--primary--higher" @click="editInfo">
+                編集する
+            </button>
         </div>
     </div>
 </template>
@@ -244,12 +275,10 @@ export default {
             data.append("city", this.city);
             data.append("address", this.address);
             data.append("phone", this.phone);
-            // console.log(...data.entries());
 
             axios
                 .post("/user/api/edituserinfo", data)
                 .then((res) => {
-                    // console.log(response);
                     if (res.status === 200) {
                         // status 200ならマイページへ戻る
                         window.location.href = "/user/home";

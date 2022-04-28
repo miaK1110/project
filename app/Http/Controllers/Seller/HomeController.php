@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function getSellingProducts()
     {
         // 出品中の商品を取得
-        $id = Auth::id();
+        $id = Auth::guard('seller')->user()->id;
         // 出品した商品の最新5件を表示
         $allSellingProducts = Product::where('seller_id', $id)->latest()->take(5)->get();
         if ($allSellingProducts) {
@@ -53,7 +53,7 @@ class HomeController extends Controller
     public function getSoldProducts()
     {
         // ログインしている店舗のid
-        $id = Auth::id();
+        $id = Auth::guard('seller')->user()->id;
         // 購入された商品の最新5件を表示
         $allSoldProducts = Product::where('seller_id', $id)->where('is_sold', '1')->latest()->take(5)->get();
         if ($allSoldProducts) {
@@ -112,7 +112,7 @@ class HomeController extends Controller
         $id = Auth::guard('seller')->user()->id;
         // ページネートの件数
         $per_page = 9;
-        // 購入された商品のを最新順に取得
+        // 購入された商品を最新順に取得
         $products = Product::where('seller_id', $id)->where('is_sold', '1')->latest()->get();
         // ページネート
         $data = $products->paginate($per_page);

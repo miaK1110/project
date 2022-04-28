@@ -100,7 +100,7 @@
                     {{ __('都道府県') }}
                 </label>
 
-                <select class="form-control @error('prefecture') is-invalid @enderror" name="prefecture">
+                <select class="form-control @error('prefecture') is-invalid @enderror" name="prefecture" required>
                     <option value="" hidden>選択してください</option>
                     @foreach (config('pref') as $key => $item)
                         <option value="{{ $item }}" @if (old('prefecture') == $item) selected @endif>
@@ -147,7 +147,7 @@
 
 
             {{-- 電話番号form --}}
-            <div class="c-form__item">
+            <div class="c-form__item u-pb__m">
                 <label for="phone" class="c-form__label">
                     {{ __('電話番号') }}
                 </label>
@@ -164,7 +164,7 @@
 
 
 
-            <button type="submit" class="c-btn--primary">
+            <button type="submit" class="c-btn--primary--higher">
                 {{ __('登録する') }}
             </button>
         </form>

@@ -165,7 +165,11 @@
                     </p>
                 </div>
                 <div class="c-form__preview" v-if="url">
-                    <img :src="url" @error="noImage" />
+                    <img
+                        class="c-form__preview-img"
+                        :src="url"
+                        @error="noImage"
+                    />
                 </div>
                 <!-- エラーメッセージ -->
                 <div class="c-form__errs-container u-pb__m">
@@ -202,14 +206,14 @@
                 </div>
                 <!-- エラーメッセージここまで -->
                 <button
-                    class="c-btn--primary u-mb__s"
+                    class="c-btn--primary--higher u-mb__s"
                     @click="editProduct"
                     :disabled="isLoading"
                 >
                     編集する
                 </button>
                 <button
-                    class="c-btn--danger"
+                    class="c-btn--danger--higher"
                     @click="deleteProduct"
                     :disabled="isLoading"
                 >

@@ -8,6 +8,7 @@
             <div class="p-product-detail__wrapper">
                 <div class="p-product-detail__image-container">
                     <img
+                        class="p-product-detail__img"
                         :src="this.product.product_img_file_path"
                         @error="noImage"
                     />

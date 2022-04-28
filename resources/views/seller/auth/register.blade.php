@@ -148,7 +148,7 @@
             </div>
 
             {{-- 電話番号form --}}
-            <div class="c-form__item">
+            <div class="c-form__item u-pb__m">
                 <label for="phone" class="c-form__label">
                     {{ __('電話番号') }}
                 </label>
@@ -163,7 +163,7 @@
                 @enderror
             </div>
 
-            <button type="submit" class="c-btn--primary">
+            <button type="submit" class="c-btn--primary--higher">
                 {{ __('店舗登録する') }}
             </button>
         </form>

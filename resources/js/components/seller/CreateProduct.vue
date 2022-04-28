@@ -200,7 +200,7 @@
                 </div>
                 <!-- エラーメッセージここまで -->
                 <button
-                    class="c-btn--primary"
+                    class="c-btn--primary--higher"
                     @click="createProduct"
                     :disabled="isLoading"
                 >

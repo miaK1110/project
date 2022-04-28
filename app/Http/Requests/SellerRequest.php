@@ -28,12 +28,12 @@ class SellerRequest extends FormRequest
     {
         return [
             'email' => ['required', 'string', 'email:strict,rfc', new Email, 'max:191', Rule::unique('sellers')->ignore(Auth::guard('seller')->user()->id)],
-            'branch' => 'required|string|regex:/^[^#<>^;_]*$/|max:191',
-            'postcode' => 'required|string|regex:/^[0-9]+$/i|max:191',
-            'pref' => 'required|string',
-            'city' => 'required|string|max:191|regex:/^[^#<>^;_]*$/',
-            'address' => 'required|string|max:191|regex:/^[^#<>^;_]*$/',
-            'phone' => 'required|string|regex:/^[0-9]+$/i|max:191',
+            'branch' => 'required|string|regex:/^[^#<>^;_]*$/|max:50',
+            'postcode' => 'required|string|regex:/^[0-9]+$/i|max:10',
+            'pref' => 'required|string|max:10',
+            'city' => 'required|string|max:30|regex:/^[^#<>^;_]*$/',
+            'address' => 'required|string|max:161|regex:/^[^#<>^;_]*$/',
+            'phone' => 'required|string|regex:/^[0-9]+$/i|max:21',
         ];
     }
     public function messages()
@@ -48,7 +48,7 @@ class SellerRequest extends FormRequest
             'branch.regex' => '支店名に無効な文字#<>^;_が含まれています',
             'postcode.required' => '郵便番号を入力してください',
             'postcode.max' => '郵便番号が長すぎます',
-            'postcode.regex' => '郵便番号に無効な文字#<>^;_が含まれています',
+            'postcode.regex' => '郵便番号は半角数字のみで入力してください',
             'pref.required' => '都道府県を入力してください',
             'city.required' => '市町村区を入力してください',
             'city.max' => '市町村区が長すぎます',
@@ -58,7 +58,7 @@ class SellerRequest extends FormRequest
             'address.regex' => '市町村区以降の住所に無効な文字#<>^;_が含まれています',
             'phone.required' => '電話番号を入力してください',
             'phone.max' => '電話番号が長すぎます',
-            'phone.regex' => '電話番号に無効な文字#<>^;_が含まれています',
+            'phone.regex' => '電話番号は半角数字のみで入力してください',
         ];
     }
 }

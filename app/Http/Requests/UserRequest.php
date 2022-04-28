@@ -28,13 +28,13 @@ class UserRequest extends FormRequest
     {
         return [
             'email' => ['required', 'string', 'email:rfc,strict', new Email, 'max:191', Rule::unique('users')->ignore(Auth::guard('user')->user()->id)],
-            'family_name' => 'required|string|regex:/^[^#<>^;_]*$/|max:191',
-            'first_name' => 'required|string|regex:/^[^#<>^;_]*$/|max:191',
-            'postcode' => 'required|string|regex:/^[0-9]+$/i|max:191',
-            'pref' => 'required|string',
-            'city' => 'required|string|max:191|regex:/^[^#<>^;_]*$/',
-            'address' => 'required|string|max:191|regex:/^[^#<>^;_]*$/',
-            'phone' => 'required|string|regex:/^[0-9]+$/i|max:191',
+            'family_name' => 'required|string|regex:/^[^#<>^;_]*$/|max:30',
+            'first_name' => 'required|string|regex:/^[^#<>^;_]*$/|max:30',
+            'postcode' => 'required|string|regex:/^[0-9]+$/i|max:10',
+            'pref' => 'required|string|max:10',
+            'city' => 'required|string|max:30|regex:/^[^#<>^;_]*$/',
+            'address' => 'required|string|max:161|regex:/^[^#<>^;_]*$/',
+            'phone' => 'required|string|regex:/^[0-9]+$/i|max:21',
         ];
     }
     public function messages()
@@ -62,7 +62,7 @@ class UserRequest extends FormRequest
             'address.regex' => '市町村区以降の住所に無効な文字#<>^;_が含まれています',
             'phone.required' => '電話番号を入力してください',
             'phone.max' => '電話番号が長すぎます',
-            'phone.regex' => '郵便番号は半角数字のみでご入力ください',
+            'phone.regex' => '電話番号は半角数字のみでご入力ください',
         ];
     }
 }

@@ -52,4 +52,12 @@ class EditProductRequest extends FormRequest
             'file.max' => '画像のサイズが大きすぎます',
         ];
     }
+    public function attributes()
+    {
+        return [
+            'originalPrice' => '定価',
+            'price' => '販売価格',
+            'bestBeforeDate' => '賞味期限',
+        ];
+    }
 }

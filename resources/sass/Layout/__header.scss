@@ -34,35 +34,34 @@
         @include mq(md) {
             display: none;
         }
-        span {
-            font-weight: bold;
-            @include mq(md) {
-                display: none;
-            }
+    }
+    &__menu-item {
+        padding: 0 1rem;
+        display: inline-block;
+    }
+    &__menu-link {
+        position: relative;
+        font-weight: bold;
+        &::after {
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            content: "";
+            width: 100%;
+            height: 1px;
+            background: #333;
+            transform: scale(0, 1);
+            transform-origin: left top;
+            transition: transform 0.3s;
         }
-        li {
-            padding: 0 1rem;
-            display: inline-block;
-
-            a {
-                position: relative;
-                font-weight: bold;
-                &::after {
-                    position: absolute;
-                    bottom: -4px;
-                    left: 0;
-                    content: "";
-                    width: 100%;
-                    height: 1px;
-                    background: #333;
-                    transform: scale(0, 1);
-                    transform-origin: left top;
-                    transition: transform 0.3s;
-                }
-                &:hover::after {
-                    transform: scale(1, 1);
-                }
-            }
+        &:hover::after {
+            transform: scale(1, 1);
+        }
+    }
+    &__menu-accent {
+        font-weight: bold;
+        @include mq(md) {
+            display: none;
         }
     }
 }
