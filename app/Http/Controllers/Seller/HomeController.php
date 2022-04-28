@@ -30,7 +30,7 @@ class HomeController extends Controller
         // 出品中の商品を取得
         $id = Auth::id();
         // 出品した商品の最新5件を表示
-        $allSellingProducts = Product::where('seller_id', $id)->where('is_sold', '0')->latest()->take(5)->get();
+        $allSellingProducts = Product::where('seller_id', $id)->latest()->take(5)->get();
         if ($allSellingProducts) {
             // 商品情報取得できたなら商品情報をjson形式で返す
             return response()->json(
