@@ -6,11 +6,12 @@
 
     <section class="l-main">
         <div class="l-main__main-visual">
-            <img src="https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/common-img/main-visual.jpg"
+            <img class="l-main__main-visual-img"
+                src="https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/common-img/main-visual.jpg"
                 alt="main-visual-img">
             <div class="l-main__slogan">
-                <h1>あのお弁当を、</h1>
-                <h1>低価格で。</h1>
+                <h1 class="l-main__slogan-text">あのお弁当を、</h1>
+                <h1 class="l-main__slogan-text">低価格で。</h1>
                 <a class="c-btn--primary" href="/register">会員登録(無料)</a>
             </div>
         </div>

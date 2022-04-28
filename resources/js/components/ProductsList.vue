@@ -87,6 +87,7 @@
                                 v-if="productdata.is_sold === 0"
                             >
                                 <img
+                                    class="p-product-list__img"
                                     :src="productdata.product_img_file_path"
                                     @error="noImage"
                                     alt="商品の画像"
@@ -98,6 +99,7 @@
                                 v-if="productdata.is_sold === 1"
                             >
                                 <img
+                                    class="p-product-list__img--is-sold"
                                     :src="productdata.product_img_file_path"
                                     alt="商品の画像"
                                 />

@@ -17,6 +17,20 @@
             text-align: center;
             padding: 10px 20px;
         }
+        &--higher {
+            background-color: $btn-color-primary;
+            text-align: center;
+            padding: 0.8rem 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            @include mq(dw) {
+                font-size: 1.5rem;
+            }
+            &:hover {
+                opacity: 0.8;
+                transition: 1s;
+            }
+        }
         &:hover {
             opacity: 0.8;
             transition: 1s;
@@ -34,6 +48,20 @@
             font-size: 1.5rem;
             padding: 12px 30px;
         }
+        &--higher {
+            padding: 0.8rem 20px;
+            text-align: center;
+            background-color: $btn-color-error;
+            border-radius: 5px;
+            font-size: 1rem;
+            &:hover {
+                opacity: 0.8;
+                transition: 1s;
+            }
+            @include mq(dw) {
+                font-size: 1.5rem;
+            }
+        }
         &:hover {
             opacity: 0.8;
             transition: 1s;
@@ -46,7 +74,7 @@
         color: $font-color-white;
         border-radius: 5px;
         line-height: middle;
-        i {
+        &-icon {
             font-size: $font-size-m;
         }
         &--twitter {

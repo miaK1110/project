@@ -1,6 +1,6 @@
 .c-tag {
     &__require {
-        color: #fff;
+        color: $font-color-white;
         font-size: smaller;
         background: #fd5050;
         padding: 1px 5px;
@@ -9,7 +9,7 @@
     }
 
     &__optional {
-        color: #fff;
+        color: $font-color-white;
         font-size: smaller;
         background: grey;
         padding: 1px 5px;

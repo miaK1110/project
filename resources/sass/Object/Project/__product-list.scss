@@ -89,14 +89,14 @@
             width: 100%;
             height: 300px;
         }
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            &:hover {
-                opacity: 0.8;
-                transition: 1s;
-            }
+    }
+    &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        &:hover {
+            opacity: 0.8;
+            transition: 1s;
         }
     }
     &__img-box--is-sold {
@@ -132,15 +132,15 @@
             z-index: 101;
             font-size: small;
         }
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+    }
+    &__img--is-sold {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
 
-            &:hover {
-                opacity: 0.8;
-                transition: 1s;
-            }
+        &:hover {
+            opacity: 0.8;
+            transition: 1s;
         }
     }
     &__product-link {
@@ -155,7 +155,7 @@
         }
     }
     &__original-price {
-        color: red;
+        color: $font-color-error;
         font-size: smaller;
     }
     &__price {
@@ -229,6 +229,7 @@
     &__name {
         padding-top: 10px;
         padding-bottom: 10px;
+        word-wrap: break-word;
     }
     &__menu {
         display: flex;

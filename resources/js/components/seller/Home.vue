@@ -34,6 +34,7 @@
                 >
                     <div class="p-product-list__img-box">
                         <img
+                            class="p-product-list__img"
                             :src="productdata.product_img_file_path"
                             @error="noImage"
                             alt="商品の画像"
@@ -82,6 +83,7 @@
                 >
                     <div class="p-product-list__img-box">
                         <img
+                            class="p-product-list__img"
                             :src="productdata.product_img_file_path"
                             @error="noImage"
                             alt="商品の画像"

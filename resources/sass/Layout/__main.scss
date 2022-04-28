@@ -10,7 +10,7 @@
     }
     &__main-visual {
         position: relative;
-        img {
+        &-img {
             width: 100vw;
             height: auto;
             min-height: 300px;
@@ -23,7 +23,7 @@
         top: 38%;
         left: 50%;
         transform: translate(-50%, -50%);
-        h1 {
+        &-text {
             opacity: 0.8;
             padding-bottom: 1.5rem;
             @include mq(sm) {
@@ -39,20 +39,20 @@
         display: inline-block;
         padding: 50px 0;
         text-align: center;
-        h3 {
+        &-head {
             position: relative;
             text-align: center;
             margin-bottom: 60px;
-        }
-        h3:before {
-            position: absolute;
-            bottom: -10px;
-            left: calc(50% - 30px);
-            width: 60px;
-            height: 5px;
-            content: "";
-            border-radius: 3px;
-            background: $bg-color-secondary;
+            &::before {
+                position: absolute;
+                bottom: -10px;
+                left: calc(50% - 30px);
+                width: 60px;
+                height: 5px;
+                content: "";
+                border-radius: 3px;
+                background: $bg-color-secondary;
+            }
         }
     }
 }

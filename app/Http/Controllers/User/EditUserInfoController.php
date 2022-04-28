@@ -59,6 +59,7 @@ class EditUserInfoController extends Controller
             $user->email = $request->email;
             $user->first_name = $request->family_name;
             $user->first_name = $request->first_name;
+            $user->postcode = $request->postcode;
             $user->prefecture = $request->pref;
             $user->city = $request->city;
             $user->address = $request->address;
