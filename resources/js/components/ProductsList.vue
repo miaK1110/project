@@ -223,37 +223,6 @@ export default {
     },
 
     methods: {
-<<<<<<< HEAD
-        // getProducts(page) {
-        //     axios
-        //         .get(
-        //             "/api/getproducts?page=" +
-        //                 page +
-        //                 "&pref=" +
-        //                 this.pref +
-        //                 "&category=" +
-        //                 this.category +
-        //                 "&price=" +
-        //                 this.price +
-        //                 "&is-expired=" +
-        //                 this.isExpired
-        //         )
-        //         .then(({ data }) => {
-        //             console.log(data);
-        //             this.allProducts = data.data.data;
-
-        //             this.currentPageNum = data.data.current_page;
-        //             this.totalPageNum = data.data.last_page;
-        //         })
-        //         .catch((err) => {
-        //             if (err.response.status === 500) {
-        //                 // 500エラーページを表示
-        //                 window.location.href = "/500";
-        //             }
-        //         });
-        // },
-=======
->>>>>>> develop
         getSelectedProducts(page) {
             axios
                 .get(

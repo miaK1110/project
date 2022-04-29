@@ -169,8 +169,6 @@ class ProductController extends Controller
         // 今の時間を取得
         $now = Carbon::now();
 
-        // dd($input);
-
         // 都道府県が選択された時
         if (!empty($input['pref'])) {
             $products = $products->where('prefecture', $input['pref']);
