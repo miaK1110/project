@@ -223,6 +223,7 @@ export default {
     },
 
     methods: {
+<<<<<<< HEAD
         // getProducts(page) {
         //     axios
         //         .get(
@@ -251,6 +252,8 @@ export default {
         //             }
         //         });
         // },
+=======
+>>>>>>> develop
         getSelectedProducts(page) {
             axios
                 .get(
@@ -305,7 +308,6 @@ export default {
             axios
                 .get("/api/getcategorylist")
                 .then((response) => {
-                    console.log(response);
                     if (response.status === 200) {
                         this.categoryList = response.data.categoryList;
                     }

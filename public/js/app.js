@@ -2591,6 +2591,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+<<<<<<< HEAD
     // getProducts(page) {
     //     axios
     //         .get(
@@ -2618,6 +2619,8 @@ __webpack_require__.r(__webpack_exports__);
     //             }
     //         });
     // },
+=======
+>>>>>>> develop
     getSelectedProducts: function getSelectedProducts(page) {
       var _this = this;
 
@@ -2658,8 +2661,6 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       axios.get("/api/getcategorylist").then(function (response) {
-        console.log(response);
-
         if (response.status === 200) {
           _this3.categoryList = response.data.categoryList;
         }
