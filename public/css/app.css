@@ -808,6 +808,10 @@ img {
   vertical-align: middle;
 }
 
+.c-pager__item--is-disabled {
+  display: none;
+}
+
 .c-pager__link {
   vertical-align: middle;
   position: absolute;
@@ -827,9 +831,20 @@ img {
   background: #586d6c;
 }
 
+@media screen and (max-width: 768px) {
+  .c-pager__link:hover,
+  .c-pager__link.c-pager--active {
+    background: #c2dddb;
+  }
+}
+
 .c-pager__mark {
   display: table-cell;
   vertical-align: middle;
+}
+
+.c-pager__mark--is-disabled {
+  display: none;
 }
 
 @media screen and (max-width: 768px) {
@@ -837,12 +852,26 @@ img {
     display: none;
   }
 
-  .c-pager .c-pager--pre,
+  .c-pager .c-pager--pre {
+    display: inline-block;
+    width: 40%;
+    height: 50px;
+    text-align: center;
+  }
+
+  .c-pager .c-pager--pre--is-disabled {
+    display: none;
+  }
+
   .c-pager .c-pager--next {
     display: inline-block;
     width: 40%;
     height: 50px;
     text-align: center;
+  }
+
+  .c-pager .c-pager--next--is-disabled {
+    display: none;
   }
 
   .c-pager .c-pager--pre span::after {
@@ -1460,18 +1489,33 @@ img {
 .p-product-list__button-box {
   margin-top: 0.5rem;
   font-size: small;
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
   font-size: small;
 }
 
 .p-product-list__button-box--detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 4px;
   background-color: #52d6d3;
-  padding: 0.1rem 0.5rem;
+  padding: 0.2rem 0.5rem;
   margin-top: 0.5rem;
   margin-right: 0.5rem;
   vertical-align: middle;
+}
+
+@media screen and (max-width: 414px) {
+  .p-product-list__button-box--detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    padding: 0.1rem 0.3rem;
+    margin-right: 0.3rem;
+  }
 }
 
 .p-product-list__button-box--detail:hover {
@@ -1479,12 +1523,24 @@ img {
 }
 
 .p-product-list__button-box--edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 4px;
   background-color: #a8cecc;
-  padding: 0.1rem 0.5rem;
+  padding: 0.2rem 0.5rem;
   margin-top: 0.5rem;
   margin-right: 0.5rem;
-  vertical-align: middle;
+}
+
+@media screen and (max-width: 414px) {
+  .p-product-list__button-box--edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    padding: 0.1rem 0.3rem;
+  }
 }
 
 .p-product-list__button-box--edit:hover {
@@ -1492,12 +1548,14 @@ img {
 }
 
 .p-product-list__button-box--cancel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 4px;
   background-color: #f44336;
-  padding: 0.1rem 0.5rem;
+  padding: 0.2rem 0.5rem;
   margin-top: 0.5rem;
   margin-right: 0.5rem;
-  vertical-align: middle;
   color: #fff;
 }
 

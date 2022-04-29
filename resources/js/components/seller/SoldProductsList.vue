@@ -47,7 +47,9 @@
         <div class="c-pager u-mb__l">
             <ul class="c-pager__pagination">
                 <li
-                    :class="{ disabled: currentPageNum <= 1 }"
+                    :class="{
+                        'c-pager__item--is-disabled': currentPageNum <= 1,
+                    }"
                     class="c-pager__item"
                 >
                     <a href="#" @click="change(1)" class="c-pager__link"
@@ -55,7 +57,10 @@
                     >
                 </li>
                 <li
-                    :class="{ disabled: currentPageNum <= 1 }"
+                    :class="{
+                        'c-pager__item--is-disabled': currentPageNum <= 1,
+                        'c-pager--pre--is-disabled': currentPageNum <= 1,
+                    }"
                     class="c-pager--pre c-pager__item"
                 >
                     <a
@@ -77,7 +82,12 @@
                     >
                 </li>
                 <li
-                    :class="{ disabled: currentPageNum >= totalPageNum }"
+                    :class="{
+                        'c-pager__item--is-disabled':
+                            currentPageNum >= totalPageNum,
+                        'c-pager--next--is-disabled':
+                            currentPageNum >= totalPageNum,
+                    }"
                     class="c-pager--next c-pager__item"
                 >
                     <a
@@ -88,7 +98,10 @@
                     >
                 </li>
                 <li
-                    :class="{ disabled: currentPageNum >= totalPageNum }"
+                    :class="{
+                        'c-pager__item--is-disabled':
+                            currentPageNum >= totalPageNum,
+                    }"
                     class="c-pager__item"
                 >
                     <a

@@ -9,6 +9,7 @@ use Illuminate\Support\Carbon;
 use App\Mail\PurchasedNotification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Symfony\Component\Process\InputStream;
 
 class ProductController extends Controller
 {
@@ -33,7 +34,7 @@ class ProductController extends Controller
         // 今の時間を取得
         $now = Carbon::now();
 
-        $products = $products->orderBy("created_at", "desc")->paginate($per_page);
+        $products = $products->orderBy('id', 'desc')->paginate($per_page);
 
         // もし取得した商品の賞味期限が過ぎていた場合
         // 商品を賞味期限切れの状態にする
@@ -164,9 +165,11 @@ class ProductController extends Controller
         // リクエストを格納
         $input = $request->all();
         // 商品を取得
-        $products = Product::all();
+        $products = new Product();
         // 今の時間を取得
         $now = Carbon::now();
+
+        // dd($input);
 
         // 都道府県が選択された時
         if (!empty($input['pref'])) {
@@ -188,8 +191,13 @@ class ProductController extends Controller
         if (!empty($input['is-expired'])) {
             $products = $products->where('is_expired', $input['is-expired']);
         }
-        // 検索条件を元に商品を返す。何も選択されてない場合そのまま返す
-        $data = $products->paginate($per_page);
+        // 検索条件が選択されてない場合、ID降順に表示
+        if (is_null($input['pref']) && is_null($input['category']) && is_null($input['price']) && is_null($input['is-expired'])) {
+            $data = $products->orderBy('id', 'DESC')->paginate($per_page);
+        } else {
+            // 検索条件が選択されていた場合
+            $data = $products->paginate($per_page);
+        }
 
         // もし取得した商品の賞味期限が過ぎていた場合
         // 商品を賞味期限切れの状態にする

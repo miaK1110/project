@@ -121,7 +121,10 @@
                 <div class="c-pager u-mb__l">
                     <ul class="c-pager__pagination">
                         <li
-                            :class="{ disabled: currentPageNum <= 1 }"
+                            :class="{
+                                'c-pager__item--is-disabled':
+                                    currentPageNum <= 1,
+                            }"
                             class="c-pager__item"
                         >
                             <a href="#" @click="change(1)" class="c-pager__link"
@@ -129,7 +132,12 @@
                             >
                         </li>
                         <li
-                            :class="{ disabled: currentPageNum <= 1 }"
+                            :class="{
+                                'c-pager__item--is-disabled':
+                                    currentPageNum <= 1,
+                                'c-pager--pre--is-disabled':
+                                    currentPageNum <= 1,
+                            }"
                             class="c-pager--pre c-pager__item"
                         >
                             <a
@@ -158,7 +166,10 @@
                         </li>
                         <li
                             :class="{
-                                disabled: currentPageNum >= totalPageNum,
+                                'c-pager__item--is-disabled':
+                                    currentPageNum >= totalPageNum,
+                                'c-pager--next--is-disabled':
+                                    currentPageNum >= totalPageNum,
                             }"
                             class="c-pager--next c-pager__item"
                         >
@@ -171,7 +182,8 @@
                         </li>
                         <li
                             :class="{
-                                disabled: currentPageNum >= totalPageNum,
+                                'c-pager__item--is-disabled':
+                                    currentPageNum >= totalPageNum,
                             }"
                             class="c-pager__item"
                         >
@@ -206,26 +218,39 @@ export default {
             allProducts: {},
             currentPageNum: 1,
             totalPageNum: 1,
+            page: 1,
         };
     },
 
     methods: {
-        getProducts(page) {
-            axios
-                .get("/api/getproducts?page=" + page)
-                .then(({ data }) => {
-                    this.allProducts = data.data.data;
+        // getProducts(page) {
+        //     axios
+        //         .get(
+        //             "/api/getproducts?page=" +
+        //                 page +
+        //                 "&pref=" +
+        //                 this.pref +
+        //                 "&category=" +
+        //                 this.category +
+        //                 "&price=" +
+        //                 this.price +
+        //                 "&is-expired=" +
+        //                 this.isExpired
+        //         )
+        //         .then(({ data }) => {
+        //             console.log(data);
+        //             this.allProducts = data.data.data;
 
-                    this.currentPageNum = data.data.current_page;
-                    this.totalPageNum = data.data.last_page;
-                })
-                .catch((err) => {
-                    if (err.response.status === 500) {
-                        // 500エラーページを表示
-                        window.location.href = "/500";
-                    }
-                });
-        },
+        //             this.currentPageNum = data.data.current_page;
+        //             this.totalPageNum = data.data.last_page;
+        //         })
+        //         .catch((err) => {
+        //             if (err.response.status === 500) {
+        //                 // 500エラーページを表示
+        //                 window.location.href = "/500";
+        //             }
+        //         });
+        // },
         getSelectedProducts(page) {
             axios
                 .get(
@@ -305,7 +330,7 @@ export default {
         this.getCategoryData();
     },
     mounted() {
-        this.getProducts(1);
+        this.getSelectedProducts(1);
     },
     computed: {
         pages() {

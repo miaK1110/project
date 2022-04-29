@@ -188,7 +188,6 @@
                 </p>
             </div>
             <!-- エラーメッセージここまで -->
-
             <button class="c-btn--primary--higher" @click="editInfo">
                 編集する
             </button>
