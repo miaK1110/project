@@ -169,8 +169,6 @@ class ProductController extends Controller
         // 今の時間を取得
         $now = Carbon::now();
 
-        // dd($input);
-
         // 都道府県が選択された時
         if (!empty($input['pref'])) {
             $products = $products->where('prefecture', $input['pref']);
@@ -188,7 +186,7 @@ class ProductController extends Controller
             $products = $products->sortBy('price');
         }
         // 賞味期限が選択された時(0=賞味期限切れていない,1=賞味期限切れている)
-        if (!empty($input['is-expired'])) {
+        if (isset($input['is-expired'])) {
             $products = $products->where('is_expired', $input['is-expired']);
         }
         // 検索条件が選択されてない場合、ID降順に表示

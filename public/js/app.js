@@ -2586,38 +2586,10 @@ __webpack_require__.r(__webpack_exports__);
       openFilter: false,
       allProducts: {},
       currentPageNum: 1,
-      totalPageNum: 1,
-      page: 1
+      totalPageNum: 1
     };
   },
   methods: {
-    // getProducts(page) {
-    //     axios
-    //         .get(
-    //             "/api/getproducts?page=" +
-    //                 page +
-    //                 "&pref=" +
-    //                 this.pref +
-    //                 "&category=" +
-    //                 this.category +
-    //                 "&price=" +
-    //                 this.price +
-    //                 "&is-expired=" +
-    //                 this.isExpired
-    //         )
-    //         .then(({ data }) => {
-    //             console.log(data);
-    //             this.allProducts = data.data.data;
-    //             this.currentPageNum = data.data.current_page;
-    //             this.totalPageNum = data.data.last_page;
-    //         })
-    //         .catch((err) => {
-    //             if (err.response.status === 500) {
-    //                 // 500エラーページを表示
-    //                 window.location.href = "/500";
-    //             }
-    //         });
-    // },
     getSelectedProducts: function getSelectedProducts(page) {
       var _this = this;
 
@@ -2658,8 +2630,6 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       axios.get("/api/getcategorylist").then(function (response) {
-        console.log(response);
-
         if (response.status === 200) {
           _this3.categoryList = response.data.categoryList;
         }
