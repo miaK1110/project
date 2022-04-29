@@ -167,38 +167,61 @@
     &__button-box {
         margin-top: 0.5rem;
         font-size: small;
+        align-items: center;
         display: flex;
         flex-wrap: wrap;
         font-size: small;
         &--detail {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             border-radius: 4px;
             background-color: $btn-color-primary;
-            padding: 0.1rem 0.5rem;
+            padding: 0.2rem 0.5rem;
             margin-top: 0.5rem;
             margin-right: 0.5rem;
             vertical-align: middle;
+            @include mq(sm) {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 12px;
+                padding: 0.1rem 0.3rem;
+                margin-right: 0.3rem;
+            }
             &:hover {
                 opacity: 0.8;
             }
         }
         &--edit {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             border-radius: 4px;
             background-color: $btn-color-secondary;
-            padding: 0.1rem 0.5rem;
+            padding: 0.2rem 0.5rem;
             margin-top: 0.5rem;
             margin-right: 0.5rem;
-            vertical-align: middle;
+            @include mq(sm) {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 12px;
+                padding: 0.1rem 0.3rem;
+            }
             &:hover {
                 opacity: 0.8;
             }
         }
         &--cancel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             border-radius: 4px;
             background-color: $btn-color-error;
-            padding: 0.1rem 0.5rem;
+            padding: 0.2rem 0.5rem;
             margin-top: 0.5rem;
             margin-right: 0.5rem;
-            vertical-align: middle;
             color: $font-color-white;
             &:hover {
                 opacity: 0.8;

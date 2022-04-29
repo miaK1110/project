@@ -2560,6 +2560,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ProductsList",
   data: function data() {
@@ -2574,33 +2586,46 @@ __webpack_require__.r(__webpack_exports__);
       openFilter: false,
       allProducts: {},
       currentPageNum: 1,
-      totalPageNum: 1
+      totalPageNum: 1,
+      page: 1
     };
   },
   methods: {
-    getProducts: function getProducts(page) {
+    // getProducts(page) {
+    //     axios
+    //         .get(
+    //             "/api/getproducts?page=" +
+    //                 page +
+    //                 "&pref=" +
+    //                 this.pref +
+    //                 "&category=" +
+    //                 this.category +
+    //                 "&price=" +
+    //                 this.price +
+    //                 "&is-expired=" +
+    //                 this.isExpired
+    //         )
+    //         .then(({ data }) => {
+    //             console.log(data);
+    //             this.allProducts = data.data.data;
+    //             this.currentPageNum = data.data.current_page;
+    //             this.totalPageNum = data.data.last_page;
+    //         })
+    //         .catch((err) => {
+    //             if (err.response.status === 500) {
+    //                 // 500エラーページを表示
+    //                 window.location.href = "/500";
+    //             }
+    //         });
+    // },
+    getSelectedProducts: function getSelectedProducts(page) {
       var _this = this;
 
-      axios.get("/api/getproducts?page=" + page).then(function (_ref) {
+      axios.get("/api/getselectedproducts?page=" + page + "&pref=" + this.pref + "&category=" + this.category + "&price=" + this.price + "&is-expired=" + this.isExpired).then(function (_ref) {
         var data = _ref.data;
         _this.allProducts = data.data.data;
         _this.currentPageNum = data.data.current_page;
         _this.totalPageNum = data.data.last_page;
-      })["catch"](function (err) {
-        if (err.response.status === 500) {
-          // 500エラーページを表示
-          window.location.href = "/500";
-        }
-      });
-    },
-    getSelectedProducts: function getSelectedProducts(page) {
-      var _this2 = this;
-
-      axios.get("/api/getselectedproducts?page=" + page + "&pref=" + this.pref + "&category=" + this.category + "&price=" + this.price + "&is-expired=" + this.isExpired).then(function (_ref2) {
-        var data = _ref2.data;
-        _this2.allProducts = data.data.data;
-        _this2.currentPageNum = data.data.current_page;
-        _this2.totalPageNum = data.data.last_page;
       })["catch"](function (err) {
         if (err.response.status === 500) {
           // 500エラーページを表示
@@ -2616,11 +2641,11 @@ __webpack_require__.r(__webpack_exports__);
       if (page >= 1 && page <= this.totalPageNum) this.getSelectedProducts(page);
     },
     getPrefData: function getPrefData() {
-      var _this3 = this;
+      var _this2 = this;
 
       axios.get("/api/getprefdata").then(function (response) {
         if (response.status === 200) {
-          _this3.prefData = response.data.prefData;
+          _this2.prefData = response.data.prefData;
         }
       })["catch"](function (err) {
         if (err.response.status === 500) {
@@ -2630,13 +2655,13 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     getCategoryData: function getCategoryData() {
-      var _this4 = this;
+      var _this3 = this;
 
       axios.get("/api/getcategorylist").then(function (response) {
         console.log(response);
 
         if (response.status === 200) {
-          _this4.categoryList = response.data.categoryList;
+          _this3.categoryList = response.data.categoryList;
         }
       })["catch"](function (err) {
         if (err.response.status === 500) {
@@ -2658,7 +2683,7 @@ __webpack_require__.r(__webpack_exports__);
     this.getCategoryData();
   },
   mounted: function mounted() {
-    this.getProducts(1);
+    this.getSelectedProducts(1);
   },
   computed: {
     pages: function pages() {
@@ -4513,6 +4538,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "productsList",
   data: function data() {
@@ -4594,6 +4632,19 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -63399,7 +63450,9 @@ var render = function () {
                 "li",
                 {
                   staticClass: "c-pager__item",
-                  class: { disabled: _vm.currentPageNum <= 1 },
+                  class: {
+                    "c-pager__item--is-disabled": _vm.currentPageNum <= 1,
+                  },
                 },
                 [
                   _c(
@@ -63426,7 +63479,10 @@ var render = function () {
                 "li",
                 {
                   staticClass: "c-pager--pre c-pager__item",
-                  class: { disabled: _vm.currentPageNum <= 1 },
+                  class: {
+                    "c-pager__item--is-disabled": _vm.currentPageNum <= 1,
+                    "c-pager--pre--is-disabled": _vm.currentPageNum <= 1,
+                  },
                 },
                 [
                   _c(
@@ -63479,7 +63535,10 @@ var render = function () {
                 {
                   staticClass: "c-pager--next c-pager__item",
                   class: {
-                    disabled: _vm.currentPageNum >= _vm.totalPageNum,
+                    "c-pager__item--is-disabled":
+                      _vm.currentPageNum >= _vm.totalPageNum,
+                    "c-pager--next--is-disabled":
+                      _vm.currentPageNum >= _vm.totalPageNum,
                   },
                 },
                 [
@@ -63508,7 +63567,8 @@ var render = function () {
                 {
                   staticClass: "c-pager__item",
                   class: {
-                    disabled: _vm.currentPageNum >= _vm.totalPageNum,
+                    "c-pager__item--is-disabled":
+                      _vm.currentPageNum >= _vm.totalPageNum,
                   },
                 },
                 [
@@ -66022,8 +66082,10 @@ var render = function () {
           _c(
             "li",
             {
-              staticClass: "c-pager__item",
-              class: { disabled: _vm.currentPageNum <= 1 },
+              staticClass: "c-pager--pre c-pager__item",
+              class: {
+                "c-pager__item--is-disabled": _vm.currentPageNum <= 1,
+              },
             },
             [
               _c(
@@ -66046,7 +66108,10 @@ var render = function () {
             "li",
             {
               staticClass: "c-pager--pre c-pager__item",
-              class: { disabled: _vm.currentPageNum <= 1 },
+              class: {
+                "c-pager__item--is-disabled": _vm.currentPageNum <= 1,
+                "c-pager--pre--is-disabled": _vm.currentPageNum <= 1,
+              },
             },
             [
               _c(
@@ -66094,7 +66159,12 @@ var render = function () {
             "li",
             {
               staticClass: "c-pager--next c-pager__item",
-              class: { disabled: _vm.currentPageNum >= _vm.totalPageNum },
+              class: {
+                "c-pager__item--is-disabled":
+                  _vm.currentPageNum >= _vm.totalPageNum,
+                "c-pager--next--is-disabled":
+                  _vm.currentPageNum >= _vm.totalPageNum,
+              },
             },
             [
               _c(
@@ -66117,7 +66187,10 @@ var render = function () {
             "li",
             {
               staticClass: "c-pager__item",
-              class: { disabled: _vm.currentPageNum >= _vm.totalPageNum },
+              class: {
+                "c-pager__item--is-disabled":
+                  _vm.currentPageNum >= _vm.totalPageNum,
+              },
             },
             [
               _c(
@@ -66250,7 +66323,9 @@ var render = function () {
             "li",
             {
               staticClass: "c-pager__item",
-              class: { disabled: _vm.currentPageNum <= 1 },
+              class: {
+                "c-pager__item--is-disabled": _vm.currentPageNum <= 1,
+              },
             },
             [
               _c(
@@ -66273,7 +66348,10 @@ var render = function () {
             "li",
             {
               staticClass: "c-pager--pre c-pager__item",
-              class: { disabled: _vm.currentPageNum <= 1 },
+              class: {
+                "c-pager__item--is-disabled": _vm.currentPageNum <= 1,
+                "c-pager--pre--is-disabled": _vm.currentPageNum <= 1,
+              },
             },
             [
               _c(
@@ -66321,7 +66399,12 @@ var render = function () {
             "li",
             {
               staticClass: "c-pager--next c-pager__item",
-              class: { disabled: _vm.currentPageNum >= _vm.totalPageNum },
+              class: {
+                "c-pager__item--is-disabled":
+                  _vm.currentPageNum >= _vm.totalPageNum,
+                "c-pager--next--is-disabled":
+                  _vm.currentPageNum >= _vm.totalPageNum,
+              },
             },
             [
               _c(
@@ -66344,7 +66427,10 @@ var render = function () {
             "li",
             {
               staticClass: "c-pager__item",
-              class: { disabled: _vm.currentPageNum >= _vm.totalPageNum },
+              class: {
+                "c-pager__item--is-disabled":
+                  _vm.currentPageNum >= _vm.totalPageNum,
+              },
             },
             [
               _c(

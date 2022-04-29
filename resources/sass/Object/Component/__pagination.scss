@@ -16,6 +16,9 @@
         text-align: center;
         position: relative;
         vertical-align: middle;
+        &--is-disabled {
+            display: none;
+        }
     }
     &__link {
         vertical-align: middle;
@@ -32,11 +35,18 @@
         &.c-pager--active {
             color: $font-color-white;
             background: $bg-color-footer;
+            // タブレットサイズ以下ではホバー時・クリック時背景色を変えない
+            @include mq(md) {
+                background: $bg-color-secondary;
+            }
         }
     }
     &__mark {
         display: table-cell;
         vertical-align: middle;
+        &--is-disabled {
+            display: none;
+        }
     }
 }
 
@@ -46,12 +56,23 @@
         &__pagination li {
             display: none;
         }
-        .c-pager--pre,
+        .c-pager--pre {
+            display: inline-block;
+            width: 40%;
+            height: 50px;
+            text-align: center;
+            &--is-disabled {
+                display: none;
+            }
+        }
         .c-pager--next {
             display: inline-block;
             width: 40%;
             height: 50px;
             text-align: center;
+            &--is-disabled {
+                display: none;
+            }
         }
         .c-pager--pre span::after {
             content: "　前のページ";
