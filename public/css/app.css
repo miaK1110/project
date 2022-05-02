@@ -708,7 +708,7 @@ img {
 .c-tag__require {
   color: #fff;
   font-size: smaller;
-  background: #fd5050;
+  background: #f44336;
   padding: 1px 5px;
   margin: 0 0.5rem 0 0;
   border-radius: 5px;
@@ -941,6 +941,12 @@ img {
   padding-top: 30px;
 }
 
+@media screen and (min-width:769px) and (max-width:1200px) {
+  .p-about-foodloss__head {
+    padding-top: 50px;
+  }
+}
+
 @media screen and (min-width: 1365px) {
   .p-about-foodloss__head {
     padding-top: 60px;
@@ -948,35 +954,42 @@ img {
 }
 
 .p-about-foodloss__wrapper {
-  min-height: 300px;
   background-color: #c2dddb;
   margin: 0 auto;
 }
 
 .p-about-foodloss__text-wrapper {
-  padding-top: 30px;
   width: 60%;
   text-align: left;
   margin: 0 auto;
+  padding: 30px 0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 415px) and (max-width: 768px) {
   .p-about-foodloss__text-wrapper {
-    width: 70%;
-    padding-bottom: 2rem;
+    width: 75%;
+    padding: 45px 0;
   }
 }
 
 @media screen and (max-width: 414px) {
   .p-about-foodloss__text-wrapper {
     width: 85%;
-    padding-bottom: 2rem;
+    padding: 30px 0;
+  }
+}
+
+@media screen and (min-width:769px) and (max-width:1200px) {
+  .p-about-foodloss__text-wrapper {
+    width: 70%;
+    padding: 50px 0;
   }
 }
 
 @media screen and (min-width: 1365px) {
   .p-about-foodloss__text-wrapper {
     width: 50%;
+    padding: 60px 0;
   }
 }
 
