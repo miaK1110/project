@@ -148,10 +148,8 @@
         padding: 10px 0px;
         line-height: normal;
         &:hover {
-            img {
-                opacity: 0.9;
-                transition: 1s;
-            }
+            opacity: 0.9;
+            transition: 1s;
         }
     }
     &__original-price {
