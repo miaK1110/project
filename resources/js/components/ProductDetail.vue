@@ -130,10 +130,12 @@ export default {
             return segments[2];
         },
         getProduct() {
+            this.isLoading = true;
             const id = this.getId();
             axios
                 .get("/api/getproduct/" + id)
                 .then((response) => {
+                    this.isLoading = false;
                     this.product = response.data.productdata;
                     this.pId = response.data.productdata.id;
                     this.seller = response.data.sellerdata;
@@ -154,7 +156,6 @@ export default {
                 .then((response) => {
                     this.role = response.data.role;
                     this.uId = response.data.id;
-                    // console.log(response);
                 })
                 .catch((err) => {
                     if (err.response.status === 500) {
@@ -220,9 +221,6 @@ export default {
     },
     created() {
         this.getProduct();
-    },
-    mounted() {
-        // this.$nextTick(function () {});
         this.getRole();
     },
 };

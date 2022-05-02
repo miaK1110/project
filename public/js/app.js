@@ -2272,8 +2272,10 @@ moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale("ja");
     getProduct: function getProduct() {
       var _this = this;
 
+      this.isLoading = true;
       var id = this.getId();
       axios.get("/api/getproduct/" + id).then(function (response) {
+        _this.isLoading = false;
         _this.product = response.data.productdata;
         _this.pId = response.data.productdata.id;
         _this.seller = response.data.sellerdata;
@@ -2353,9 +2355,6 @@ moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale("ja");
   },
   created: function created() {
     this.getProduct();
-  },
-  mounted: function mounted() {
-    // this.$nextTick(function () {});
     this.getRole();
   }
 });
