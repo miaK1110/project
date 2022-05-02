@@ -941,6 +941,12 @@ img {
   padding-top: 30px;
 }
 
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+  .p-about-foodloss__head {
+    padding-top: 50px;
+  }
+}
+
 @media screen and (min-width: 1365px) {
   .p-about-foodloss__head {
     padding-top: 60px;
@@ -956,12 +962,13 @@ img {
   width: 60%;
   text-align: left;
   margin: 0 auto;
-  padding: 40px 0;
+  padding: 30px 0;
 }
 
 @media screen and (min-width: 415px) and (max-width: 768px) {
   .p-about-foodloss__text-wrapper {
     width: 75%;
+    padding: 45px 0;
   }
 }
 
@@ -969,6 +976,13 @@ img {
   .p-about-foodloss__text-wrapper {
     width: 85%;
     padding: 30px 0;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+  .p-about-foodloss__text-wrapper {
+    width: 70%;
+    padding: 50px 0;
   }
 }
 

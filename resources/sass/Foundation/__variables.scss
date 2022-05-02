@@ -39,4 +39,5 @@ $breakpoints: (
     "xl": "screen and (max-width: 1200px)",
     "dw": "screen and (min-width: 1365px)",
     "smtomd": "screen and (min-width: 415px) and (max-width: 768px)",
+    "mdtoxl": "screen and (min-width: 769px) and (max-width: 1200px)",
 ) !default;
