@@ -179,11 +179,11 @@ class ProductController extends Controller
         }
         // 価格が高い順が選択された時
         if (!empty($input['price']) && $input['price'] == 'desc') {
-            $products = $products->sortByDesc('price');
+            $products = $products->orderBy('price', 'desc');
         }
         // 価格が低い順が選択された時
         if (!empty($input['price']) && $input['price'] == 'asc') {
-            $products = $products->sortBy('price');
+            $products = $products->orderBy('price', 'asc');
         }
         // 賞味期限が選択された時(0=賞味期限切れていない,1=賞味期限切れている)
         if (isset($input['is-expired'])) {
