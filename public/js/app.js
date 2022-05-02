@@ -2222,6 +2222,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vue-moment.js"));
  // momentの表示言語を日本語にする
 
@@ -2252,8 +2255,9 @@ moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale("ja");
       // 売り切れている商品かどうか
       isPurchaser: false,
       // 購入したユーザーと見ているユーザーが同じか
-      isLoading: false // ローディング中か判定
-
+      isLoading: false,
+      // ローディング中か判定
+      showInfomation: false
     };
   },
   methods: {
@@ -2272,10 +2276,8 @@ moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale("ja");
     getProduct: function getProduct() {
       var _this = this;
 
-      this.isLoading = true;
       var id = this.getId();
       axios.get("/api/getproduct/" + id).then(function (response) {
-        _this.isLoading = false;
         _this.product = response.data.productdata;
         _this.pId = response.data.productdata.id;
         _this.seller = response.data.sellerdata;
@@ -2294,7 +2296,7 @@ moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale("ja");
 
       axios.get("/api/getrole").then(function (response) {
         _this2.role = response.data.role;
-        _this2.uId = response.data.id; // console.log(response);
+        _this2.uId = response.data.id;
       })["catch"](function (err) {
         if (err.response.status === 500) {
           // 500エラーページを表示
@@ -2356,6 +2358,10 @@ moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale("ja");
   created: function created() {
     this.getProduct();
     this.getRole();
+  },
+  mounted: function mounted() {
+    // マスタッシュ構文のちらつき防止
+    this.showInfomation = true;
   }
 });
 
@@ -5229,7 +5235,6 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get("/user/api/getuserandprefdata").then(function (response) {
-        // console.log(response);
         if (response.status === 200) {
           _this.prefData = response.data.prefData;
           var userData = response.data.userData;
@@ -62939,7 +62944,17 @@ var render = function () {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "p-product-detail__text-container" },
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.showInfomation,
+                  expression: "showInfomation",
+                },
+              ],
+              staticClass: "p-product-detail__text-container",
+            },
             [
               _c("h4", { staticClass: "p-product-detail__description" }, [
                 _vm._v(

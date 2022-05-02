@@ -13,7 +13,10 @@
                         @error="noImage"
                     />
                 </div>
-                <div class="p-product-detail__text-container">
+                <div
+                    class="p-product-detail__text-container"
+                    v-show="showInfomation"
+                >
                     <h4 class="p-product-detail__description">
                         {{ this.product.description }}
                     </h4>
@@ -114,6 +117,7 @@ export default {
             sold: "", // 売り切れている商品かどうか
             isPurchaser: false, // 購入したユーザーと見ているユーザーが同じか
             isLoading: false, // ローディング中か判定
+            showInfomation: false,
         };
     },
     methods: {
@@ -130,12 +134,10 @@ export default {
             return segments[2];
         },
         getProduct() {
-            this.isLoading = true;
             const id = this.getId();
             axios
                 .get("/api/getproduct/" + id)
                 .then((response) => {
-                    this.isLoading = false;
                     this.product = response.data.productdata;
                     this.pId = response.data.productdata.id;
                     this.seller = response.data.sellerdata;
@@ -222,6 +224,10 @@ export default {
     created() {
         this.getProduct();
         this.getRole();
+    },
+    mounted() {
+        // マスタッシュ構文のちらつき防止
+        this.showInfomation = true;
     },
 };
 </script>
