@@ -5,7 +5,7 @@
             <h3 class="p-product-detail__title">
                 {{ this.product.product_name }}
             </h3>
-            <div class="p-product-detail__wrapper">
+            <div class="p-product-detail__wrapper" v-cloak>
                 <div class="p-product-detail__image-container">
                     <img
                         class="p-product-detail__img"
@@ -89,7 +89,11 @@
         </div>
     </div>
 </template>
-
+<style>
+[v-cloak] {
+    display: none;
+}
+</style>
 <script>
 Vue.use(require("vue-moment"));
 import moment from "moment";
@@ -218,8 +222,10 @@ export default {
                 });
         },
     },
-    mounted() {
+    created() {
         this.getProduct();
+    },
+    mounted() {
         this.getRole();
     },
 };
