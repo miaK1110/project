@@ -10,7 +10,7 @@
     @Component('Components.flush_msg')
     @endcomponent
 
-    <div id="app">
+    <div id="app" v-cloak>
         {{-- ヘッダーを読み込み --}}
         @component('Components.header')
         @endcomponent

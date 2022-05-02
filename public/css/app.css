@@ -250,6 +250,10 @@ img {
   vertical-align: bottom;
 }
 
+[v-cloak] {
+  display: none;
+}
+
 .l-header {
   width: 100vw;
   height: 100px;
