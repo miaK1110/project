@@ -914,46 +914,46 @@ img {
   justify-content: center;
 }
 
-.p-about {
+.p-about-site {
   margin: 80px 0 0 0;
 }
 
-.p-about__wrapper {
+.p-about-site__wrapper {
   text-align: center;
   margin: 0 auto;
 }
 
-.p-about__text {
+.p-about-site__text {
   display: inline-block;
   padding-bottom: 1rem;
 }
 
-.p-about__accent {
+.p-about-site__accent {
   color: #387c79;
 }
 
-.p-about2 {
+.p-about-foodloss {
   margin: 0 auto;
   margin-top: 40px;
 }
 
-.p-about2__head {
+.p-about-foodloss__head {
   padding-top: 30px;
 }
 
 @media screen and (min-width: 1365px) {
-  .p-about2__head {
+  .p-about-foodloss__head {
     padding-top: 60px;
   }
 }
 
-.p-about2__wrapper {
+.p-about-foodloss__wrapper {
   min-height: 300px;
   background-color: #c2dddb;
   margin: 0 auto;
 }
 
-.p-about2__text-wrapper {
+.p-about-foodloss__text-wrapper {
   padding-top: 30px;
   width: 60%;
   text-align: left;
@@ -961,52 +961,52 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .p-about2__text-wrapper {
+  .p-about-foodloss__text-wrapper {
     width: 70%;
     padding-bottom: 2rem;
   }
 }
 
 @media screen and (max-width: 414px) {
-  .p-about2__text-wrapper {
+  .p-about-foodloss__text-wrapper {
     width: 85%;
     padding-bottom: 2rem;
   }
 }
 
 @media screen and (min-width: 1365px) {
-  .p-about2__text-wrapper {
+  .p-about-foodloss__text-wrapper {
     width: 50%;
   }
 }
 
-.p-about2__text {
+.p-about-foodloss__text {
   line-height: normal;
 }
 
-.p-about3 {
+.p-about-system {
   margin: 0 auto;
   width: 100%;
   min-height: 400px;
 }
 
-.p-about3__title-wrapper {
+.p-about-system__title-wrapper {
   padding: 30px 0;
 }
 
 @media screen and (min-width: 1365px) {
-  .p-about3__title-wrapper {
+  .p-about-system__title-wrapper {
     padding: 80px 0;
   }
 }
 
-.p-about3__title--small {
+.p-about-system__title--small {
   text-align: center;
   font-size: 10px;
   padding-top: 4px;
 }
 
-.p-about3__wrapper {
+.p-about-system__wrapper {
   width: 90%;
   display: flex;
   justify-content: center;
@@ -1016,27 +1016,27 @@ img {
 }
 
 @media screen and (min-width: 1365px) {
-  .p-about3__wrapper {
+  .p-about-system__wrapper {
     width: 60%;
   }
 }
 
-.p-about3__text-container {
+.p-about-system__text-container {
   padding: 2rem 1rem;
   line-height: 1.5;
 }
 
-.p-about3__head {
+.p-about-system__head {
   padding-bottom: 1rem;
 }
 
-.p-about3__img-container {
+.p-about-system__img-container {
   min-width: 40%;
   padding: 1rem;
 }
 
 @media screen and (max-width: 768px) {
-  .p-about3__img-container {
+  .p-about-system__img-container {
     display: none;
   }
 }
@@ -1469,7 +1469,7 @@ img {
   line-height: normal;
 }
 
-.p-product-list__product-link:hover img {
+.p-product-list__product-link:hover {
   opacity: 0.9;
   transition: 1s;
 }

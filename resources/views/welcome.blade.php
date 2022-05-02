@@ -17,26 +17,26 @@
         </div>
     </section>
 
-    <section class="p-about">
-        <div class="p-about__wrapper">
-            <p class="p-about__text">『<span class="p-about__accent">haiki-share</span>』は、</p>
-            <p class="p-about__text">あなたが利用している</p><br />
-            <p class="p-about__text">コンビニのお弁当やおにぎりなどの</p><br />
-            <p class="p-about__text">食品を低価格で提供するサービスです。</p>
+    <section class="p-about-site">
+        <div class="p-about-site__wrapper">
+            <p class="p-about-site__text">『<span class="p-about-site__accent">haiki-share</span>』は、</p>
+            <p class="p-about-site__text">あなたが利用している</p><br />
+            <p class="p-about-site__text">コンビニのお弁当やおにぎりなどの</p><br />
+            <p class="p-about-site__text">食品を低価格で提供するサービスです。</p>
         </div>
     </section>
 
-    <section class="p-about2">
-        <div class="p-about2__wrapper">
-            <h2 class="p-about2__head">知っていますか？</h2>
-            <div class="p-about2__text-wrapper">
-                <p class="p-about2__text">コンビニでは、1店舗あたり1日に10～15キロ
+    <section class="p-about-foodloss">
+        <div class="p-about-foodloss__wrapper">
+            <h2 class="p-about-foodloss__head">知っていますか？</h2>
+            <div class="p-about-foodloss__text-wrapper">
+                <p class="p-about-foodloss__text">コンビニでは、1店舗あたり1日に10～15キロ
                     程度の食品を廃棄しています。
                     日本全体の食品ロスのうち約3ｰ5%は
                     コンビニからの廃棄物だと言われています。
                 </p>
                 <BR />
-                <p class="p-about2__text">
+                <p class="p-about-foodloss__text">
                     しかし、その廃棄された物の中にはまだまだおいしく
                     食べれるものがたくさんあるのが現状。
                     このサービスを通して、
@@ -45,17 +45,17 @@
         </div>
     </section>
 
-    <section class="p-about3">
-        <div class="p-about3__title-wrapper">
-            <h2 class="p-about3__title">どういう仕組みなの?</h2>
-            <p class="p-about3__title--small">その疑問にお答えします!</p>
+    <section class="p-about-system">
+        <div class="p-about-system__title-wrapper">
+            <h2 class="p-about-system__title">どういう仕組みなの?</h2>
+            <p class="p-about-system__title--small">その疑問にお答えします!</p>
         </div>
-        <div class="p-about3__wrapper">
-            <div class="p-about3__img-container">
+        <div class="p-about-system__wrapper">
+            <div class="p-about-system__img-container">
                 <img src="https://haiki-share-backet.s3.ap-northeast-1.amazonaws.com/common-img/female-staff.png" />
             </div>
-            <div class="p-about3__text-container">
-                <h3 class="p-about3__head">消費期限の前にある「販売期限」</h3>
+            <div class="p-about-system__text-container">
+                <h3 class="p-about-system__head">消費期限の前にある「販売期限」</h3>
                 <p>コンビニで売っている食品には、「賞味期限」と「消費期限」の他に
                     「販売期限」というものが設定されています。これは「賞味期限・消費期限」よりもずっと手前に設定されており、
                     販売期限を過ぎたからといって品質や安全性に問題はありませんが
