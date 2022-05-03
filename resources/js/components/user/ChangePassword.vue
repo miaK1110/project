@@ -36,6 +36,7 @@
                     required
                     autofocus
                     v-model="newPassword"
+                    placeholder="半角英数字6文字以上でご入力ください"
                 />
                 <p class="c-form__err-msg" v-if="errMessages.newPasswordErr">
                     {{ errMessages.newPasswordErr }}
@@ -54,7 +55,6 @@
                     required
                     autofocus
                     v-model="rePassword"
-                    placeholder="半角英数字6文字以上でご入力ください"
                 />
                 <p class="c-form__err-msg" v-if="errMessages.rePasswordErr">
                     {{ errMessages.rePasswordErr }}

@@ -66541,6 +66541,7 @@ var render = function () {
             name: "newPassword",
             required: "",
             autofocus: "",
+            placeholder: "半角英数字6文字以上でご入力ください",
           },
           domProps: { value: _vm.newPassword },
           on: {
@@ -66587,7 +66588,6 @@ var render = function () {
             name: "rePassword",
             required: "",
             autofocus: "",
-            placeholder: "半角英数字6文字以上でご入力ください",
           },
           domProps: { value: _vm.rePassword },
           on: {
