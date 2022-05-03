@@ -71,10 +71,6 @@
             margin: 0 auto;
             padding-left: 0;
         }
-        // 画像との調整
-        @media screen and (min-width: 697px) and (max-width: 768px) {
-            margin-top: 60px;
-        }
     }
     &__description {
         font-weight: bold;
@@ -84,9 +80,6 @@
         overflow: hidden;
         @include mq(sm) {
             margin-top: 20px;
-        }
-        @include mq(smtomd) {
-            margin-top: 30px;
         }
     }
     &__price {
