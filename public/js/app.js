@@ -2222,9 +2222,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vue-moment.js"));
  // momentの表示言語を日本語にする
 
@@ -2284,6 +2281,7 @@ moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale("ja");
         _this.company = response.data.companyname;
         _this.sold = response.data.productdata.is_sold;
         _this.isPurchaser = response.data.is_purchaser;
+        _this.showInfomation = true;
       })["catch"](function (err) {
         if (err.response.status === 500) {
           // 500エラーページを表示
@@ -2358,7 +2356,6 @@ moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale("ja");
   created: function created() {
     this.getProduct();
     this.getRole();
-    this.showInfomation = true;
   }
 });
 
@@ -62923,167 +62920,176 @@ var render = function () {
     [
       _c("loading-component", { attrs: { isLoading: this.isLoading } }),
       _vm._v(" "),
-      _c("div", { staticClass: "p-product-detail" }, [
-        _c("h3", { staticClass: "p-product-detail__title" }, [
-          _vm._v(
-            "\n            " + _vm._s(this.product.product_name) + "\n        "
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "p-product-detail__wrapper" }, [
-          _c("div", { staticClass: "p-product-detail__image-container" }, [
-            _c("img", {
-              staticClass: "p-product-detail__img",
-              attrs: { src: this.product.product_img_file_path },
-              on: { error: _vm.noImage },
-            }),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.showInfomation,
+              expression: "showInfomation",
+            },
+          ],
+          staticClass: "p-product-detail",
+        },
+        [
+          _c("h3", { staticClass: "p-product-detail__title" }, [
+            _vm._v(
+              "\n            " +
+                _vm._s(this.product.product_name) +
+                "\n        "
+            ),
           ]),
           _vm._v(" "),
-          _c(
-            "div",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.showInfomation,
-                  expression: "showInfomation",
-                },
-              ],
-              staticClass: "p-product-detail__text-container",
-            },
-            [
-              _c("h4", { staticClass: "p-product-detail__description" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(this.product.description) +
-                    "\n                "
-                ),
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "p-product-detail__price" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(this.product.price) +
-                    "円（税込）\n                "
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "p-product-detail__details" }, [
-                _c("p", [
-                  _vm._v(
-                    "\n                        賞味期限:\n                        " +
-                      _vm._s(
-                        _vm.changeDateFormat(this.product.best_defore_date)
-                      ) +
-                      "\n                    "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "\n                        販売店舗名：" +
-                      _vm._s(this.company + this.seller.branch) +
-                      "\n                    "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "\n                        住所：" +
-                      _vm._s(
-                        this.seller.prefecture +
-                          this.seller.city +
-                          this.seller.address
-                      ) +
-                      "\n                    "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("p", [_vm._v("郵便番号:" + _vm._s(this.seller.postcode))]),
-                _vm._v(" "),
-                _c("p", [_vm._v("電話番号：" + _vm._s(this.seller.phone))]),
-              ]),
-              _vm._v(" "),
-              _c("twitter-share", {
-                attrs: { id: this.product.id, name: this.product.product_name },
+          _c("div", { staticClass: "p-product-detail__wrapper" }, [
+            _c("div", { staticClass: "p-product-detail__image-container" }, [
+              _c("img", {
+                staticClass: "p-product-detail__img",
+                attrs: { src: this.product.product_img_file_path },
+                on: { error: _vm.noImage },
               }),
-            ],
-            1
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "p-product-detail__btn-container" }, [
-          this.role === "user" && this.sold === 0
-            ? _c("div", [
-                _c(
-                  "button",
-                  {
-                    staticClass: "c-btn--primary c-btn--primary--big u-mb__s",
-                    on: { click: _vm.purchaseProduct },
-                  },
-                  [
-                    _vm._v(
-                      "\n                    この商品を購入する\n                "
-                    ),
-                  ]
-                ),
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "p-product-detail__text-container" },
+              [
+                _c("h4", { staticClass: "p-product-detail__description" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(this.product.description) +
+                      "\n                "
+                  ),
+                ]),
                 _vm._v(" "),
+                _c("p", { staticClass: "p-product-detail__price" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(this.product.price) +
+                      "円（税込）\n                "
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "p-product-detail__details" }, [
+                  _c("p", [
+                    _vm._v(
+                      "\n                        賞味期限:\n                        " +
+                        _vm._s(
+                          _vm.changeDateFormat(this.product.best_defore_date)
+                        ) +
+                        "\n                    "
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _vm._v(
+                      "\n                        販売店舗名：" +
+                        _vm._s(this.company + this.seller.branch) +
+                        "\n                    "
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _vm._v(
+                      "\n                        住所：" +
+                        _vm._s(
+                          this.seller.prefecture +
+                            this.seller.city +
+                            this.seller.address
+                        ) +
+                        "\n                    "
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("郵便番号:" + _vm._s(this.seller.postcode))]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("電話番号：" + _vm._s(this.seller.phone))]),
+                ]),
+                _vm._v(" "),
+                _c("twitter-share", {
+                  attrs: {
+                    id: this.product.id,
+                    name: this.product.product_name,
+                  },
+                }),
+              ],
+              1
+            ),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "p-product-detail__btn-container" }, [
+            this.role === "user" && this.sold === 0
+              ? _c("div", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "c-btn--primary c-btn--primary--big u-mb__s",
+                      on: { click: _vm.purchaseProduct },
+                    },
+                    [
+                      _vm._v(
+                        "\n                    この商品を購入する\n                "
+                      ),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "p-product-detail__attention" }, [
+                    _vm._v(
+                      "\n                    お支払いは店舗でしていただきます。\n                "
+                    ),
+                  ]),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            this.role === "guest" && this.sold === 0
+              ? _c("div", [
+                  _c("p", { staticClass: "p-product-detail__attention" }, [
+                    _vm._v(
+                      "\n                    商品を購入するにはログインが必要です。\n                "
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "c-link__underline",
+                      attrs: { href: "https://haikishare.com/user/login" },
+                    },
+                    [_vm._v("こちらからログインをしてください。")]
+                  ),
+                ])
+              : _vm._e(),
+          ]),
+          _vm._v(" "),
+          this.sold === 1
+            ? _c("div", { staticClass: "u-align__center u-pb__s" }, [
                 _c("p", { staticClass: "p-product-detail__attention" }, [
                   _vm._v(
-                    "\n                    お支払いは店舗でしていただきます。\n                "
+                    "\n                この商品は売り切れです。\n            "
                   ),
                 ]),
               ])
             : _vm._e(),
           _vm._v(" "),
-          this.role === "guest" && this.sold === 0
-            ? _c("div", [
-                _c("p", { staticClass: "p-product-detail__attention" }, [
-                  _vm._v(
-                    "\n                    商品を購入するにはログインが必要です。\n                "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
+          _c("div", { staticClass: "u-align__center" }, [
+            _vm.isPurchaser
+              ? _c(
+                  "button",
                   {
-                    staticClass: "c-link__underline",
-                    attrs: { href: "https://haikishare.com/user/login" },
-                  },
-                  [_vm._v("こちらからログインをしてください。")]
-                ),
-              ])
-            : _vm._e(),
-        ]),
-        _vm._v(" "),
-        this.sold === 1
-          ? _c("div", { staticClass: "u-align__center u-pb__s" }, [
-              _c("p", { staticClass: "p-product-detail__attention" }, [
-                _vm._v(
-                  "\n                この商品は売り切れです。\n            "
-                ),
-              ]),
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _c("div", { staticClass: "u-align__center" }, [
-          _vm.isPurchaser
-            ? _c(
-                "button",
-                {
-                  staticClass: "c-btn--danger",
-                  on: {
-                    click: function ($event) {
-                      return _vm.cancelPurchase()
+                    staticClass: "c-btn--danger",
+                    on: {
+                      click: function ($event) {
+                        return _vm.cancelPurchase()
+                      },
                     },
                   },
-                },
-                [_vm._v("\n                購入をキャンセル\n            ")]
-              )
-            : _vm._e(),
-        ]),
-      ]),
+                  [_vm._v("\n                購入をキャンセル\n            ")]
+                )
+              : _vm._e(),
+          ]),
+        ]
+      ),
     ],
     1
   )

@@ -1,7 +1,7 @@
 <template>
     <div v-cloak>
         <loading-component :isLoading="this.isLoading"></loading-component>
-        <div class="p-product-detail">
+        <div class="p-product-detail" v-show="showInfomation">
             <h3 class="p-product-detail__title">
                 {{ this.product.product_name }}
             </h3>
@@ -13,10 +13,7 @@
                         @error="noImage"
                     />
                 </div>
-                <div
-                    class="p-product-detail__text-container"
-                    v-show="showInfomation"
-                >
+                <div class="p-product-detail__text-container">
                     <h4 class="p-product-detail__description">
                         {{ this.product.description }}
                     </h4>
@@ -144,6 +141,7 @@ export default {
                     this.company = response.data.companyname;
                     this.sold = response.data.productdata.is_sold;
                     this.isPurchaser = response.data.is_purchaser;
+                    this.showInfomation = true;
                 })
                 .catch((err) => {
                     if (err.response.status === 500) {
@@ -224,7 +222,6 @@ export default {
     created() {
         this.getProduct();
         this.getRole();
-        this.showInfomation = true;
     },
 };
 </script>
