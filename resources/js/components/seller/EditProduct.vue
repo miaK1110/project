@@ -158,6 +158,12 @@
                                 @change="onChangeFile"
                                 ref="preview"
                             />
+                            <p
+                                class="c-form__err-msg"
+                                v-if="errMessages.fileErr"
+                            >
+                                {{ errMessages.fileErr }}
+                            </p>
                         </div>
                     </label>
                     <p class="c-form__err-msg" v-if="errMessages.fileErr">

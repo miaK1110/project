@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div v-cloak>
         <loading-component :isLoading="this.isLoading"></loading-component>
-        <div class="p-product-detail">
+        <div class="p-product-detail" v-show="showInfomation">
             <h3 class="p-product-detail__title">
                 {{ this.product.product_name }}
             </h3>
@@ -114,6 +114,7 @@ export default {
             sold: "", // 売り切れている商品かどうか
             isPurchaser: false, // 購入したユーザーと見ているユーザーが同じか
             isLoading: false, // ローディング中か判定
+            showInfomation: false,
         };
     },
     methods: {
@@ -140,6 +141,7 @@ export default {
                     this.company = response.data.companyname;
                     this.sold = response.data.productdata.is_sold;
                     this.isPurchaser = response.data.is_purchaser;
+                    this.showInfomation = true;
                 })
                 .catch((err) => {
                     if (err.response.status === 500) {
@@ -154,7 +156,6 @@ export default {
                 .then((response) => {
                     this.role = response.data.role;
                     this.uId = response.data.id;
-                    // console.log(response);
                 })
                 .catch((err) => {
                     if (err.response.status === 500) {
@@ -218,7 +219,7 @@ export default {
                 });
         },
     },
-    mounted() {
+    created() {
         this.getProduct();
         this.getRole();
     },

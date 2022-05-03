@@ -250,6 +250,10 @@ img {
   vertical-align: bottom;
 }
 
+[v-cloak] {
+  display: none;
+}
+
 .l-header {
   width: 100vw;
   height: 100px;
@@ -941,7 +945,7 @@ img {
   padding-top: 30px;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1200px) {
+@media screen and (min-width:769px) and (max-width:1364px) {
   .p-about-foodloss__head {
     padding-top: 50px;
   }
@@ -965,13 +969,6 @@ img {
   padding: 30px 0;
 }
 
-@media screen and (min-width: 415px) and (max-width: 768px) {
-  .p-about-foodloss__text-wrapper {
-    width: 75%;
-    padding: 45px 0;
-  }
-}
-
 @media screen and (max-width: 414px) {
   .p-about-foodloss__text-wrapper {
     width: 85%;
@@ -979,9 +976,16 @@ img {
   }
 }
 
-@media screen and (min-width: 769px) and (max-width: 1200px) {
+@media screen and (min-width: 415px) and (max-width: 768px) {
   .p-about-foodloss__text-wrapper {
-    width: 70%;
+    width: 75%;
+    padding: 45px 0;
+  }
+}
+
+@media screen and (min-width:769px) and (max-width:1364px) {
+  .p-about-foodloss__text-wrapper {
+    width: 60%;
     padding: 50px 0;
   }
 }
@@ -1666,9 +1670,9 @@ img {
 }
 
 .p-product-detail__image-container {
+  display: block;
   width: 50%;
   min-height: 300px;
-  max-height: 350px;
 }
 
 @media screen and (max-width: 414px) {
@@ -1682,7 +1686,7 @@ img {
   .p-product-detail__image-container {
     width: 100%;
     margin: 0 auto;
-    min-height: 0;
+    height: auto;
   }
 }
 
@@ -1701,6 +1705,7 @@ img {
 }
 
 .p-product-detail__text-container {
+  display: block;
   width: 50%;
   padding-left: 1.5rem;
   word-wrap: break-word;
@@ -1722,11 +1727,18 @@ img {
   }
 }
 
+@media screen and (min-width: 697px) and (max-width: 768px) {
+  .p-product-detail__text-container {
+    margin-top: 60px;
+  }
+}
+
 .p-product-detail__description {
   font-weight: bold;
   line-height: 1.5;
   margin-bottom: 20px;
   word-wrap: break-word;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 414px) {

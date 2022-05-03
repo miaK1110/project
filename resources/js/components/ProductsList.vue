@@ -218,6 +218,7 @@ export default {
             allProducts: {},
             currentPageNum: 1,
             totalPageNum: 1,
+            page: 1,
         };
     },
 

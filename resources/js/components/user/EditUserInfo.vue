@@ -227,7 +227,6 @@ export default {
             axios
                 .get("/user/api/getuserandprefdata")
                 .then((response) => {
-                    // console.log(response);
                     if (response.status === 200) {
                         this.prefData = response.data.prefData;
 
