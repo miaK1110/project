@@ -37,7 +37,6 @@
         display: block;
         width: 50%;
         min-height: 300px;
-        max-height: 350px;
         @include mq(sm) {
             width: 100%;
             min-height: 0;
@@ -45,7 +44,7 @@
         @include mq(smtomd) {
             width: 100%;
             margin: 0 auto;
-            min-height: 0;
+            height: auto;
         }
         @include mq(dw) {
             width: 50%;
@@ -72,6 +71,10 @@
             margin: 0 auto;
             padding-left: 0;
         }
+        // 画像との調整
+        @media screen and (min-width: 697px) and (max-width: 768px) {
+            margin-top: 60px;
+        }
     }
     &__description {
         font-weight: bold;
@@ -84,10 +87,6 @@
         }
         @include mq(smtomd) {
             margin-top: 30px;
-        }
-        // 画像との調整
-        @media screen and (min-width: 697px) and (max-width: 768px) {
-            margin-top: 60px;
         }
     }
     &__price {
