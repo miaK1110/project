@@ -2358,9 +2358,6 @@ moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale("ja");
   created: function created() {
     this.getProduct();
     this.getRole();
-  },
-  mounted: function mounted() {
-    // マスタッシュ構文のちらつき防止
     this.showInfomation = true;
   }
 });

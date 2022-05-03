@@ -224,9 +224,6 @@ export default {
     created() {
         this.getProduct();
         this.getRole();
-    },
-    mounted() {
-        // マスタッシュ構文のちらつき防止
         this.showInfomation = true;
     },
 };
