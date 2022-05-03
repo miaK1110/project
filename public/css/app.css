@@ -1727,12 +1727,6 @@ img {
   }
 }
 
-@media screen and (min-width: 697px) and (max-width: 768px) {
-  .p-product-detail__text-container {
-    margin-top: 60px;
-  }
-}
-
 .p-product-detail__description {
   font-weight: bold;
   line-height: 1.5;
@@ -1744,12 +1738,6 @@ img {
 @media screen and (max-width: 414px) {
   .p-product-detail__description {
     margin-top: 20px;
-  }
-}
-
-@media screen and (min-width: 415px) and (max-width: 768px) {
-  .p-product-detail__description {
-    margin-top: 30px;
   }
 }
 
