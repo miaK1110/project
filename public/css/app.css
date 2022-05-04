@@ -1734,7 +1734,7 @@ img {
   overflow: hidden;
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 768px) {
   .p-product-detail__description {
     margin-top: 20px;
   }
