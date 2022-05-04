@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Product;
 use Illuminate\Http\Request;
+// use Illuminate\Support\Carbon;
 use App\Mail\SoldNotification;
-use Illuminate\Support\Carbon;
 use App\Mail\PurchasedNotification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -24,7 +25,7 @@ class ProductController extends Controller
         return view('product_detail');
     }
 
-    // 商品一覧画面用。フィルタリングなしで全商品を返す
+    // 商品一覧画面用(店舗ページ用)。フィルタリングなしで全商品を返す
     public function getProducts()
     {
         // 1ページあたりの件数
@@ -39,7 +40,7 @@ class ProductController extends Controller
         // もし取得した商品の賞味期限が過ぎていた場合
         // 商品を賞味期限切れの状態にする
         foreach ($products as $product) {
-            if ($now < $product->best_before_date) {
+            if ($now->gte($product->best_defore_date)) {
                 $pid = $product->id;
                 $new_product = Product::find($pid);
                 $new_product->is_expired = 1;
@@ -157,7 +158,7 @@ class ProductController extends Controller
         }
     }
     // 都道府県・カテゴリー・価格順・賞味期限切れかどうかの検索条件で
-    // 商品を取得して9件返す処理
+    // 商品を取得して9件返す処理（誰でも見れる商品一覧画面用）
     public function getSelectedProducts(Request $request)
     {
         // 1ページあたりの件数
@@ -199,8 +200,9 @@ class ProductController extends Controller
 
         // もし取得した商品の賞味期限が過ぎていた場合
         // 商品を賞味期限切れの状態にする
+
         foreach ($data as $product) {
-            if ($now < $product->best_before_date) {
+            if ($now->gte($product->best_defore_date)) {
                 $pid = $product->id;
                 $new_product = Product::find($pid);
                 $new_product->is_expired = 1;

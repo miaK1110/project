@@ -300,6 +300,7 @@ export default {
             axios
                 .post("/seller/api/addproduct", data)
                 .then((response) => {
+                    console.log(response);
                     this.isLoading = false;
                     if (response.status === 200) {
                         // status 201ならマイページへ戻る

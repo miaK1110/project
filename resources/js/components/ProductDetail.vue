@@ -120,7 +120,7 @@ export default {
     methods: {
         // 賞味期限がdatetimeで返ってくるのでフォーマットを変換
         changeDateFormat(date) {
-            return moment(date).format("YYYY[年]MMMMDo h[時]mm[分]");
+            return moment(date).format("YYYY[年]MMMMDo AH[時]mm[分]");
         },
         getId() {
             // url取得

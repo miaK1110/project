@@ -29,7 +29,6 @@ class CreateProductController extends Controller
         // 今の時間を変数に格納
         $now = Carbon::now();
 
-
         if (Auth::check()) {
 
             $product = new Product();
@@ -50,7 +49,7 @@ class CreateProductController extends Controller
             $product->best_defore_date = $best_before_date;
 
             // 賞味期限がきれているかチェック
-            if ($now < $best_before_date) {
+            if ($now->lte($best_before_date)) {
                 $product->is_expired = 0;
             } else {
                 $product->is_expired = 1;

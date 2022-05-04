@@ -2260,7 +2260,7 @@ moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale("ja");
   methods: {
     // 賞味期限がdatetimeで返ってくるのでフォーマットを変換
     changeDateFormat: function changeDateFormat(date) {
-      return moment__WEBPACK_IMPORTED_MODULE_0___default()(date).format("YYYY[年]MMMMDo h[時]mm[分]");
+      return moment__WEBPACK_IMPORTED_MODULE_0___default()(date).format("YYYY[年]MMMMDo AH[時]mm[分]");
     },
     getId: function getId() {
       // url取得
@@ -3248,6 +3248,7 @@ Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vu
       data.append("bestBeforeDate", this.bestBeforeDate);
       data.append("file", this.file);
       axios.post("/seller/api/addproduct", data).then(function (response) {
+        console.log(response);
         _this2.isLoading = false;
 
         if (response.status === 200) {
