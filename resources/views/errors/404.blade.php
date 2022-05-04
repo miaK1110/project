@@ -1,5 +1,9 @@
 @extends('Layouts.app')
 
+@php
+header('charset=utf8mb4');
+@endphp
+
 @section('title', 'お探しのページは見つかりませんでした')
 
 @section('content')
