@@ -33,6 +33,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         // もしIDに数字以外のパラメーターが来たら404ページに飛ばす
         Route::pattern('id', '[0-9]+');
+        header("charset=utf8mb4");
         parent::boot();
     }
 
