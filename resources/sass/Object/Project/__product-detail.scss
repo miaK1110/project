@@ -36,7 +36,6 @@
     &__image-container {
         display: block;
         width: 50%;
-        min-height: 300px;
         @include mq(sm) {
             width: 100%;
             min-height: 0;

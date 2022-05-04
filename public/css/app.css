@@ -1672,7 +1672,6 @@ img {
 .p-product-detail__image-container {
   display: block;
   width: 50%;
-  min-height: 300px;
 }
 
 @media screen and (max-width: 414px) {
