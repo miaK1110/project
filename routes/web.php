@@ -33,8 +33,7 @@ Route::get('/products-list', function () {
     return view('products_list');
 });
 // 商品詳細画面
-Route::get('/product-detail/{id}', 'ProductController@index');
-// 商品一覧画面用の商品情報取得API（全品）
+Route::get('/product-detail/{id}', 'ProductController@index')->where('id', '[0-9]+');
 Route::get('api/getproducts', 'ProductController@getProducts');
 
 // 商品一覧画面用のフィルターされた商品情報取得API
