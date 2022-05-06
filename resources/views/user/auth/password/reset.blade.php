@@ -30,14 +30,14 @@
                     </span>
                 @enderror
             </div>
-            <div class="c-form__item">
+            <div class="c-form__item u-mb__m">
                 <label for="password-confirm" class="c-form__label">
                     新しいパスワード(再確認)
                 </label>
                 <input id="password-confirm" type="password" class="c-form__control" name="password_confirmation" required
                     autofocus="new-password" />
             </div>
-            <button type="submit" class="c-btn c-btn--primary">
+            <button type="submit" class="c-btn c-btn--primary--higher">
                 パスワードを更新する
             </button>
         </div>

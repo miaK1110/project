@@ -105,15 +105,15 @@ export default {
     },
     data() {
         return {
-            role: "", // 店舗・一般ユーザー・ゲスト
-            uId: "", // ログイン済みの店舗・一般ユーザーのID
-            pId: "", // 商品ID
-            product: [], // 商品の情報
-            seller: [], // この商品を売っている店の情報
-            company: "", // この商品を売っている店の企業名(略称)
-            sold: "", // 売り切れている商品かどうか
-            isPurchaser: false, // 購入したユーザーと見ているユーザーが同じか
-            isLoading: false, // ローディング中か判定
+            role: "",
+            uId: "",
+            pId: "",
+            product: [],
+            seller: [],
+            company: "",
+            sold: "",
+            isPurchaser: false,
+            isLoading: false,
             showInfomation: false,
         };
     },

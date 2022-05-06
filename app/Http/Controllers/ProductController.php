@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Product;
 use Illuminate\Http\Request;
-// use Illuminate\Support\Carbon;
 use App\Mail\SoldNotification;
 use App\Mail\PurchasedNotification;
 use Illuminate\Support\Facades\Auth;
@@ -170,31 +169,30 @@ class ProductController extends Controller
         // 今の時間を取得
         $now = Carbon::now();
 
-        // 都道府県が選択された時
-        if (!empty($input['pref'])) {
-            $products = $products->where('prefecture', $input['pref']);
-        }
-        // カテゴリーが選択された時
-        if (!empty($input['category'])) {
-            $products = $products->where('category_id', $input['category']);
-        }
-        // 価格が高い順が選択された時
-        if (!empty($input['price']) && $input['price'] == 'desc') {
-            $products = $products->orderBy('price', 'desc');
-        }
-        // 価格が低い順が選択された時
-        if (!empty($input['price']) && $input['price'] == 'asc') {
-            $products = $products->orderBy('price', 'asc');
-        }
-        // 賞味期限が選択された時(0=賞味期限切れていない,1=賞味期限切れている)
-        if (isset($input['is-expired'])) {
-            $products = $products->where('is_expired', $input['is-expired']);
-        }
         // 検索条件が選択されてない場合、ID降順に表示
-        if (is_null($input['pref']) && is_null($input['category']) && is_null($input['price']) && is_null($input['is-expired'])) {
-            $data = $products->orderBy('id', 'DESC')->paginate($per_page);
+        if (empty($input['pref']) && empty($input['category']) && empty($input['price']) && $input['is-expired'] == "") {
+            $data = $products->orderBy('created_at', 'DESC')->paginate($per_page);
         } else {
-            // 検索条件が選択されていた場合
+            // 都道府県が選択された時
+            if (!empty($input['pref'])) {
+                $products = $products->where('prefecture', $input['pref']);
+            }
+            // カテゴリーが選択された時
+            if (!empty($input['category'])) {
+                $products = $products->where('category_id', $input['category']);
+            }
+            // 価格が高い順が選択された時
+            if (!empty($input['price']) && $input['price'] == 'desc') {
+                $products = $products->orderBy('price', 'desc');
+            }
+            // 価格が低い順が選択された時
+            if (!empty($input['price']) && $input['price'] == 'asc') {
+                $products = $products->orderBy('price', 'asc');
+            }
+            // 賞味期限が選択された時(0=賞味期限切れていない,1=賞味期限切れている)
+            if (isset($input['is-expired'])) {
+                $products = $products->where('is_expired', $input['is-expired']);
+            }
             $data = $products->paginate($per_page);
         }
 

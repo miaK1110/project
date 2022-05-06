@@ -12,7 +12,7 @@
             <h3 class="c-form__title">パスワードリセット</h3>
             <p class="u-pb__s">登録されたメールアドレスにパスワード変更用のリンクを送ります。ボタンを押してからメール送信までにしばらく時間がかかる場合がございます。</p>
 
-            <div class="c-form__item">
+            <div class="c-form__item u-mb__m">
                 <label for="email" class="c-form__label">
                     メールアドレス
                 </label>
@@ -24,7 +24,7 @@
                     </span>
                 @enderror
             </div>
-            <button type="submit" class="c-btn--primary">
+            <button type="submit" class="c-btn c-btn--primary--higher">
                 メールを送る
             </button>
             <a href="/user/login" class="c-link__underline u-align__center u-pt__s">ログイン画面に戻る</a>
